@@ -1,0 +1,93 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap');
+
+
+body{
+    height: 1000px;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: rgb(255, 255, 255);
+    font-family: 'Poppins', sans-serif;
+}
+
+
+.jumbotron{
+    background-size: cover;
+    background-image: url('./bg-jumbo.jpg');
+    background-position: center; /* Mengatur posisi gambar di tengah jumbotron */
+    background-repeat: no-repeat;
+    height: 35em;
+    position: relative;
+}
+
+.jumbotron .container-jumbo {
+    position:relative;
+    z-index: 1;
+
+}
+
+.jumbotron::after{
+    content: '';
+    display: block;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(to right, rgba(0,0,0,1), rgba(0,0,0,0));
+    position: absolute;
+    bottom: 0;
+
+}
+
+.jumbotron .display-4{
+    color:white;
+    font-style: bold;
+    text-align: left;
+    font-size: 25px;
+    line-height: 1.5;
+   
+}
+
+.explore {
+    width: 10em;
+
+}
+
+
+@media (max-width: 768px) {
+    .col {
+      font-size: 16px; /* Ubah ukuran teks pada layar kecil */
+      margin: 3px; /* Ubah margin pada layar kecil */
+    }
+  }
+
+
+a {
+    text-decoration: none;
+}
+
+hr {
+    width: 20%;
+    color: black;
+}
+
+
+
+
+.form-inputs{
+    position:relative;
+    justify-content: flex-end;
+}
+.form-inputs .form-control{
+    height:45px; 
+}
+
+.form-inputs .form-control:focus{
+    box-shadow:none;
+    border:1px solid #000;
+}
+
+.form-inputs i{
+    position:absolute;
+    right:10px;
+    top:15px;
+}
+
