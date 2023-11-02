@@ -29,6 +29,14 @@ Route::get('/e-learning/show', function () {
     return view('learning.show');
 });
 
+Route::get('/login', function () {
+    return view('auth.login');
+});
+
+Route::get('/register', function () {
+    return view('auth.register');
+});
+
 // Route::get('/berita/show', function () {
 //     return view('news.show');
 // });
