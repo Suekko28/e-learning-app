@@ -37,6 +37,12 @@ Route::get('/register', function () {
     return view('auth.register');
 });
 
+Route::post('/login', [SessionController::class, 'login']);
+Route::resource('admin/dashboard', DashboardController::class);
+Route::resource('admin/materi', LearningController::class);
+Route::resource('admin/kegiatan', ActController::class);
+Route::resource('admin/berita', NewsController::class);
+
 // Route::get('/berita/show', function () {
 //     return view('news.show');
 // });
@@ -88,10 +94,7 @@ Route::get('/register', function () {
 // });
 
 
-Route::resource('admin/dashboard', DashboardController::class);
-Route::resource('admin/materi', LearningController::class);
-Route::resource('admin/kegiatan', ActController::class);
-Route::resource('admin/berita', NewsController::class);
+
 
 
 
