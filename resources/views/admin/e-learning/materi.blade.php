@@ -35,7 +35,7 @@
                             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                                 data-accordion="false">
                                 <!-- Add icons to the links using the .nav-icon class
-                       with font-awesome or any other icon font library -->
+                           with font-awesome or any other icon font library -->
                                 <li class="nav-item">
                                     <a href="{{ url('admin/dashboard') }}" class="nav-link">
                                         <i class="nav-icon fas fa-tachometer-alt"></i>
@@ -131,12 +131,14 @@
                                                 <tr>
                                                     <th scope="row">{{ $i }}</th>
                                                     <td scope="row">
-                                                      <img src="{{ Storage::url('public/images/' . $item->image) }}" class="rounded" style="width: 150px">                                                      <td scope="row">{{ $item->title }}</td>
+                                                        <img src="{{ Storage::url('public/images/' . $item->image) }}"
+                                                            class="rounded" style="width: 150px">
+                                                    <td scope="row">{{ $item->title }}</td>
                                                     <td scope="row">{!! $item->content !!}</td>
                                                     <td scope="row">{{ $item->thumbnail }}</td>
                                                     <td scope="row"><a href="{{ $item->drive }}"
                                                             target="_blank">{{ $item->drive }}</a></td>
-                                                    <td scope="row">
+                                                    <td scope="row" class="text-center">
                                                         <a href="{{ url('/admin/materi/' . $item->id) . '/edit' }}"
                                                             class="btn btn-warning mb-2"><i
                                                                 class=" fa fa-solid fa-pen-to-square"
@@ -146,7 +148,7 @@
                                                             @csrf
                                                             @method('DELETE')
                                                             <button class="btn btn-danger mb-2"><i
-                                                                    class="fa fa-solid fa-trash"></i></button>
+                                                                    class="fa fa-solid fa-trash" ></i></button>
                                                         </form>
                                                     </td>
                                                     <?php $i++; ?>
@@ -179,7 +181,4 @@
                 <!-- /.control-sidebar -->
             </div>
     </main>
-    <script>
-        console.log("URL Gambar: {{ Storage::url('public/images/' . $item->image) }}");
-    </script>
 @endsection
