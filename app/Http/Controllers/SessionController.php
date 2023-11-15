@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class SessionController extends Controller
 {
@@ -10,8 +12,9 @@ class SessionController extends Controller
 
     }
 
-    public function login(Requset $request)
+    public function login(Request $request)
     {
+
         Session::flash('email', $request->email);
 
         $request->validate([
@@ -31,10 +34,10 @@ class SessionController extends Controller
 
         if(Auth::attempt($infologin)){
             //kalau otentikasi sukses
-            return view('admin.dashboard');
+            return redirect('admin.dashboard')->with('success', 'Berhasil Login');
         }else{
             //kalo otentikasi gaal
-            return view('admin.dashboard');
+            return view('login')->withErorrs('Username dan password yang dimasukkan tidak valid');
         };
     }
 }
