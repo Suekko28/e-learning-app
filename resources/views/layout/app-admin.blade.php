@@ -61,8 +61,8 @@
 
         </ul>
 
-        {{-- <ul class="navbar-nav">
-            <li class="nav-item dropdown me-2">
+        <ul class="navbar-nav">
+            <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                     aria-expanded="false">
                     {{ auth()->user()->name }}
@@ -78,7 +78,7 @@
                     </li>
                 </ul>
             </li>
-        </ul> --}}
+        </ul>
     </nav>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"

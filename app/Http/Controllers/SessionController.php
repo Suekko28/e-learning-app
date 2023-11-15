@@ -5,12 +5,14 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 
 class SessionController extends Controller
 {
     public function index()
     {
+        return view('auth.login');
     }
 
 
@@ -36,7 +38,7 @@ class SessionController extends Controller
 
         if(Auth::attempt($infologin)){
             //kalau otentikasi sukses
-            return redirect('admin/dashboard');
+            return redirect('admin/dashboard')->with('success', Auth::user()->name . 'berhasil login');;
         }else{
             //kalo otentikasi gaal
             return redirect('login')->withErrors('Username dan password yang dimasukkan tidak valid');
@@ -60,12 +62,13 @@ class SessionController extends Controller
         Session::flash('email', $request->email);
 
         $request->validate([
-            'name'=>'required',
+            'name'=>'required|min:10',
             'email'=>'required|email|unique:users',
             'password'=>'required|min:6',
 
         ],[
             'name.required' => 'Email wajib diisi',
+            'name.min' => 'Minimal nama yang diizinkan adalah 10 karakter',
             'email.required' => 'Email wajib diisi',
             'email.email' => 'Silahkan masukkan email yang valid',
             'email.unique'=> 'Email sudah pernah digunakan, silahkan pilih email yang lain',
@@ -77,7 +80,7 @@ class SessionController extends Controller
         $data = [
             'name'=> $request->name,
             'email'=>$request->email,
-            'password'=>$request->password,
+            'password'=>Hash::make($request->password),
         ];
 
         User::create($data);
@@ -89,7 +92,7 @@ class SessionController extends Controller
 
         if(Auth::attempt($infologin)){
             //kalau otentikasi sukses
-            return redirect('admin/dashboard');
+            return redirect('admin/dashboard')->with('success', Auth::user()->name . 'berhasil login');
         }else{
             //kalo otentikasi gaal
             return redirect('login')->withErrors('Username dan password yang dimasukkan tidak valid');
