@@ -59,8 +59,7 @@
                                             Invalid Credentials
                                         </div>
                                         @endif
-                                        <form action="{{url('admin/dashboard')}}" method="post" class="authentication-form" >
-                                            @csrf
+                                        <form action="{{ route('login') }}" method="post" class="authentication-form">                                            @csrf
                                             <div class="mb-3">
                                                 <label class="form-label">Email Address</label>
                                                 <div class="input-group">
@@ -87,7 +86,7 @@
                                                     <label class="form-check-label" for="checkbox-signin">Remember me</label>
                                                 </div>
                                             </div>
-
+                                            @include('layout.message')
                                             <div class="mb-4 text-center d-grid">
                                                 <button class="btn btn-primary" type="submit">Log In</button>
                                             </div>

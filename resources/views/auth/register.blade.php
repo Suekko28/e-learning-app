@@ -54,14 +54,15 @@
                                         <h6 class="h5 mb-0 mt-3">Create your account</h6>
                                         <p class="text-muted mt-1 mb-4">Create a account for your account server</p>
 
-                                        <form action="#" class="authentication-form">
+                                        <form action="{{route('create')}}" method="post" class="authentication-form">
+                                           
                                             <div class="mb-3">
                                                 <label class="form-label">Name</label>
                                                 <div class="input-group">
                                                     <span class="input-group-text">
                                                         <i class="icon-dual" data-feather="user"></i>
                                                     </span>
-                                                    <input type="text" class="form-control" id="name" placeholder="Your full name">
+                                                    <input type="text" class="form-control" name="name" id="name" placeholder="Your full name">
                                                 </div>
                                             </div>
 
@@ -71,7 +72,7 @@
                                                     <span class="input-group-text">
                                                         <i class="icon-dual" data-feather="mail"></i>
                                                     </span>
-                                                    <input type="email" class="form-control" id="email" placeholder="hello@gmail.com">
+                                                    <input type="email" class="form-control" name="email" id="email" placeholder="hello@gmail.com">
                                                 </div>
                                             </div>
 
@@ -81,7 +82,7 @@
                                                     <span class="input-group-text">
                                                         <i class="icon-dual" data-feather="lock"></i>
                                                     </span>
-                                                    <input type="password" class="form-control" id="password" placeholder="Enter your password">
+                                                    <input type="password" class="form-control" name="password" id="password" placeholder="Enter your password">
                                                 </div>
                                             </div>
 
@@ -95,7 +96,7 @@
                                             </div>
 
                                             <div class="mb-3 text-center d-grid">
-                                                <button class="btn btn-primary" type="submit">Sign Up</button>
+                                                <button class="btn btn-primary" type="submit">Register</button>
                                             </div>
                                         </form>
                                         
@@ -118,7 +119,7 @@
 
                         <div class="row mt-3">
                             <div class="col-12 text-center">
-                                <p class="text-muted">Already have account? <a href="pages-login.html" class="text-primary fw-bold ms-1">Login</a></p>
+                                <p class="text-muted">Already have account? <a href="" class="text-primary fw-bold ms-1">Login</a></p>
                             </div> <!-- end col -->
                         </div>
                         <!-- end row -->

@@ -4,6 +4,7 @@ use App\Http\Controllers\ActController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LearningController;
 use App\Http\Controllers\NewsController;
+use App\Http\Controllers\SessionController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -29,16 +30,21 @@ Route::get('/e-learning/show', function () {
     return view('learning.show');
 });
 
-Route::get('/login', function () {
-    return view('auth.login');
-});
+// Route::get('/login', function () {
+//     return view('auth.login');
+// });
 
-Route::get('/register', function () {
-    return view('auth.register');
-});
+// Route::get('/register', function () {
+//     return view('auth.register');
+// });
 
-Route::post('/login', [SessionController::class, 'login']);
-Route::resource('admin/dashboard', DashboardController::class);
+
+Route::post('/login', [SessionController::class, 'login'])->name('login');
+Route::get('/logout', [SessionController::class, 'logout'])->name('logout');
+Route::get('/register', [SessionController::class, 'register'])->name('register');
+Route::post('/create', [SessionController::class, 'create'])->name('create');
+Route::get('admin/dashboard', [DashboardController::class, 'index']);
+// Route::resource('admin/dashboard', LearningController::class);
 Route::resource('admin/materi', LearningController::class);
 Route::resource('admin/kegiatan', ActController::class);
 Route::resource('admin/berita', NewsController::class);
