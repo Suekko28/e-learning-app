@@ -131,8 +131,8 @@
                                                 <tr>
                                                     <th scope="row">{{ $i }}</th>
                                                     <td scope="row">
-                                                        <img src="{{ Storage::url('public/images/' . $item->image) }}"
-                                                            class="rounded" style="width: 150px">
+                                                        <img src="{{ Storage::url('images/' . $item->image) }}" alt="" width="150px" height="150px" class="rounded"/>
+                                                    </td>
                                                     <td scope="row">{{ $item->title }}</td>
                                                     <td scope="row">{!! $item->content !!}</td>
                                                     <td scope="row">{{ $item->thumbnail }}</td>
