@@ -125,8 +125,8 @@
                     </tr>
                     @foreach ($data as $item)
                       <tr>  
-                      <th scope="row">{{$i}}</th>
-                      <td scope="row">
+                      <th scope="row" class="text-center">{{$i}}</th>
+                      <td scope="row" class="text-center">
                         <img src="{{Storage::url('public/news/' . $item->image )  }}" class="rounded" style="width: 150px">
                       <td scope="row">{{$item->title}}</td>
                       <td scope="row">{!! $item->content !!}</td>

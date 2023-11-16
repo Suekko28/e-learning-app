@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ActController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LearningController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\SessionController;
@@ -29,6 +30,10 @@ Route::middleware(['isLogin'])->group(function () {
     Route::resource('admin/kegiatan', ActController::class);
     Route::resource('admin/berita', NewsController::class);
 });
+
+Route::resource('home', HomeController::class);
+Route::get('learning/index', [HomeController::class, 'learning_index'])->name('learning.index');
+
 
 
 
