@@ -33,7 +33,10 @@ Route::middleware(['isLogin'])->group(function () {
 
 Route::resource('/  ', HomeController::class);
 Route::resource('home', HomeController::class);
-Route::get('learning/index', [HomeController::class, 'learning_index'])->name('learning.index');
+Route::get('learning/all', [HomeController::class, 'learning_index'])->name('learning.index');
+Route::get('learning/all/{id}/show', [HomeController::class, 'learning_show'])->name('learning.show');
+Route::get('kegiatan/all', [HomeController::class, 'kegiatan_index'])->name('kegiatan.index');
+Route::get('kegiatan/all/{id}/show', [HomeController::class, 'kegiatan_show'])->name('kegiatan.show');
 
 
 

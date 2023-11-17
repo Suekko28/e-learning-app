@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Activity;
 use App\Models\Learning;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -73,4 +74,27 @@ class HomeController extends Controller
         $learning = Learning::latest()->paginate(8);
         return view('learning.index', compact('learning'));
     }
+
+    public function learning_show($id)
+    {
+        $learning = Learning::findOrFail($id);
+        $latest = DB::table('learnings')->latest('id')->paginate(4);
+        return view('learning.show', compact('learning', 'latest'));
+    }
+
+    public function kegiatan_index(Activity $act)
+    {
+        $act = Learning::latest()->paginate(8);
+        return view('act.index', compact('act'));
+    }
+
+    public function kegiatan_show($id)
+    {
+        $act = Learning::findOrFail($id);
+        $latest = DB::table('learnings')->latest('id')->paginate(4);
+        return view('act.show', compact('act', 'latest'));
+    }
+
+    
+
 }

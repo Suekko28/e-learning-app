@@ -24,11 +24,11 @@
                         <img src="{{ Storage::url('public/images/' . $item->image) }}" class="card-img-top img-fluid"
                             style="height: 310px;" alt="...">
                         <div class="card-body border-0">
-                            <a href="" class="text-black">
+                            <a href="{{route('learning.show',['id' => $item->id])}}" class="text-black">
                                 <h5 class="card-title">{{ $item->title }}</h5>
                             </a>
                             <p class="card-text">{{ $item->thumbnail }}</p>
-                            <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
+                            <p class="card-text"><small class="text-body-secondary"> {{ Carbon\Carbon::parse($item->created_at)->format('d-m-Y') }}</small></p>
                         </div>
                     </div>
                 @endforeach

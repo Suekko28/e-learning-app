@@ -40,7 +40,8 @@
                 <h4 class="fw-bold">E-Learning</h4>
                 <div class="row mb-3">
                     <div class="col text-body-secondary text-lighter">Pembelajaran Teknik Komputer & Jaringan</div>
-                    <div class="col text-right"><a class="text-black fw-bold" href="{{route('learning.index')}}">Lihat Selengkapnya</a></div>
+                    <div class="col text-right"><a class="text-black fw-bold" href="{{ route('learning.index') }}">Lihat
+                            Selengkapnya</a></div>
                 </div>
                 <div class="card-group">
                     @foreach ($learning as $item)
@@ -48,11 +49,12 @@
                             <img src="{{ Storage::url('public/images/' . $item->image) }}" class="card-img-top img-fluid"
                                 style="height: 310px;" alt="...">
                             <div class="card-body border-0">
-                                <a href="" class="text-black">
+                                <a href="{{ route('learning.show', ['id' => $item->id]) }}" class="text-black">
                                     <h5 class="card-title">{{ $item->title }}</h5>
                                 </a>
                                 <p class="card-text">{{ $item->thumbnail }}</p>
-                                <p class="card-text"><small class="text-body-secondary"> {{ Carbon\Carbon::parse($item->created_at)->format('Y-m-d') }}</small></p>
+                                <p class="card-text"><small class="text-body-secondary">
+                                        {{ Carbon\Carbon::parse($item->created_at)->format('d-m-Y') }}</small></p>
                             </div>
                         </div>
                     @endforeach
@@ -62,7 +64,7 @@
                 <h4 class="fw-bold mt-5">Kegiatan</h4>
                 <div class="row mb-3">
                     <div class="col text-body-secondary text-lighter">Kegiatan Yang Telah Diselanggarakan</div>
-                    <div class="col text-right"><a class="text-black fw-bold" href="#">Lihat Selengkapnya</a></div>
+                    <div class="col text-right"><a class="text-black fw-bold" href="{{route('kegiatan.index')}}">Lihat Selengkapnya</a></div>
                 </div>
 
                 <div class="card-group">
@@ -71,11 +73,12 @@
                             <img src="{{ Storage::url('public/act/' . $item->image) }}" class="card-img-top img-fluid"
                                 style="height: 310px;" alt="...">
                             <div class="card-body border-0">
-                                <a href="" class="text-black">
+                                <a href="{{ route('kegiatan.show', ['id' => $item->id]) }}" class="text-black">
                                     <h5 class="card-title">{{ $item->title }}</h5>
                                 </a>
                                 <p class="card-text">{{ $item->thumbnail }}</p>
-                                <p class="card-text"><small class="text-body-secondary"> {{ Carbon\Carbon::parse($item->created_at)->format('Y-m-d') }}</small></p>
+                                <p class="card-text"><small class="text-body-secondary">
+                                        {{ Carbon\Carbon::parse($item->created_at)->format('d-m-Y') }}</small></p>
                             </div>
                         </div>
                     @endforeach
@@ -84,7 +87,7 @@
                 <h4 class="fw-bold mt-5">Berita</h4>
                 <div class="row mb-3">
                     <div class="col text-body-secondary text-lighter">Berita Seputar Jurusan</div>
-                    <div class="col text-right"><a class="text-black fw-bold" href="#">Lihat Selengkapnya</a></div>
+                    <div class="col text-right"><a class="text-black fw-bold" href="{{route('berita.index')}}">Lihat Selengkapnya</a></div>
                 </div>
 
                 <div class="card-group">
@@ -97,7 +100,8 @@
                                     <h5 class="card-title">{{ $item->title }}</h5>
                                 </a>
                                 <p class="card-text">{{ $item->thumbnail }}</p>
-                                <p class="card-text"><small class="text-body-secondary"> {{ Carbon\Carbon::parse($item->created_at)->format('Y-m-d') }}</small></p>
+                                <p class="card-text"><small class="text-body-secondary">
+                                        {{ Carbon\Carbon::parse($item->created_at)->format('d-m-Y') }}</small></p>
                             </div>
                         </div>
                     @endforeach
