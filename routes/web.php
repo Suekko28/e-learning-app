@@ -37,6 +37,8 @@ Route::get('learning/all', [HomeController::class, 'learning_index'])->name('lea
 Route::get('learning/all/{id}/show', [HomeController::class, 'learning_show'])->name('learning.show');
 Route::get('kegiatan/all', [HomeController::class, 'kegiatan_index'])->name('kegiatan.index');
 Route::get('kegiatan/all/{id}/show', [HomeController::class, 'kegiatan_show'])->name('kegiatan.show');
+Route::get('berita/all', [HomeController::class, 'berita_index'])->name('berita.index');
+Route::get('berita/all/{id}/show', [HomeController::class, 'berita_show'])->name('berita.show');
 
 
 

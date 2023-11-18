@@ -21,7 +21,8 @@
             <div class="card-group">
                 @foreach ($act as $item)
                     <div class="card me-2 shadow-sm" style="width: 15rem">
-                        <img src="{{Storage::url('public/act/' . $item->image )  }}" class="rounded" style="width: 150px">    
+                        <img src="{{ Storage::url('public/act/' . $item->image) }}" class="card-img-top img-fluid"
+                            style="height: 310px;" alt="...">
                         <div class="card-body border-0">
                             <a href="{{route('learning.show',['id' => $item->id])}}" class="text-black">
                                 <h5 class="card-title">{{ $item->title }}</h5>

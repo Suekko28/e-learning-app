@@ -96,7 +96,7 @@
                             <img src="{{ Storage::url('public/news/' . $item->image) }}" class="card-img-top img-fluid"
                                 style="height: 310px;" alt="...">
                             <div class="card-body border-0">
-                                <a href="" class="text-black">
+                                <a href="{{route('berita.show',['id' => $item->id])}}" class="text-black">
                                     <h5 class="card-title">{{ $item->title }}</h5>
                                 </a>
                                 <p class="card-text">{{ $item->thumbnail }}</p>
