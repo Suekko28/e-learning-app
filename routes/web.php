@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ActController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LearningController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\SessionController;
@@ -29,6 +30,20 @@ Route::middleware(['isLogin'])->group(function () {
     Route::resource('admin/kegiatan', ActController::class);
     Route::resource('admin/berita', NewsController::class);
 });
+
+Route::resource('/  ', HomeController::class);
+Route::resource('home', HomeController::class);
+Route::get('learning/all', [HomeController::class, 'learning_index'])->name('learning.index');
+Route::get('learning/all/{id}/show', [HomeController::class, 'learning_show'])->name('learning.show');
+Route::get('kegiatan/all', [HomeController::class, 'kegiatan_index'])->name('kegiatan.index');
+Route::get('kegiatan/all/{id}/show', [HomeController::class, 'kegiatan_show'])->name('kegiatan.show');
+Route::get('berita/all', [HomeController::class, 'berita_index'])->name('berita.index');
+Route::get('berita/all/{id}/show', [HomeController::class, 'berita_show'])->name('berita.show');
+Route::get('/about', function() {
+    return view('about.index');
+});
+
+
 
 
 

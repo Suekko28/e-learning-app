@@ -51,24 +51,9 @@ body{
 
 }
 
-
-@media (max-width: 768px) {
-    .col {
-      font-size: 16px; /* Ubah ukuran teks pada layar kecil */
-      margin: 3px; /* Ubah margin pada layar kecil */
-    }
-  }
-
-
 a {
     text-decoration: none;
 }
-
-hr {
-    width: 20%;
-    color: black;
-}
-
 
 
 
