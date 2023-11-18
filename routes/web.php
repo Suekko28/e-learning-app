@@ -39,6 +39,10 @@ Route::get('kegiatan/all', [HomeController::class, 'kegiatan_index'])->name('keg
 Route::get('kegiatan/all/{id}/show', [HomeController::class, 'kegiatan_show'])->name('kegiatan.show');
 Route::get('berita/all', [HomeController::class, 'berita_index'])->name('berita.index');
 Route::get('berita/all/{id}/show', [HomeController::class, 'berita_show'])->name('berita.show');
+Route::get('/about', function() {
+    return view('about.index');
+});
+
 
 
 

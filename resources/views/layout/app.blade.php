@@ -25,26 +25,26 @@
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
-          <a class="navbar-brand" href="/dashboard">
+          <a class="navbar-brand" href="/home">
             <img src="/logo_tkj.jpg" alt="Logo Murgana" width="60" height="60">
           </a>
           <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
             <ul class="navbar-nav mx-auto p-2">
               <li class="nav-item me-3">
-                <a class="nav-link active" aria-current="page" href="/dashboard">Beranda</a>
+                <a class="nav-link active" aria-current="page" href="/home">Beranda</a>
               </li>
               <li class="nav-item me-3">
-                <a class="nav-link" href="/perusahaan">E-Learning</a>
+                <a class="nav-link" href="{{route('learning.index')}}">E-Learning</a>
               </li>
               {{-- @if(auth()->user()->role==1) --}}
               <li class="nav-item me-3">
-                <a class="nav-link" href="/pengguna">Kegiatan</a>
+                <a class="nav-link" href="{{route('kegiatan.index')}}">Kegiatan</a>
               </li>
               <li class="nav-item me-3">
-                <a class="nav-link" href="/peralatan">Berita</a>
+                <a class="nav-link" href="{{route('berita.index')}}">Berita</a>
               </li>
               <li class="nav-item me-3">
-                <a class="nav-link" href="/peralatan">Tentang Kami</a>
+                <a class="nav-link" href="/about">Tentang Kami</a>
               </li>
               {{-- @endif --}}
             </ul>
