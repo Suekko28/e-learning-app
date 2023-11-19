@@ -11,8 +11,8 @@
         </div>
 
         <div class="container mt-5">
-            <form class="d-flex form-inputs w-50 mx-auto">
-                <input class="form-control" type="text" placeholder="Cari apa kamu?" aria-label="Search">
+            <form action="{{ route('search.detail.kegiatan') }}" method="GET" class="d-flex form-inputs w-50 mx-auto">
+                <input class="form-control mb-5" value="{{ old('search.detail.kegiatan') }}" type="text" name="search" placeholder="Cari apa kamu?" aria-label="Search">
                 <i class="fas fa-search"></i>
             </form>
         </div>
@@ -20,7 +20,7 @@
         <div class="container mt-3">
             <div class="card-group">
                 @foreach ($act as $item)
-                    <div class="card me-2 shadow-sm" style="width: 15rem">
+                    <div class="card me-2 shadow-sm" style="width: 20rem">
                         <img src="{{ Storage::url('public/act/' . $item->image) }}" class="card-img-top img-fluid"
                             style="height: 310px;" alt="...">
                         <div class="card-body border-0">

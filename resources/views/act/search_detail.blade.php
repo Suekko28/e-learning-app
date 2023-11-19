@@ -5,23 +5,23 @@
 <div class="mt-5 text-center">
     <div class="d-flex justify-content-center">
         <hr class="me-3" size="2%">
-        <h5 class="fw-bold"> E-Learning </h5>
+        <h5 class="fw-bold"> Kegiatan </h5>
         <hr class="ms-3" size="2%">
     </div>
 </div>
 
 <div class="container mt-5">
-    <form action="{{ route('search.detail.learning') }}" method="GET" class="d-flex form-inputs w-50 mx-auto">
-        <input class="form-control mb-5" value="{{ old('search.detail.learning') }}" type="text" name="search" placeholder="Cari apa kamu?" aria-label="Search">
+    <form action="{{ route('search.detail.kegiatan') }}" method="GET" class="d-flex form-inputs w-50 mx-auto">
+        <input class="form-control mb-5" value="{{ old('search.detail.kegiatan') }}" type="text" name="search" placeholder="Cari apa kamu?" aria-label="Search">
         <i class="fas fa-search"></i>
     </form>
 </div>
 
 <div class="container mt-3">
     <div class="d-flex flex-row">
-        @foreach ($learning as $item)
+        @foreach ($act as $item)
             <div class="card me-2 shadow-sm rounded" style="width: 20rem">
-                <img src="{{ Storage::url('public/images/' . $item->image) }}" class="card-img-top img-fluid"
+                <img src="{{ Storage::url('public/act/' . $item->image) }}" class="card-img-top img-fluid"
                     style="height: 300px; object-fit: cover;" alt="...">
                 <div class="card-body border-0">
                     <p class="card-text"><small class="text-body-secondary">
@@ -36,7 +36,7 @@
             </div>
         @endforeach
     </div>
-    {{ $learning->links() }}
+    {{ $act->links() }}
 </div>
     
 @endsection

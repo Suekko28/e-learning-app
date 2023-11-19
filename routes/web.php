@@ -43,7 +43,9 @@ Route::get('/about', function() {
     return view('about.index');
 });
 Route::get('search', [HomeController::class, 'search'])->name('search');
-Route::get('learning/all/search', [HomeController::class, 'search_detail'])->name('search.detail');
+Route::get('learning/all/search', [HomeController::class, 'search_detail_learning'])->name('search.detail.learning');
+Route::get('kegiatan/all/search', [HomeController::class, 'search_detail_kegiatan'])->name('search.detail.kegiatan');
+Route::get('berita/all/search', [HomeController::class, 'search_detail_berita'])->name('search.detail.berita');
 
 
 

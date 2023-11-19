@@ -84,7 +84,7 @@ class HomeController extends Controller
         return view('search', compact('learning','act', 'news'));
     }
 
-    public function search_detail(Request $request)
+    public function search_detail_learning(Request $request)
     {
         $search = $request->search;
 
@@ -92,18 +92,30 @@ class HomeController extends Controller
         ->where('title','like','%'. $search .'%')
         ->paginate(8);
 
-        
+        return view('learning.search_detail', compact('learning'));
+    }
+
+    public function search_detail_kegiatan(Request $request)
+    {
+        $search = $request->search;
+
         $act = DB::table('activities')
         ->where('title','like','%'. $search .'%')
         ->paginate(8);
+
+        return view('act.search_detail', compact('act'));
+    }
+
+    public function search_detail_berita(Request $request)
+    {
+        $search = $request->search;
 
         $news = DB::table('news')
         ->where('title','like','%'. $search .'%')
         ->paginate(8);
 
-        return view('learning.search_detail', compact('learning','act', 'news'));
+        return view('news.search_detail', compact('news'));
     }
-
 
 
 }

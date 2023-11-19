@@ -46,7 +46,7 @@
                 </div>
                 <div class="card-group">
                     @foreach ($learning as $item)
-                        <div class="card me-2 shadow-sm rounded" style="width: 15rem">
+                        <div class="card me-2 shadow-sm rounded" style="width: 20rem">
                             <img src="{{ Storage::url('public/images/' . $item->image) }}" class="card-img-top img-fluid"
                                 style="height: 300px; object-fit: cover;" alt="...">
                             <div class="card-body border-0">
@@ -73,7 +73,7 @@
 
                 <div class="card-group">
                     @foreach ($act as $item)
-                        <div class="card me-2 shadow-sm" style="width: 15rem">
+                        <div class="card me-2 shadow-sm" style="width: 20rem">
                             <img src="{{ Storage::url('public/act/' . $item->image) }}" class="card-img-top img-fluid"
                                 style="height: 300px; object-fit: cover;" alt="...">
                             <div class="card-body border-0">
@@ -99,7 +99,7 @@
 
                 <div class="card-group">
                     @foreach ($news as $item)
-                        <div class="card me-2 shadow-sm" style="width: 15rem">
+                        <div class="card me-2 shadow-sm" style="width: 20rem">
                             <img src="{{ Storage::url('public/news/' . $item->image) }}" class="card-img-top img-fluid"
                                 style="height: 300px; object-fit: cover;" alt="...">
                             <div class="card-body border-0">
@@ -136,7 +136,7 @@
             <div class="container">
                 <h4 class="fw-bold mt-5 mb-3">Kenalan Yuk !</h4>
                 <div class="card-group">
-                    <div class="card me-2 rounded shadow-sm" style="width: 15rem">
+                    <div class="card me-2 rounded shadow-sm" style="width: 20rem">
                         <img src="/heri1.jpg" class="card-img-top img fluid" style="height: 300px; object-fit: cover;"
                             alt="...">
                         <div class="card-body">
@@ -145,7 +145,7 @@
                         </div>
                     </div>
 
-                    <div class="card me-2 rounded shadow-sm" style="width: 15rem">
+                    <div class="card me-2 rounded shadow-sm" style="width: 20rem">
                         <img src="/heru.jpg" class="card-img-top img fluid" style="height: 300px; object-fit: cover;"
                             alt="...">
                         <div class="card-body">
@@ -157,7 +157,7 @@
                         </div>
                     </div>
 
-                    <div class="card me-2 rounded shadow-sm" style="width: 15rem">
+                    <div class="card me-2 rounded shadow-sm" style="width: 20rem">
                         <img src="/aditya.jpg" class="card-img-top img fluid" style="height: 300px; object-fit: cover;"
                             alt="...">
                         <div class="card-body">
@@ -168,7 +168,7 @@
                         </div>
                     </div>
 
-                    <div class="card me-2 rounded" style="width: 15rem">
+                    <div class="card me-2 rounded" style="width: 20rem">
                         <img src="/yudha.jpg" class="card-img-top img fluid" style="height: 300px; object-fit: cover;"
                             alt="...">
                         <div class="card-body">

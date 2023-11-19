@@ -55,6 +55,10 @@ a {
     text-decoration: none;
 }
 
+hr {
+    width: 20%;
+    color: black;
+}
 
 
 .form-inputs{
