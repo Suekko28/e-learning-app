@@ -48,8 +48,8 @@
               </li>
               {{-- @endif --}}
             </ul>
-            <form class="d-flex form-inputs w-25">
-              <input class="form-control" type="text" placeholder="Cari disini" aria-label="Search">
+            <form action="/search" class="d-flex form-inputs w-25">
+              <input class="form-control" name="search" value="{{old('search')}}" type="text" placeholder="Cari disini" aria-label="Search">
               <i class="fas fa-search"></i>
             </form>
           

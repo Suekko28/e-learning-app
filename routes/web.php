@@ -42,6 +42,9 @@ Route::get('berita/all/{id}/show', [HomeController::class, 'berita_show'])->name
 Route::get('/about', function() {
     return view('about.index');
 });
+Route::get('search', [HomeController::class, 'search'])->name('search');
+Route::get('learning/all/search', [HomeController::class, 'search_detail'])->name('search.detail');
+
 
 
 

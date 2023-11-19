@@ -46,7 +46,7 @@
                 </div>
                 <div class="card-group">
                     @foreach ($learning as $item)
-                        <div class="card me-2 shadow-sm" style="width: 15rem">
+                        <div class="card me-2 shadow-sm rounded" style="width: 15rem">
                             <img src="{{ Storage::url('public/images/' . $item->image) }}" class="card-img-top img-fluid"
                                 style="height: 300px; object-fit: cover;" alt="...">
                             <div class="card-body border-0">
@@ -136,8 +136,8 @@
             <div class="container">
                 <h4 class="fw-bold mt-5 mb-3">Kenalan Yuk !</h4>
                 <div class="card-group">
-                    <div class="card me-2" style="width: 15rem">
-                        <img src="/bg-jumbo.jpg" class="card-img-top img fluid" style="height: 300px; object-fit: cover;"
+                    <div class="card me-2 rounded shadow-sm" style="width: 15rem">
+                        <img src="/heri1.jpg" class="card-img-top img fluid" style="height: 300px; object-fit: cover;"
                             alt="...">
                         <div class="card-body">
                             <h5 class="card-title">Herry Karyono, S.T</h5>
@@ -145,8 +145,8 @@
                         </div>
                     </div>
 
-                    <div class="card me-2" style="width: 15rem">
-                        <img src="/bg-jumbo.jpg" class="card-img-top img fluid" style="height: 300px; object-fit: cover;"
+                    <div class="card me-2 rounded shadow-sm" style="width: 15rem">
+                        <img src="/heru.jpg" class="card-img-top img fluid" style="height: 300px; object-fit: cover;"
                             alt="...">
                         <div class="card-body">
                             <h5 class="card-title">Heru Salehudin, S.T</h5>
@@ -157,8 +157,8 @@
                         </div>
                     </div>
 
-                    <div class="card me-2" style="width: 15rem">
-                        <img src="/bg-jumbo.jpg" class="card-img-top img fluid" style="height: 300px; object-fit: cover;"
+                    <div class="card me-2 rounded shadow-sm" style="width: 15rem">
+                        <img src="/aditya.jpg" class="card-img-top img fluid" style="height: 300px; object-fit: cover;"
                             alt="...">
                         <div class="card-body">
                             <h5 class="card-title">Moch. Aditya D.N</h5>
@@ -168,8 +168,8 @@
                         </div>
                     </div>
 
-                    <div class="card me-2" style="width: 15rem">
-                        <img src="/heri.jpg" class="card-img-top img fluid" style="height: 300px; object-fit: cover;"
+                    <div class="card me-2 rounded" style="width: 15rem">
+                        <img src="/yudha.jpg" class="card-img-top img fluid" style="height: 300px; object-fit: cover;"
                             alt="...">
                         <div class="card-body">
                             <h5 class="card-title">Yudha Prasetyo NH</h5>

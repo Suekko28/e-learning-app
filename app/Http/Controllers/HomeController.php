@@ -64,6 +64,46 @@ class HomeController extends Controller
         return view('news.show', compact('news','latest'));
     }
 
+    public function search(Request $request)
+    {
+        $search = $request->search;
+
+        $learning = DB::table('learnings')
+        ->where('title','like','%'. $search .'%')
+        ->paginate(8);
+
+        
+        $act = DB::table('activities')
+        ->where('title','like','%'. $search .'%')
+        ->paginate(8);
+
+        $news = DB::table('news')
+        ->where('title','like','%'. $search .'%')
+        ->paginate(8);
+
+        return view('search', compact('learning','act', 'news'));
+    }
+
+    public function search_detail(Request $request)
+    {
+        $search = $request->search;
+
+        $learning = DB::table('learnings')
+        ->where('title','like','%'. $search .'%')
+        ->paginate(8);
+
+        
+        $act = DB::table('activities')
+        ->where('title','like','%'. $search .'%')
+        ->paginate(8);
+
+        $news = DB::table('news')
+        ->where('title','like','%'. $search .'%')
+        ->paginate(8);
+
+        return view('learning.search_detail', compact('learning','act', 'news'));
+    }
+
 
 
 }

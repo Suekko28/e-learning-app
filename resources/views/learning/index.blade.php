@@ -11,10 +11,10 @@
         </div>
 
         <div class="container mt-5">
-            <form class="d-flex form-inputs w-50 mx-auto">
-                <input class="form-control" type="text" placeholder="Cari apa kamu?" aria-label="Search">
+            <form action="{{ route('search.detail') }}" method="GET" class="d-flex form-inputs w-50 mx-auto">
+                <input class="form-control mb-5" value="{{ old('search.detail') }}" type="text" name="search" placeholder="Cari apa kamu?" aria-label="Search">
                 <i class="fas fa-search"></i>
-            </form>
+            </form>            
         </div>
 
         <div class="container mt-3">

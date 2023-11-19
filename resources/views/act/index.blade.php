@@ -40,4 +40,5 @@
 
         @include('layout.footer')
     </main>
+    
 @endsection
