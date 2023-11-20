@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\DataTables\DataDataTable;
 use App\Models\Learning;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -11,13 +12,10 @@ class LearningController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(Request $request)
+    public function index(Request $request, DataDataTable $dataTable)
     {
-        $users = Learning::query();
-        $users->when($request->title, function($query) use($request){
-            return $query->where("title","like","%".$request->title."%");
-        });
         $data = Learning::orderBy('id', 'desc')->paginate(5);
+        $dataTable->render('admin.e-learning.materi');
         return view('admin.e-learning.materi', compact('data','users'));
     }
 
