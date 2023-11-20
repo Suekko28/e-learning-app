@@ -11,10 +11,14 @@ class LearningController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
+        $users = Learning::query();
+        $users->when($request->title, function($query) use($request){
+            return $query->where("title","like","%".$request->title."%");
+        });
         $data = Learning::orderBy('id', 'desc')->paginate(5);
-        return view('admin.e-learning.materi', compact('data'));
+        return view('admin.e-learning.materi', compact('data','users'));
     }
 
     /**

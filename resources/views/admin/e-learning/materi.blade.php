@@ -35,7 +35,7 @@
                             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                                 data-accordion="false">
                                 <!-- Add icons to the links using the .nav-icon class
-                           with font-awesome or any other icon font library -->
+                                   with font-awesome or any other icon font library -->
                                 <li class="nav-item">
                                     <a href="{{ url('admin/dashboard') }}" class="nav-link">
                                         <i class="nav-icon fas fa-tachometer-alt"></i>
@@ -107,8 +107,27 @@
                         <div class="container-fluid">
                             @include('layout.message')
                             <!-- Small boxes (Stat box) -->
-                            <a href="{{ url('/admin/materi/create') }}" class="btn btn-success  mb-3 text-white"><i
+                            {{-- <a href="{{ url('/admin/materi/create') }}" class="btn btn-success  mb-3 text-white"><i
                                     class="fa-solid fa-plus"></i> Materi</a>
+                            <form action="{{ route('search.detail.kegiatan') }}" method="GET"
+                                class="d-flex form-inputs w-25">
+                                <input class="form-control mb-5" value="{{ old('search.detail.kegiatan') }}" type="text"
+                                    name="search" placeholder="Cari apa kamu?" aria-label="Search">
+                                <i class="fas fa-search"></i>
+                            </form> --}}
+                            <div class="row">
+                                <div class="col text-body-secondary text-lighter">
+                                    <a href="{{ url('/admin/materi/create') }}" class="btn btn-success  mb-3 text-white"><i
+                                            class="fa-solid fa-plus"></i> Materi</a>
+                                </div>
+                                <div class="col d-flex justify-content-end">
+                                    <form class="d-flex form-inputs w-50">
+                                        <input value="{{ request()->input('title') }}" class="form-control" type="text" name="title" placeholder="Cari apa kamu?" aria-label="Search">
+                                        <i class="fas fa-search"></i>
+                                    </form>
+                                </div>
+                        </div>
+                            </div>
                             <div class="row">
                                 <div class="table-responsive">
                                     <table class="table table-bordered vw-100 ">
@@ -131,7 +150,8 @@
                                                 <tr>
                                                     <th scope="row" class="text-center">{{ $i }}</th>
                                                     <td scope="row" class="text-center">
-                                                        <img src="{{Storage::url('public/images/' . $item->image )  }}" class="rounded" style="width: 150px">
+                                                        <img src="{{ Storage::url('public/images/' . $item->image) }}"
+                                                            class="rounded" style="width: 150px">
                                                     </td>
                                                     <td scope="row">{{ $item->title }}</td>
                                                     <td scope="row">{!! $item->content !!}</td>
@@ -148,7 +168,7 @@
                                                             @csrf
                                                             @method('DELETE')
                                                             <button class="btn btn-danger mb-2"><i
-                                                                    class="fa fa-solid fa-trash" ></i></button>
+                                                                    class="fa fa-solid fa-trash"></i></button>
                                                         </form>
                                                     </td>
                                                     <?php $i++; ?>
@@ -181,4 +201,5 @@
                 <!-- /.control-sidebar -->
             </div>
     </main>
+    
 @endsection
