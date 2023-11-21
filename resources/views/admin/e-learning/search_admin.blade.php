@@ -106,6 +106,15 @@
                     <section class="content">
                         <div class="container-fluid">
                             @include('layout.message')
+                            <!-- Small boxes (Stat box) -->
+                            {{-- <a href="{{ url('/admin/materi/create') }}" class="btn btn-success  mb-3 text-white"><i
+                                    class="fa-solid fa-plus"></i> Materi</a>
+                            <form action="{{ route('search.detail.kegiatan') }}" method="GET"
+                                class="d-flex form-inputs w-25">
+                                <input class="form-control mb-5" value="{{ old('search.detail.kegiatan') }}" type="text"
+                                    name="search" placeholder="Cari apa kamu?" aria-label="Search">
+                                <i class="fas fa-search"></i>
+                            </form> --}}
                             <div class="row">
                                 <div class="col text-body-secondary text-lighter">
                                     <a href="{{ url('/admin/materi/create') }}" class="btn btn-success  mb-3 text-white"><i
@@ -114,7 +123,7 @@
                                 <div class="col d-flex justify-content-end">
                                     <form action="{{route('search.admin.learning')}}" class="d-flex form-inputs w-50" method="GET">
                                         <input value="{{ old('search.admin.learning') }}" class="form-control" type="text" name="search" placeholder="Masukan Judul Materi" aria-label="Search">
-                                        <i class="fas fa-search"></i>
+                                            <i class="fas fa-search"></i>
                                     </form>
                                 </div>
                         </div>

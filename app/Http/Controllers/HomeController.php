@@ -81,7 +81,11 @@ class HomeController extends Controller
         ->where('title','like','%'. $search .'%')
         ->paginate(8);
 
-        return view('search', compact('learning','act', 'news'));
+        if($learning && $act && $news->count()==0){
+            return view('search',['kosong'=>True]);
+        }
+
+        return view('search', compact('learning','act', 'news') , ['kosong'=>False]);
     }
 
     public function search_detail_learning(Request $request)
@@ -92,7 +96,11 @@ class HomeController extends Controller
         ->where('title','like','%'. $search .'%')
         ->paginate(8);
 
-        return view('learning.search_detail', compact('learning'));
+        if($learning->count()==0){
+            return view('learning.search_detail', ['kosong'=>true]);
+        }
+
+        return view('learning.search_detail', compact('learning'),['kosong'=>false]);
     }
 
     public function search_detail_kegiatan(Request $request)
@@ -103,7 +111,11 @@ class HomeController extends Controller
         ->where('title','like','%'. $search .'%')
         ->paginate(8);
 
-        return view('act.search_detail', compact('act'));
+        if($act->count()==0){
+            return view('act.search_detail', ['kosong'=>true]);
+        }
+
+        return view('act.search_detail', compact('act'),['kosong'=>false]);
     }
 
     public function search_detail_berita(Request $request)
@@ -114,7 +126,11 @@ class HomeController extends Controller
         ->where('title','like','%'. $search .'%')
         ->paginate(8);
 
-        return view('news.search_detail', compact('news'));
+        if($news->count()==0){
+            return view('learning.search_detail', ['kosong'=>true]);
+        }
+
+        return view('news.search_detail', compact('news'),['kosong'=>false]);
     }
 
 

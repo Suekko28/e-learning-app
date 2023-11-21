@@ -26,7 +26,10 @@ Route::post('/create', [SessionController::class, 'create'])->name('create');
 // Route::resource('admin/dashboard', LearningController::class);
 Route::middleware(['isLogin'])->group(function () {
     Route::get('admin/dashboard', [DashboardController::class, 'index']);
+    // Route::get('admin/materi', [LearningController::class, 'index']);
     Route::resource('admin/materi', LearningController::class);
+    Route::resource('admin/materi/search', LearningController::class);
+    Route::get('admin/materi/search', [LearningController::class, 'search_admin_learning'])->name('search.admin.learning');
     Route::resource('admin/kegiatan', ActController::class);
     Route::resource('admin/berita', NewsController::class);
 });

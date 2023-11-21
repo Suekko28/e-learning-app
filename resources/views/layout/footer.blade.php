@@ -77,7 +77,7 @@
                                 style="width: 60px; background-color: #7c4dff; height: 2px" />
                             <p><i class="fas fa-map-location-dot mr-3"></i> Jl. Landbow No. 01 Karang Asem Barat, Karang Asem
                                 Bar., Kec. Citeureup, Kabupaten Bogor, Jawa Barat 16810</p>
-                            <p><i class="fas fa-envelope mr-3"></i> info@example.com</p>
+                            <p><i class="fas fa-envelope mr-3"></i>tjkt.smktj@gmail.com</p>
                             <p><i class="fas fa-phone mr-3"></i>+62 857-1826-4848</p>
                         </div>
                         <!-- Grid column -->
