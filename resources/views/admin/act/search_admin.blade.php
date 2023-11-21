@@ -32,8 +32,8 @@
 
                         <!-- Sidebar Menu -->
                         <nav class="mt-2">
-                            <ul class="nav nav-pills nav-sidebar flex-column" learning-widget="treeview" role="menu"
-                                learning-accordion="false">
+                            <ul class="nav nav-pills nav-sidebar flex-column" act-widget="treeview" role="menu"
+                                act-accordion="false">
                                 <!-- Add icons to the links using the .nav-icon class
                                                with font-awesome or any other icon font library -->
                                 <li class="nav-item">
@@ -117,13 +117,13 @@
                             </form> --}}
                             <div class="row">
                                 <div class="col text-body-secondary text-lighter">
-                                    <a href="{{ url('/admin/materi/create') }}" class="btn btn-success  mb-3 text-white"><i
+                                    <a href="{{ url('/admin/kegiatan/create') }}" class="btn btn-success  mb-3 text-white"><i
                                             class="fa-solid fa-plus"></i> Materi</a>
                                 </div>
                                 <div class="col d-flex justify-content-end">
-                                    <form action="{{ route('search.admin.learning') }}" class="d-flex form-inputs w-50"
+                                    <form action="{{ route('search.admin.kegiatan') }}" class="d-flex form-inputs w-50"
                                         method="GET">
-                                        <input value="{{ old('search.admin.learning') }}" class="form-control"
+                                        <input value="{{ old('search.admin.kegiatan') }}" class="form-control"
                                             type="text" name="search" placeholder="Masukan Judul Materi"
                                             aria-label="Search">
                                         <i class="fas fa-search"></i>
@@ -146,25 +146,22 @@
                                             <th scope="col">Judul</th>
                                             <th scope="col">Konten</th>
                                             <th scope="col">Thumbnail</th>
-                                            <th scope="col">Link Drive</th>
                                             <th scope="col">Aksi</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <?php $i = $learning->firstItem(); ?>
+                                        <?php $i = $act->firstItem(); ?>
                                         </tr>
-                                        @foreach ($learning as $item)
+                                        @foreach ($act as $item)
                                             <tr>
                                                 <th scope="row" class="text-center">{{ $i }}</th>
                                                 <td scope="row" class="text-center">
-                                                    <img src="{{ Storage::url('public/images/' . $item->image) }}"
+                                                    <img src="{{ Storage::url('public/act/' . $item->image) }}"
                                                         class="rounded" style="width: 150px">
                                                 </td>
                                                 <td scope="row">{{ $item->title }}</td>
                                                 <td scope="row">{!! $item->content !!}</td>
                                                 <td scope="row">{{ $item->thumbnail }}</td>
-                                                <td scope="row"><a href="{{ $item->drive }}"
-                                                        target="_blank">{{ $item->drive }}</a></td>
                                                 <td scope="row" class="text-center">
                                                     <a href="{{ url('/admin/materi/' . $item->id) . '/edit' }}"
                                                         class="btn btn-warning mb-2"><i
@@ -189,7 +186,7 @@
                         </div>
                         <!-- /.row (main row) -->
                 </div><!-- /.container-fluid -->
-                {{-- {{ $learning->links() }} --}}
+                {{-- {{ $act->links() }} --}}
 
                 </section>
                 <!-- /.content -->
@@ -214,17 +211,17 @@
 {{-- @push('scripts')
 <script type="text/javascript">
 $(document).ready(function () {
-   $('#tbl_list').learningTable({
+   $('#tbl_list').actTable({
         processing: true,
         serverSide: true,
         ajax: '{{ url()->current() }}',
         columns: [
-            { learning: 'id', name: 'id' },
-            { learning: 'image', image: 'image' },
-            { learning: 'title', title: 'title' },
-            { learning: 'content', content: 'content' },
-            { learning: 'thumbnail', thumbnail: 'thumbnail' },
-            { learning: 'drive', drive: 'drive' },
+            { act: 'id', name: 'id' },
+            { act: 'image', image: 'image' },
+            { act: 'title', title: 'title' },
+            { act: 'content', content: 'content' },
+            { act: 'thumbnail', thumbnail: 'thumbnail' },
+            { act: 'drive', drive: 'drive' },
 
 
 

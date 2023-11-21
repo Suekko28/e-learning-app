@@ -27,9 +27,9 @@ Route::post('/create', [SessionController::class, 'create'])->name('create');
 Route::middleware(['isLogin'])->group(function () {
     Route::get('admin/dashboard', [DashboardController::class, 'index']);
     // Route::get('admin/materi', [LearningController::class, 'index']);
+    Route::get('admin/materi/search', [LearningController::class, 'search_admin_learning'])->name('search.admin.learning');    
     Route::resource('admin/materi', LearningController::class);
-    Route::resource('admin/materi/search', LearningController::class);
-    Route::get('admin/materi/search', [LearningController::class, 'search_admin_learning'])->name('search.admin.learning');
+    Route::get('admin/kegiatan/search', [ActController::class, 'search_admin_kegiatan'])->name('search.admin.kegiatan');    
     Route::resource('admin/kegiatan', ActController::class);
     Route::resource('admin/berita', NewsController::class);
 });

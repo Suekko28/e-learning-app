@@ -149,6 +149,12 @@ class LearningController extends Controller
         ->where('title','like','%'. $search .'%')
         ->paginate(8);
 
-        return view('admin.e-learning.search_admin', compact('learning'));
+        if($learning->count()==0){
+            return view('admin.e-learning.search_admin', ['kosong'=>true]);
+        }
+
+        return view('admin.e-learning.search_admin', compact('learning'),['kosong'=>false]);
     }
+
+   
 }

@@ -104,9 +104,19 @@
         <section class="content">
           <div class="container-fluid">
             @include('layout.message')
-
-            <!-- Small boxes (Stat box) -->
-            <a href="{{url('/admin/kegiatan/create')}}" class="btn btn-success  mb-3 text-white"><i class="fa-solid fa-plus"></i>  Kegiatan</a>
+            <div class="row">
+                <div class="col text-body-secondary text-lighter">
+                    <a href="{{ url('/admin/kegiatan/create') }}" class="btn btn-success  mb-3 text-white"><i
+                            class="fa-solid fa-plus"></i> Kegiatan</a>
+                </div>
+                <div class="col d-flex justify-content-end">
+                    <form action="{{route('search.admin.kegiatan')}}" class="d-flex form-inputs w-50" method="GET">
+                        <input value="{{ old('search.admin.kegiatan') }}" class="form-control" type="text" name="search" placeholder="Masukan Judul Materi" aria-label="Search">
+                        <i class="fas fa-search"></i>
+                    </form>
+                </div>
+        </div>
+            </div>
             <div class="row">
               <div class="table-responsive">
                 <table class="table table-bordered vw-100 ">

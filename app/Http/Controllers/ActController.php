@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Activity;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 
 class ActController extends Controller
@@ -124,5 +125,20 @@ class ActController extends Controller
         $data->delete();
 
         return redirect()->to('admin/kegiatan')->with('delete', 'Berhasil Menghapus Kegiatan');
+    }
+
+    public function search_admin_kegiatan(Request $request)
+    {
+        $search = $request->search;
+
+        $act = DB::table('activities')
+        ->where('title','like','%'. $search .'%')
+        ->paginate(8);
+
+        if($act->count()==0){
+            return view('admin.act.search_admin', ['kosong'=>true]);
+        }
+
+        return view('admin.act.search_admin', compact('act'),['kosong'=>false]);
     }
 }
