@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\News;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 
 class NewsController extends Controller
@@ -124,5 +125,20 @@ class NewsController extends Controller
         $data->delete();
 
         return redirect()->to('admin/berita')->with('delete', 'Berhasil Menghapus Berita');
+    }
+
+    public function search_admin_berita(Request $request)
+    {
+        $search = $request->search;
+
+        $news = DB::table('news')
+        ->where('title','like','%'. $search .'%')
+        ->paginate(8);
+
+        if($news->count()==0){
+            return view('admin.news.search_admin', ['kosong'=>true]);
+        }
+
+        return view('admin.news.search_admin', compact('news'),['kosong'=>false]);
     }
 }

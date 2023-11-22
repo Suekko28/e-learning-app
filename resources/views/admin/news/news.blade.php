@@ -90,7 +90,7 @@
               </div><!-- /.col -->
               <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
-                  <li class="breadcrumb-item"><a href="#">Home</a></li>
+                  <li class="breadcrumb-item"><a href="{{url('admin/dashboard')}}">Dashboard</a></li>
                   <li class="breadcrumb-item active">Berita</li>
                 </ol>
               </div><!-- /.col -->
@@ -103,9 +103,19 @@
         <section class="content">
           <div class="container-fluid">
             @include('layout.message')
-
-            <!-- Small boxes (Stat box) -->
-            <a href="{{url('/admin/berita/create')}}" class="btn btn-success  mb-3 text-white"><i class="fa-solid fa-plus"></i>  Berita</a>
+            <div class="row">
+                <div class="col text-body-secondary text-lighter">
+                    <a href="{{ url('/admin/berita/create') }}" class="btn btn-success  mb-3 text-white"><i
+                            class="fa-solid fa-plus"></i> Berita</a>
+                </div>
+                <div class="col d-flex justify-content-end">
+                    <form action="{{route('search.admin.berita')}}" class="d-flex form-inputs w-50" method="GET">
+                        <input value="{{ old('search.admin.berita') }}" class="form-control" type="text" name="search" placeholder="Masukan Judul Berita" aria-label="Search">
+                        <i class="fas fa-search"></i>
+                    </form>
+                </div>
+        </div>
+            </div>
             <div class="row">
               <div class="table-responsive">
                 <table class="table table-bordered vw-100 ">

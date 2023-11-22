@@ -31,6 +31,7 @@ Route::middleware(['isLogin'])->group(function () {
     Route::resource('admin/materi', LearningController::class);
     Route::get('admin/kegiatan/search', [ActController::class, 'search_admin_kegiatan'])->name('search.admin.kegiatan');    
     Route::resource('admin/kegiatan', ActController::class);
+    Route::get('admin/berita/search', [NewsController::class, 'search_admin_berita'])->name('search.admin.berita');    
     Route::resource('admin/berita', NewsController::class);
 });
 
