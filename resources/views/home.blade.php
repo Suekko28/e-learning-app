@@ -45,18 +45,18 @@
                             Selengkapnya</a></div>
                 </div>
                 <div class="row justify-content-start">
-                    @foreach ($news as $item)
+                    @foreach ($learning as $item)
                         <div class="card mt-2 me-2 border border-0 shadow rounded mb-2" style="width: 20rem">
-                            <img src="{{ Storage::url('public/news/' . $item->image) }}" class="card-img-top img-fluid mt-2"
+                            <img src="{{ Storage::url('public/images/' . $item->image) }}" class=" rounded card-img-top img-fluid mt-2"
                                 style="height: 300px; object-fit:cover" alt="...">
                             <div class="card-body border-0">
-                                <a href="{{ route('berita.show', ['id' => $item->id]) }}" class="text-black">
+                                <p class="card-text"><small class="text-body-secondary">
+                                    {{ Carbon\Carbon::parse($item->created_at)->isoFormat('D MMMM Y') }}</small></p>
+                                <a href="{{ route('learning.show', ['id' => $item->id]) }}" class="text-black">
                                     <h5 class="card-title">{{ $item->title }}</h5>
                                 </a>
                                 <p class="card-text">{{ $item->thumbnail }}</p>
-                                <p class="card-text"><small class="text-body-secondary">
-                                        {{ Carbon\Carbon::parse($item->created_at)->format('d-m-Y') }}</small></p>
-                                <a href="{{ route('berita.show', ['id' => $item->id]) }}" class="text-danger fw-medium">Baca
+                                <a href="{{ route('learning.show', ['id' => $item->id]) }}" class="text-danger fw-medium">Baca
                                     Selengkapnya</a>
     
                             </div>
@@ -72,20 +72,21 @@
                             Selengkapnya</a></div>
                 </div>
 
-                <div class="card-group">
+                <div class="row justify-content-start">
                     @foreach ($act as $item)
-                        <div class="card me-2 shadow-sm" style="width: 20rem">
-                            <img src="{{ Storage::url('public/act/' . $item->image) }}" class="card-img-top img-fluid"
-                                style="height: 300px; object-fit: cover;" alt="...">
+                        <div class="card mt-2 me-2 border border-0 shadow rounded mb-2" style="width: 20rem">
+                            <img src="{{ Storage::url('public/act/' . $item->image) }}" class=" rounded card-img-top img-fluid mt-2"
+                                style="height: 300px; object-fit:cover" alt="...">
                             <div class="card-body border-0">
                                 <p class="card-text"><small class="text-body-secondary">
-                                        {{ Carbon\Carbon::parse($item->created_at)->isoFormat('D MMMM Y') }}</small></p>
+                                    {{ Carbon\Carbon::parse($item->created_at)->isoFormat('D MMMM Y') }}</small></p>
                                 <a href="{{ route('kegiatan.show', ['id' => $item->id]) }}" class="text-black">
-                                    <h5 class="card-title fw-semibold">{{ $item->title }}</h5>
+                                    <h5 class="card-title">{{ $item->title }}</h5>
                                 </a>
                                 <p class="card-text">{{ $item->thumbnail }}</p>
-                                <a href="{{ route('kegiatan.show', ['id' => $item->id]) }}"
-                                    class="text-danger fw-medium">Baca Selengkapnya</a>
+                                <a href="{{ route('kegiatan.show', ['id' => $item->id]) }}" class="text-danger fw-medium">Baca
+                                    Selengkapnya</a>
+    
                             </div>
                         </div>
                     @endforeach
@@ -98,20 +99,21 @@
                             Selengkapnya</a></div>
                 </div>
 
-                <div class="card-group">
+                <div class="row justify-content-start">
                     @foreach ($news as $item)
-                        <div class="card me-2 shadow-sm" style="width: 20rem">
-                            <img src="{{ Storage::url('public/news/' . $item->image) }}" class="card-img-top img-fluid"
-                                style="height: 300px; object-fit: cover;" alt="...">
+                        <div class="card mt-2 me-2 border border-0 shadow rounded mb-2" style="width: 20rem">
+                            <img src="{{ Storage::url('public/news/' . $item->image) }}" class="card-img-top img-fluid mt-2"
+                                style="height: 300px; object-fit:cover" alt="...">
                             <div class="card-body border-0">
                                 <p class="card-text"><small class="text-body-secondary">
-                                        {{ Carbon\Carbon::parse($item->created_at)->isoFormat('D MMMM Y') }}</small></p>
+                                    {{ Carbon\Carbon::parse($item->created_at)->isoFormat('D MMMM Y') }}</small></p>
                                 <a href="{{ route('berita.show', ['id' => $item->id]) }}" class="text-black">
-                                    <h5 class="card-title fw-semibold">{{ $item->title }}</h5>
+                                    <h5 class="card-title">{{ $item->title }}</h5>
                                 </a>
                                 <p class="card-text">{{ $item->thumbnail }}</p>
-                                <a href="{{ route('berita.show', ['id' => $item->id]) }}"
-                                    class="text-danger fw-medium">Baca Selengkapnya</a>
+                                <a href="{{ route('berita.show', ['id' => $item->id]) }}" class="read text-danger fw-medium">Baca
+                                    Selengkapnya</a>
+    
                             </div>
                         </div>
                     @endforeach
@@ -141,7 +143,7 @@
                         <img src="/heri1.jpg" class="card-img-top img fluid" style="height: 300px; object-fit: cover;"
                             alt="...">
                         <div class="card-body">
-                            <h5 class="card-title">Herry Karyono, S.T</h5>
+                            <h5 class="card-title-tch">Herry Karyono, S.T</h5>
                             <p class="card-text">Kepala Program Jurusan TKJ</p>
                         </div>
                     </div>
@@ -150,7 +152,7 @@
                         <img src="/heru.jpg" class="card-img-top img fluid" style="height: 300px; object-fit: cover;"
                             alt="...">
                         <div class="card-body">
-                            <h5 class="card-title">Heru Salehudin, S.T</h5>
+                            <h5 class="card-title-tch">Heru Salehudin, S.T</h5>
                             <p class="card-text">Pengajar TKJ</p>
                             <p class="card-text">Guru Mapel : <br><span class="text-body-secondary">Dasar Kejuruan
                                     TKJ<br>Komputer dan Jaringan Dasar</span></p>
@@ -162,7 +164,7 @@
                         <img src="/aditya.jpg" class="card-img-top img fluid" style="height: 300px; object-fit: cover;"
                             alt="...">
                         <div class="card-body">
-                            <h5 class="card-title">Moch. Aditya D.N</h5>
+                            <h5 class="card-title-tch">Moch. Aditya D.N</h5>
                             <p class="card-text">Pengajar TKJ</p>
                             <p class="card-text">Guru Mapel : <br><span class="text-body-secondary">Adminitrasi
                                     Infastruktur Jaringan<br>Teknologi Layanan Jaringan<br>PWD</span></p>
@@ -173,7 +175,7 @@
                         <img src="/yudha.jpg" class="card-img-top img fluid" style="height: 300px; object-fit: cover;"
                             alt="...">
                         <div class="card-body">
-                            <h5 class="card-title">Yudha Prasetyo NH</h5>
+                            <h5 class="card-title-tch">Yudha Prasetyo NH</h5>
                             <p class="card-text">Toolman TKJ</p>
                             <p class="card-text">Guru Mapel : <br><span class="text-body-secondary">Dasar Desain
                                     Grafis<br>Dasar Keahlian TJKT</span></p>

@@ -20,8 +20,6 @@
     @if ($kosong == true)
         <img src="/notfound.jpg" alt="" width="500px" height="500px" class="d-block mx-auto">
     @else
-        <h5 class="text-center fw-bold mb-3">Hasil Search : {{ $news }}</h5>
-
         <div class="container mt-3">
             <div class="d-flex flex-row">
                 @foreach ($news as $item)
