@@ -18,23 +18,26 @@
         </div>
         
         <div class="container mt-3">
-            <div class="card-group">
+            <div class="row justify-content-start">
                 @foreach ($news as $item)
-                    <div class="card me-2 shadow-sm" style="width: 15rem">
-                        <img src="{{ Storage::url('public/news/' . $item->image) }}" class="card-img-top img-fluid"
-                            style="height: 310px;" alt="...">
+                    <div class="card mt-2 me-2 border border-0 shadow rounded mb-2" style="width: 20rem">
+                        <img src="{{ Storage::url('public/news/' . $item->image) }}" class="card-img-top img-fluid mt-2"
+                            style="height: 300px; object-fit:cover" alt="...">
                         <div class="card-body border-0">
-                            <a href="{{route('berita.show',['id' => $item->id])}}" class="text-black">
+                            <a href="{{ route('berita.show', ['id' => $item->id]) }}" class="text-black">
                                 <h5 class="card-title">{{ $item->title }}</h5>
                             </a>
                             <p class="card-text">{{ $item->thumbnail }}</p>
-                            <p class="card-text"><small class="text-body-secondary"> {{ Carbon\Carbon::parse($item->created_at)->format('d-m-Y') }}</small></p>
+                            <p class="card-text"><small class="text-body-secondary">
+                                    {{ Carbon\Carbon::parse($item->created_at)->format('d-m-Y') }}</small></p>
+                            <a href="{{ route('berita.show', ['id' => $item->id]) }}" class="text-danger fw-medium">Baca
+                                Selengkapnya</a>
+
                         </div>
                     </div>
                 @endforeach
             </div>
             {{ $news->links() }}
-        </div>
         </div>
         @include('layout.footer')
     </main>

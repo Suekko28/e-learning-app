@@ -15,7 +15,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $learning = DB::table('learnings')->latest()->paginate(4);
+        $learning = DB::table('learnings')->latest()->orderBy('id','desc')->paginate(4);
         $act = DB::table('activities')->latest()->paginate(4);
         $news = DB::table('news')->latest()->paginate(4);
         return view('home', compact('learning', 'act', 'news'));
