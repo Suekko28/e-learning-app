@@ -51,6 +51,14 @@ class LearningController extends Controller
             'content.required' => 'Materi wajib diisi',
             'thumbnail.required' => 'Thumbnail wajib diisi',
             'drive.required' => 'Link Drive wajib diisi',
+            'title.min' => 'Judul harus lebih dari 5 karakter',
+            'content.min' => 'Konten harus lebih dari 10 karakter',
+            'thumbnail.min' => 'Thumbnail harus lebih dari 5 karakter',
+            'thumbnail.max' => 'Thumbnail maksimal 200 karakter',
+            'drive.min' => 'Judul harus lebih dari 5 karakter',
+
+
+
         ]);
 
         $image = $request->file('image');
@@ -97,6 +105,20 @@ class LearningController extends Controller
             'content' => 'required|min:10',
             'thumbnail' => 'required|min:5|max:200',
             'drive' => 'required|min:5',
+        ], [
+            'image.required' => 'Gambar wajib diisi',
+            'title.required' => 'Judul wajib diisi',
+            'content.required' => 'Materi wajib diisi',
+            'thumbnail.required' => 'Thumbnail wajib diisi',
+            'drive.required' => 'Link Drive wajib diisi',
+            'title.min' => 'Judul harus lebih dari 5 karakter',
+            'content.min' => 'Konten harus lebih dari 10 karakter',
+            'thumbnail.min' => 'Thumbnail harus lebih dari 5 karakter',
+            'thumbnail.max' => 'Thumbnail maksimal 200 karakter',
+            'drive.min' => 'Judul harus lebih dari 5 karakter',
+
+
+
         ]);
 
         $data = Learning::findOrFail($id);

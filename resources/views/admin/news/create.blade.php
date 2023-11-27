@@ -18,7 +18,7 @@
         <!-- Brand Logo -->
         <a href="index3.html" class="brand-link">
           <img src="/logo_tkj.jpg" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-          <span class="brand-text font-weight-light">Server TKJ</span>
+          <span class="brand-text font-weight-light">Server TJKT</span>
         </a>
     
         <!-- Sidebar -->
@@ -85,7 +85,7 @@
           <div class="container-fluid">
             <div class="row mb-2">
               <div class="col-sm-6">
-                <h1 class="m-0 fw-bold">Input Kegiatan</h1>
+                <h1 class="m-0 fw-bold">Input Berita</h1>
               </div><!-- /.col -->
               <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
