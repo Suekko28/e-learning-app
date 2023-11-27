@@ -3,7 +3,7 @@
 @section('navbar')
     <main>
         <div class="container mt-5">
-            <h4 class="text-center mb-3">{{ $act->title }}</h4>
+            <h4 class="text-center mb-3 fs-2">{{ $act->title }}</h4>
             <img src="{{ Storage::url('public/act/' . $act->image) }}" class="img-fluid mx-auto d-block" width="300px"
                 height="300px" alt="...">
             <div class="caption mt-3 mb-3">

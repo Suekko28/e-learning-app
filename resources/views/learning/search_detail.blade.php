@@ -20,9 +20,7 @@
 @if ($kosong == true)
 <img src="/notfound.jpg" alt="" width="500px" height="500px" class="d-block mx-auto">
 
-@else
-<h5 class="text-center fw-bold mb-3">Hasil Search : {{ $learning }}</h5>
-    
+@else    
 
 <div class="container mt-3">
     <div class="d-flex flex-row">
@@ -45,5 +43,7 @@
     </div>
     {{ $learning->links() }}
 </div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
 @endif
 @endsection

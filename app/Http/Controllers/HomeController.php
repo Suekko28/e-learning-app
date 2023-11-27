@@ -82,7 +82,7 @@ class HomeController extends Controller
         ->paginate(8);
 
         if($learning && $act && $news->count()==0){
-            return view('search',['kosong'=>True]);
+            return view('search',['kosong'=>true]);
         }
 
         return view('search', compact('learning','act', 'news') , ['kosong'=>False]);
