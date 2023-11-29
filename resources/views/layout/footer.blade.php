@@ -18,24 +18,25 @@
                             <!-- Content -->
                             <img src="/SMK.jpeg" alt="" class="img-thumbnail">
                             <div class="text-center mt-2">
-                                <a href="" class="text-white me-4">
+                                <a href="https://web.facebook.com/smk2triplejciteureup" target="_blank"
+                                    class="text-white me-4">
                                     <i class="fab fa-facebook-f"></i>
                                 </a>
-                                <a href="" class="text-white me-4">
+                                {{-- <a href="" class="text-white me-4">
                                     <i class="fab fa-twitter"></i>
-                                </a>
-                                <a href="" class="text-white me-4">
-                                    <i class="fab fa-google"></i>
-                                </a>
-                                <a href="" class="text-white me-4">
+                                </a> --}}
+                                <a href="https://www.instagram.com/tjkt.smk2tj/"target="_blank" class="text-white me-4">
                                     <i class="fab fa-instagram"></i>
                                 </a>
                                 <a href="" class="text-white me-4">
+                                    <i class="fa-solid fa-location-dot"></i>
+                                </a>
+                                {{-- <a href="" class="text-white me-4">
                                     <i class="fab fa-linkedin"></i>
                                 </a>
                                 <a href="" class="text-white me-4">
                                     <i class="fab fa-github"></i>
-                                </a>
+                                </a> --}}
                             </div>
                         </div>
                         <!-- Grid column -->
@@ -74,10 +75,10 @@
                             <h6 class="text-uppercase fw-bold">Get In Information</h6>
                             <hr class="mb-4 mt-0 d-inline-block mx-auto"
                                 style="width: 60px; background-color: #7c4dff; height: 2px" />
-                            <p><i class="fas fa-map mr-3"></i> Jl. Landbow No. 01 Karang Asem Barat, Karang Asem
+                            <p><i class="fas fa-map-location-dot mr-3"></i> Jl. Landbow No. 01 Karang Asem Barat, Karang Asem
                                 Bar., Kec. Citeureup, Kabupaten Bogor, Jawa Barat 16810</p>
-                            <p><i class="fas fa-envelope mr-3"></i> info@example.com</p>
-                            <p><i class="fas fa-phone mr-3"></i> + 01 234 567 88</p>
+                            <p><i class="fas fa-envelope mr-3"></i>tjkt.smktj@gmail.com</p>
+                            <p><i class="fas fa-phone mr-3"></i>+62 857-1826-4848</p>
                         </div>
                         <!-- Grid column -->
                     </div>
@@ -89,7 +90,7 @@
             <!-- Copyright -->
             <div class="text-center p-3" style="background-color: #1A205D">
                 © 2023 Copyright
-                <a class="text-white" href="https://mdbootstrap.com/">Teknik Komputer & Jaringan SMK2TJ</a>
+                <a class="text-white" href="https://mdbootstrap.com/">Teknik Jaringan Komputer & Telekomunikasi SMK2TJ</a>
             </div>
             <!-- Copyright -->
         </footer>

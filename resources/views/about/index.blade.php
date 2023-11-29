@@ -35,14 +35,14 @@
     <div class="container text-center">
         <div class="d-flex flex-row mb-3 justify-content-center text-white">
             <div class="d-flex p-2">
-                <img src="/bg-jumbo.jpg" alt="" class="img-thumbnail" width="500px" height="500px">
+                <img src="/about1.jpg" alt="" class="rounded" width="400px" height="400px">
             </div>
             <div class="p-2">
-                <img src="/bg-jumbo.jpg" alt="" class="img-thumbnail" width="500px" height="500px">
+                <img src="/about2.jpg" alt="" class="rounded" width="400px" height="400px">
 
             </div>
             <div class="p-2">
-                <img src="/bg-jumbo.jpg" alt="" class="img-thumbnail" width="500px" height="500px">
+                <img src="/about3.jpg" alt="" class="rounded" width="400px" height="400px">
 
             </div>
         </div>

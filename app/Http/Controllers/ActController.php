@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Activity;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 
 class ActController extends Controller
@@ -40,7 +41,10 @@ class ActController extends Controller
             'title.required' => 'Judul wajib diisi',
             'content.required' => 'Materi wajib diisi',
             'thumbnail.required' => 'Thumbnail wajib diisi',
-            'thumbnail.max' => 'Thumbnail tidak boleh lebih dari 200 karakter'
+            'title.min' => 'Judul harus lebih dari 5 karakter',
+            'content.min' => 'Konten harus lebih dari 10 karakter',
+            'thumbnail.min' => 'Thumbnail harus lebih dari 5 karakter',
+            'thumbnail.max' => 'Thumbnail maksimal 200 karakter',        
         ]);
 
         $image = $request->file('image');
@@ -84,6 +88,15 @@ class ActController extends Controller
             'title'=> 'required|min:5',
             'content' => 'required|min:10',
             'thumbnail' => 'required|min:5|max:200',
+        ],[
+            'image.required' => 'Gambar wajib diisi',
+            'title.required' => 'Judul wajib diisi',
+            'content.required' => 'Materi wajib diisi',
+            'thumbnail.required' => 'Thumbnail wajib diisi',
+            'title.min' => 'Judul harus lebih dari 5 karakter',
+            'content.min' => 'Konten harus lebih dari 10 karakter',
+            'thumbnail.min' => 'Thumbnail harus lebih dari 5 karakter',
+            'thumbnail.max' => 'Thumbnail maksimal 200 karakter',        
         ]);
 
         $data = Activity::findOrFail($id);
@@ -124,5 +137,20 @@ class ActController extends Controller
         $data->delete();
 
         return redirect()->to('admin/kegiatan')->with('delete', 'Berhasil Menghapus Kegiatan');
+    }
+
+    public function search_admin_kegiatan(Request $request)
+    {
+        $search = $request->search;
+
+        $act = DB::table('activities')
+        ->where('title','like','%'. $search .'%')
+        ->paginate(8);
+
+        if($act->count()==0){
+            return view('admin.act.search_admin', ['kosong'=>true]);
+        }
+
+        return view('admin.act.search_admin', compact('act'),['kosong'=>false]);
     }
 }

@@ -55,7 +55,26 @@ a {
     text-decoration: none;
 }
 
+hr {
+    width: 20%;
+    color: black;
+}
 
+.nav-link:hover{
+    color: red;
+}
+
+.card-title:hover{
+    color: red;
+}
+
+.read {
+    transition: transform 0.3s ease; 
+}
+
+.read:hover {
+    transform: scale(5); 
+}
 
 .form-inputs{
     position:relative;

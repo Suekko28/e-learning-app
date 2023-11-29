@@ -64,6 +64,74 @@ class HomeController extends Controller
         return view('news.show', compact('news','latest'));
     }
 
+    public function search(Request $request)
+    {
+        $search = $request->search;
+
+        $learning = DB::table('learnings')
+        ->where('title','like','%'. $search .'%')
+        ->paginate(8);
+
+        
+        $act = DB::table('activities')
+        ->where('title','like','%'. $search .'%')
+        ->paginate(8);
+
+        $news = DB::table('news')
+        ->where('title','like','%'. $search .'%')
+        ->paginate(8);
+
+        if($learning && $act && $news->count()==0){
+            return view('search',['kosong'=>true]);
+        }
+
+        return view('search', compact('learning','act', 'news') , ['kosong'=>False]);
+    }
+
+    public function search_detail_learning(Request $request)
+    {
+        $search = $request->search;
+
+        $learning = DB::table('learnings')
+        ->where('title','like','%'. $search .'%')
+        ->paginate(8);
+
+        if($learning->count()==0){
+            return view('learning.search_detail', ['kosong'=>true]);
+        }
+
+        return view('learning.search_detail', compact('learning'),['kosong'=>false]);
+    }
+
+    public function search_detail_kegiatan(Request $request)
+    {
+        $search = $request->search;
+
+        $act = DB::table('activities')
+        ->where('title','like','%'. $search .'%')
+        ->paginate(8);
+
+        if($act->count()==0){
+            return view('act.search_detail', ['kosong'=>true]);
+        }
+
+        return view('act.search_detail', compact('act'),['kosong'=>false]);
+    }
+
+    public function search_detail_berita(Request $request)
+    {
+        $search = $request->search;
+
+        $news = DB::table('news')
+        ->where('title','like','%'. $search .'%')
+        ->paginate(8);
+
+        if($news->count()==0){
+            return view('learning.search_detail', ['kosong'=>true]);
+        }
+
+        return view('news.search_detail', compact('news'),['kosong'=>false]);
+    }
 
 
 }

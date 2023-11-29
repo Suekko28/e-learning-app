@@ -31,25 +31,25 @@
           <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
             <ul class="navbar-nav mx-auto p-2">
               <li class="nav-item me-3">
-                <a class="nav-link active" aria-current="page" href="/home">Beranda</a>
+                <a class="nav-link {{ Request::segment(1) === 'home' ? 'active' : null}}" aria-current="page" href="/home">Beranda</a>
               </li>
               <li class="nav-item me-3">
-                <a class="nav-link" href="{{route('learning.index')}}">E-Learning</a>
+                <a class="nav-link {{ Request::segment(1) === 'learning' ? 'active' : null}}" href="{{route('learning.index')}}">E-Learning</a>
               </li>
               {{-- @if(auth()->user()->role==1) --}}
               <li class="nav-item me-3">
-                <a class="nav-link" href="{{route('kegiatan.index')}}">Kegiatan</a>
+                <a class="nav-link {{ Request::segment(1) === 'kegiatan' ? 'active' : null}}" href="{{route('kegiatan.index')}}">Kegiatan</a>
               </li>
               <li class="nav-item me-3">
-                <a class="nav-link" href="{{route('berita.index')}}">Berita</a>
+                <a class="nav-link {{ Request::segment(1) === 'berita' ? 'active' : null}}" href="{{route('berita.index')}}">Berita</a>
               </li>
               <li class="nav-item me-3">
-                <a class="nav-link" href="/about">Tentang Kami</a>
+                <a class="nav-link {{ Request::segment(1) === 'about' ? 'active' : null}}" href="/about">Tentang Kami</a>
               </li>
               {{-- @endif --}}
             </ul>
-            <form class="d-flex form-inputs w-25">
-              <input class="form-control" type="text" placeholder="Cari disini" aria-label="Search">
+            <form action="/search" class="d-flex form-inputs w-25">
+              <input class="form-control" name="search" value="{{old('search')}}" type="text" placeholder="Cari disini" aria-label="Search">
               <i class="fas fa-search"></i>
             </form>
           

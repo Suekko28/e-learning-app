@@ -19,7 +19,7 @@
         <!-- Brand Logo -->
         <a href="index3.html" class="brand-link">
           <img src="/logo_tkj.jpg" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-          <span class="brand-text font-weight-light">Server TKJ</span>
+          <span class="brand-text font-weight-light">Server TJKT</span>
         </a>
     
         <!-- Sidebar -->
@@ -90,7 +90,7 @@
               </div><!-- /.col -->
               <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
-                  <li class="breadcrumb-item"><a href="#">Home</a></li>
+                  <li class="breadcrumb-item"><a href="{{url('admin/dashboard')}}">Dashboard</a></li>
                   <li class="breadcrumb-item active">Berita</li>
                 </ol>
               </div><!-- /.col -->
@@ -103,9 +103,19 @@
         <section class="content">
           <div class="container-fluid">
             @include('layout.message')
-
-            <!-- Small boxes (Stat box) -->
-            <a href="{{url('/admin/berita/create')}}" class="btn btn-success  mb-3 text-white"><i class="fa-solid fa-plus"></i>  Berita</a>
+            <div class="row">
+                <div class="col text-body-secondary text-lighter">
+                    <a href="{{ url('/admin/berita/create') }}" class="btn btn-success  mb-3 text-white"><i
+                            class="fa-solid fa-plus"></i> Berita</a>
+                </div>
+                <div class="col d-flex justify-content-end">
+                    <form action="{{route('search.admin.berita')}}" class="d-flex form-inputs w-50" method="GET">
+                        <input value="{{ old('search.admin.berita') }}" class="form-control" type="text" name="search" placeholder="Masukan Judul Berita" aria-label="Search">
+                        <i class="fas fa-search"></i>
+                    </form>
+                </div>
+        </div>
+            </div>
             <div class="row">
               <div class="table-responsive">
                 <table class="table table-bordered vw-100 ">
@@ -145,12 +155,12 @@
                   @endforeach
                 </table>
               </div>
+              {{ $data->links() }}
 
               
      
             <!-- /.row (main row) -->
           </div><!-- /.container-fluid -->
-          {{ $data->links() }}
 
         </section>
 
@@ -158,8 +168,8 @@
       </div>
       <!-- /.content-wrapper -->
       <footer class="main-footer">
-        <strong>&copy; 2023 Copyright <a href="#">Teknik Komputer & Jaringan SMK2TJ</a>
-        <div class="float-right d-none d-sm-inline-block">
+        <strong>&copy; 2023 Copyright <a href="#">Teknik Jaringan Komputer & Telekomunikasi</a>
+          <div class="float-right d-none d-sm-inline-block">
           <b>Version</b> 1.0.0
         </div>
       </footer>

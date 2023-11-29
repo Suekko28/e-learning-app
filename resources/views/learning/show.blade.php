@@ -3,9 +3,9 @@
 @section('navbar')
     <main>
         <div class="container mt-5">
-            <h4 class="text-center mb-3">{{ $learning->title }}</h4>
-            <img src="{{ Storage::url('public/images/' . $learning->image) }}" class="img-fluid mx-auto d-block" width="300px"
-                height="300px" alt="...">
+            <h4 class="text-center mb-3 fs-2">{{ $learning->title }}</h4>
+            <img src="{{ Storage::url('public/images/' . $learning->image) }}" class="img-fluid mx-auto d-block" width="500px   "
+                height="500px" alt="...">
             <div class="caption mt-3 mb-3">
                 {!! $learning->content !!}
             </div>

@@ -26,8 +26,12 @@ Route::post('/create', [SessionController::class, 'create'])->name('create');
 // Route::resource('admin/dashboard', LearningController::class);
 Route::middleware(['isLogin'])->group(function () {
     Route::get('admin/dashboard', [DashboardController::class, 'index']);
+    // Route::get('admin/materi', [LearningController::class, 'index']);
+    Route::get('admin/materi/search', [LearningController::class, 'search_admin_learning'])->name('search.admin.learning');    
     Route::resource('admin/materi', LearningController::class);
+    Route::get('admin/kegiatan/search', [ActController::class, 'search_admin_kegiatan'])->name('search.admin.kegiatan');    
     Route::resource('admin/kegiatan', ActController::class);
+    Route::get('admin/berita/search', [NewsController::class, 'search_admin_berita'])->name('search.admin.berita');    
     Route::resource('admin/berita', NewsController::class);
 });
 
@@ -42,6 +46,11 @@ Route::get('berita/all/{id}/show', [HomeController::class, 'berita_show'])->name
 Route::get('/about', function() {
     return view('about.index');
 });
+Route::get('search', [HomeController::class, 'search'])->name('search');
+Route::get('learning/all/search', [HomeController::class, 'search_detail_learning'])->name('search.detail.learning');
+Route::get('kegiatan/all/search', [HomeController::class, 'search_detail_kegiatan'])->name('search.detail.kegiatan');
+Route::get('berita/all/search', [HomeController::class, 'search_detail_berita'])->name('search.detail.berita');
+
 
 
 
