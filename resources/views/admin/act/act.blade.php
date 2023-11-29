@@ -111,7 +111,7 @@
                 </div>
                 <div class="col d-flex justify-content-end">
                     <form action="{{route('search.admin.kegiatan')}}" class="d-flex form-inputs w-50" method="GET">
-                        <input value="{{ old('search.admin.kegiatan') }}" class="form-control" type="text" name="search" placeholder="Masukan Judul Materi" aria-label="Search">
+                        <input value="{{ old('search.admin.kegiatan') }}" class="form-control" type="text" name="search" placeholder="Masukan Judul Kegiatan" aria-label="Search">
                         <i class="fas fa-search"></i>
                     </form>
                 </div>
