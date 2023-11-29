@@ -140,8 +140,8 @@
       </div>
       <!-- /.content-wrapper -->
       <footer class="main-footer">
-        <strong>&copy; 2023 Copyright <a href="#">Teknik Komputer & Jaringan SMK2TJ</a>
-        <div class="float-right d-none d-sm-inline-block">
+        <strong>&copy; 2023 Copyright <a href="#">Teknik Jaringan Komputer & Telekomunikasi</a>
+          <div class="float-right d-none d-sm-inline-block">
           <b>Version</b> 1.0.0
         </div>
       </footer>

@@ -90,7 +90,7 @@
             <!-- Copyright -->
             <div class="text-center p-3" style="background-color: #1A205D">
                 © 2023 Copyright
-                <a class="text-white" href="https://mdbootstrap.com/">Teknik Komputer & Jaringan SMK2TJ</a>
+                <a class="text-white" href="https://mdbootstrap.com/">Teknik Jaringan Komputer & Telekomunikasi SMK2TJ</a>
             </div>
             <!-- Copyright -->
         </footer>
