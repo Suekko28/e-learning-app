@@ -32,10 +32,10 @@
 
                         <!-- Sidebar Menu -->
                         <nav class="mt-2">
-                            <ul class="nav nav-pills nav-sidebar flex-column" learning-widget="treeview" role="menu"
-                                learning-accordion="false">
+                            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
+                                data-accordion="false">
                                 <!-- Add icons to the links using the .nav-icon class
-                                               with font-awesome or any other icon font library -->
+                                   with font-awesome or any other icon font library -->
                                 <li class="nav-item">
                                     <a href="{{ url('admin/dashboard') }}" class="nav-link">
                                         <i class="nav-icon fas fa-tachometer-alt"></i>
@@ -186,7 +186,7 @@
                                     {{-- @endforeach --}}
                                 </table>
                             </div>
-                            {{ $data->links() }}
+                            {{ $learning->links() }}
 
                         </div>
                         <!-- /.row (main row) -->
@@ -211,6 +211,7 @@
             <!-- /.control-sidebar -->
             </div>
     </main>
+    
     @endif
 @endsection
 {{-- @push('scripts')

@@ -32,10 +32,10 @@
 
                         <!-- Sidebar Menu -->
                         <nav class="mt-2">
-                            <ul class="nav nav-pills nav-sidebar flex-column" act-widget="treeview" role="menu"
-                                act-accordion="false">
+                            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
+                                data-accordion="false">
                                 <!-- Add icons to the links using the .nav-icon class
-                                               with font-awesome or any other icon font library -->
+                                   with font-awesome or any other icon font library -->
                                 <li class="nav-item">
                                     <a href="{{ url('admin/dashboard') }}" class="nav-link">
                                         <i class="nav-icon fas fa-tachometer-alt"></i>
@@ -55,19 +55,19 @@
                                     </a>
                                     <ul class="nav nav-treeview">
                                         <li class="nav-item">
-                                            <a href="{{ url('/admin/materi') }}" class="nav-link active">
+                                            <a href="{{ url('/admin/materi') }}" class="nav-link">
                                                 <i class="far fa-circle nav-icon"></i>
                                                 <p>Materi</p>
                                             </a>
                                         </li>
                                         <li class="nav-item">
-                                            <a href="{{ url('/admin/berita') }}" class="nav-link">
+                                            <a href="{{ url('/admin/kegiatan') }}" class="nav-link">
                                                 <i class="far fa-circle nav-icon"></i>
                                                 <p>Kegiatan</p>
                                             </a>
                                         </li>
                                         <li class="nav-item">
-                                            <a href="{{ url('/admin/berita') }}" class="nav-link">
+                                            <a href="{{ url('/admin/berita') }}" class="nav-link active">
                                                 <i class="far fa-circle nav-icon"></i>
                                                 <p>Berita</p>
                                             </a>
@@ -183,7 +183,7 @@
                                     {{-- @endforeach --}}
                                 </table>
                             </div>
-                            {{ $data->links() }}
+                            {{ $news->links() }}
 
                         </div>
                         <!-- /.row (main row) -->
