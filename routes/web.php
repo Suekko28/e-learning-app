@@ -35,6 +35,10 @@ Route::middleware(['isLogin'])->group(function () {
     Route::resource('admin/berita', NewsController::class);
 });
 
+Route::middleware(['guest'])->group(function(){
+    
+});
+
 Route::resource('/  ', HomeController::class);
 Route::resource('home', HomeController::class);
 Route::get('learning/all', [HomeController::class, 'learning_index'])->name('learning.index');
