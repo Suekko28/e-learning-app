@@ -17,7 +17,8 @@ class UsersTableSeeders extends Seeder
         DB::table('users')->insert([
             'name'=>'Aldi',
             'email'=>'email1@gmail.com',
-            'passowrd'=>Hash::make('123')
+            'passowrd'=>Hash::make('123'),
+            'role'=>'admin'
         ]);
     }
 }

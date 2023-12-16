@@ -47,6 +47,9 @@
               <li class="nav-item me-3">
                 <a class="nav-link {{ Request::segment(1) === 'about' ? 'active' : null}}" href="/about">Tentang Kami</a>
               </li>
+              <li class="nav-item me-3">
+                <a class="nav-link bg-primary rounded text-white {{ Request::segment(1) === 'about' ? 'active' : null}}" href="/about">Login</a>
+              </li>
               {{-- @endif --}}
             </ul>
             <form action="/search" class="d-flex form-inputs w-25">
