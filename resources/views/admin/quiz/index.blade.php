@@ -1,4 +1,5 @@
 @extends('layout.app-admin')
+
 @section('navbar-admin')
 <main>
 
@@ -24,8 +25,7 @@
         <!-- Sidebar -->
         <div class="sidebar">
           <!-- Sidebar user panel (optional) -->
-        
-    
+          
           <!-- SidebarSearch Form -->
       
           <!-- Sidebar Menu -->
@@ -58,18 +58,17 @@
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="{{url('/admin/kegiatan')}}" class="nav-link active">
+                    <a href="{{url('/admin/kegiatan')}}" class="nav-link">
                       <i class="far fa-circle nav-icon"></i>
                       <p>Kegiatan</p>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="{{url('/admin/berita')}}" class="nav-link">
+                    <a href="{{url('/admin/berita')}}" class="nav-link active">
                       <i class="far fa-circle nav-icon"></i>
                       <p>Berita</p>
                     </a>
                   </li>
-                  
                 </ul>
                 <li class="nav-item">
                   <a href="{{url('admin/dashboard')}}" class="nav-link">
@@ -95,13 +94,12 @@
           <div class="container-fluid">
             <div class="row mb-2">
               <div class="col-sm-6">
-                <h1 class="m-0 fw-bold">Edit Kegiatan</h1>
+                <h1 class="m-0">Berita</h1>
               </div><!-- /.col -->
               <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
                   <li class="breadcrumb-item"><a href="{{url('admin/dashboard')}}">Dashboard</a></li>
-                  <li class="breadcrumb-item"><a href="{{url('admin/kegiatan')}}">Kegiatan</a></li>
-                  <li class="breadcrumb-item active">Edit Kegiatan</li>
+                  <li class="breadcrumb-item active">Berita</li>
                 </ol>
               </div><!-- /.col -->
             </div><!-- /.row -->
@@ -109,42 +107,49 @@
         </div>
         <!-- /.content-header -->
     
-        @include('layout.message')
         <!-- Main content -->
         <section class="content">
           <div class="container-fluid">
-            <!-- Small boxes (Stat box) -->
-                <form action="{{url('/admin/kegiatan', $data->id)}}" method="post" enctype="multipart/form-data">
-                  @csrf
-                  @method('PUT')
-                    <div class="card-body container">
-                      <div class="form-group">
-                        <label for="gambar">Gambar</label>
-                        <input type="file" class="form-control" id="image" name="image" placeholder="" >
-                      </div>
-                      <div class="form-group">
-                        <label for="judul">Judul</label>
-                        <input type="text" class="form-control" id="title" name="title" placeholder="Masukkan Judul" value="{{$data->title}}" >
-                      </div>
-                      <div class="form-group">
-                        <label for="Konten">Konten</label>
-                        <textarea rows="20" class="form-control" id="content" name="content" placeholder="Masukkan Isi Materi">{{ $data->content }}</textarea>
-                      </div>
-                      <div class="form-group">
-                        <label for="thumbnail">Thumbnail</label>
-                        <input type="text" class="form-control" id="thumbnail" name="thumbnail" placeholder="Masukkan Thumbnail" value="{{$data->thumbnail}}">
-                     </div>
-                        <div class="d-flex flex-row-reverse">
-                        <button type="submit" class="btn btn-primary ml-3">Simpan</button>
-                        <a href="{{url('/admin/kegiatan')}}" class="btn btn-danger">Batal</a>
-                      </div>
-                    </div>
-                    <!-- /.card-body -->
-    
-                  </form>
+            @include('layout.message')
+            <div class="row">
+                <div class="col text-body-secondary text-lighter">
+                    <a href="{{ url('/admin/berita/create') }}" class="btn btn-success  mb-3 text-white"><i
+                            class="fa-solid fa-plus"></i> Berita</a>
+                </div>
+                <div class="col d-flex justify-content-end">
+                    <form action="{{route('search.admin.berita')}}" class="d-flex form-inputs w-50" method="GET">
+                        <input value="{{ old('search.admin.berita') }}" class="form-control" type="text" name="search" placeholder="Masukan Judul Berita" aria-label="Search">
+                        <i class="fas fa-search"></i>
+                    </form>
+                </div>
+        </div>
+            </div>
+            <div class="row">
+              <div class="table-responsive">
+                <table class="table table-bordered vw-100 ">
+                  <caption>List of Kegiatan</caption>
+                  <thead>
+                    <tr class="text-center">
+                      <th scope="col">No</th>
+                      <th scope="col">Gambar</th>
+                      <th scope="col">Judul</th>
+                      <th scope="col">Konten</th>
+                      <th scope="col">Thumbnail</th>
+                      <th scope="col">Aksi</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                  </tbody>
+                </table>
+              </div>
+
+              
+     
             <!-- /.row (main row) -->
           </div><!-- /.container-fluid -->
+
         </section>
+
         <!-- /.content -->
       </div>
       <!-- /.content-wrapper -->
@@ -162,9 +167,5 @@
       <!-- /.control-sidebar -->
     </div>
     </main>
-    <script src="https://cdn.ckeditor.com/4.13.1/standard/ckeditor.js"></script>
-<script>
-    CKEDITOR.replace( 'content' );
-</script>
 
 @endsection
