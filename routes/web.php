@@ -29,6 +29,10 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
     Route::get('/quiz', function () {
         return view('admin.quiz.index');
     });
+
+    Route::get('/quiz/create', function () {
+        return view('admin.quiz.create');
+    });
 });
 
 // User Routes

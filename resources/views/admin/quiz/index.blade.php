@@ -94,12 +94,12 @@
           <div class="container-fluid">
             <div class="row mb-2">
               <div class="col-sm-6">
-                <h1 class="m-0">Berita</h1>
+                <h1 class="m-0">Quiz</h1>
               </div><!-- /.col -->
               <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
                   <li class="breadcrumb-item"><a href="{{url('admin/dashboard')}}">Dashboard</a></li>
-                  <li class="breadcrumb-item active">Berita</li>
+                  <li class="breadcrumb-item active">Quiz</li>
                 </ol>
               </div><!-- /.col -->
             </div><!-- /.row -->
@@ -114,11 +114,11 @@
             <div class="row">
                 <div class="col text-body-secondary text-lighter">
                     <a href="{{ url('/admin/berita/create') }}" class="btn btn-success  mb-3 text-white"><i
-                            class="fa-solid fa-plus"></i> Berita</a>
+                            class="fa-solid fa-plus"></i> Quiz</a>
                 </div>
                 <div class="col d-flex justify-content-end">
                     <form action="{{route('search.admin.berita')}}" class="d-flex form-inputs w-50" method="GET">
-                        <input value="{{ old('search.admin.berita') }}" class="form-control" type="text" name="search" placeholder="Masukan Judul Berita" aria-label="Search">
+                        <input value="{{ old('search.admin.berita') }}" class="form-control" type="text" name="search" placeholder="Masukan Judul Quiz" aria-label="Search">
                         <i class="fas fa-search"></i>
                     </form>
                 </div>
@@ -131,10 +131,8 @@
                   <thead>
                     <tr class="text-center">
                       <th scope="col">No</th>
-                      <th scope="col">Gambar</th>
-                      <th scope="col">Judul</th>
-                      <th scope="col">Konten</th>
-                      <th scope="col">Thumbnail</th>
+                      <th scope="col">Soal</th>
+                      <th scope="col">Kategori</th>
                       <th scope="col">Aksi</th>
                     </tr>
                   </thead>
