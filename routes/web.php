@@ -5,6 +5,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LearningController;
 use App\Http\Controllers\NewsController;
+use App\Http\Controllers\QuizController;
 use App\Http\Controllers\SessionController;
 use Illuminate\Support\Facades\Route;
 
@@ -30,9 +31,7 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
         return view('admin.quiz.index');
     });
 
-    Route::get('/quiz/create', function () {
-        return view('admin.quiz.create');
-    });
+    Route::resource('quiz', QuizController::class);
 });
 
 // User Routes
@@ -54,7 +53,7 @@ Route::middleware(['auth', 'user'])->group(function () {
     Route::get('berita/all/search', [HomeController::class, 'search_detail_berita'])->name('search.detail.berita');
     Route::get('/my-quiz', function () {
         return view('quiz');
-    
+
     });
 });
 
