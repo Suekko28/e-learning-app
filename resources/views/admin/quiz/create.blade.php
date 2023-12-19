@@ -74,7 +74,7 @@
                                     </ul>
 
                                 <li class="nav-item">
-                                    <a href="{{ url('admin/dashboard') }}" class="nav-link">
+                                    <a href="{{ url('admin/quiz') }}" class="nav-link">
                                         <i class="nav-icon fas fa-tachometer-alt"></i>
                                         <p>
                                             Quiz
@@ -117,69 +117,70 @@
                     <section class="content">
                         <div class="container-fluid">
                             <!-- Small boxes (Stat box) -->
-                            <form action="{{ url('/admin/kegiatan') }}" method="post" enctype="multipart/form-data">
+                            <form action="/admin/quiz" method="post" enctype="multipart/form-data">
                                 @csrf
                                 <div class="card-body container">
                                         <div class="form-group">
-                                            <label for="jenis_kelamin" class="col-form-label">Pilih Materi</label>
-                                            <select id="jenis_kelamin" name="jenis_kelamin" class="form-control" required>
+                                            <label for="learning_id" class="col-form-label">Pilih Materi</label>
+                                            <select id="learning_id" name="learning_id" class="form-control" required>
                                                 <option value="" selected>--Pilih Salah Satu--</option>
-                                                <option value="1">Laki-Laki</option>
-                                                <option value="2">Perempuan</option>
+                                                @foreach ($learnings as $learning)
+                                                    <option value="{{$learning->id}}">{{ $learning->title }}</option>
+                                                @endforeach
                                             </select>
                                         </div>
                                         <div class="form-group">
                                             <label for="Konten">Soal</label>
-                                            <textarea rows="20" class="form-control" id="content" name="content" placeholder="Masukkan Isi Materi"></textarea>
+                                            <textarea rows="20" class="form-control" id="question" name="question" placeholder="Masukkan Isi Materi" required></textarea>
                                         </div>
                                         <div class="form-group">
                                             <div class="row">
                                                 <div class="col-sm-3">
-                                                    <label for="profile" class="col-form-label">Opsi 1</label>
-                                                    <input type="text" class="form-control" id="profile" name="profile"
-                                                        placeholder="Jawaban A">
+                                                    <label for="option_a" class="col-form-label">Opsi 1</label>
+                                                    <input type="text" class="form-control" id="option_a" name="option_a"
+                                                        placeholder="Jawaban A" required>
                                                 </div>
                                                 <div class="col-sm-3">
                                                     <label for="name" class="col-form-label">Opsi 2</label>
-                                                    <input type="text" class="form-control" id="nama"
-                                                        name="nama" placeholder="Jawaban B">
+                                                    <input type="text" class="form-control" id="option_b"
+                                                        name="option_b" placeholder="Jawaban B"  required>
                                                 </div>
 
                                                 <div class="col-sm-3">
-                                                    <label for="jabatan" class="col-form-label">Opsi 3</label>
-                                                    <input type="text" class="form-control" id="jabatan"
-                                                        name="jabatan" placeholder="Jawaban C">
+                                                    <label for="option_c" class="col-form-label">Opsi 3</label>
+                                                    <input type="text" class="form-control" id="option_c"
+                                                        name="option_c" placeholder="Jawaban C" required>
                                                 </div>
 
                                                 <div class="col-sm-3">
-                                                    <label for="jabatan" class="col-form-label">Opsi 4</label>
-                                                    <input type="text" class="form-control" id="jabatan"
-                                                        name="jabatan" placeholder="Jawaban D">
+                                                    <label for="option_d" class="col-form-label">Opsi 4</label>
+                                                    <input type="text" class="form-control" id="option_d"
+                                                        name="option_d" placeholder="Jawaban D" required>
                                                 </div>
 
                                                 <div class="col-sm-12 mt-3">
-                                                    <label for="tmpt_lahir" class="col-form-label">Jawaban Benar</label>
+                                                    <label for="option_true" class="col-form-label">Jawaban Benar</label>
                                                     <br>
                                                     <div class=" card p-2">
                                                         <div class="form-check">
-                                                            <input type="radio" id="html" name="fav_language"
-                                                                value="HTML">
-                                                            <label for="html">Jawaban A</label>
+                                                            <input type="radio" id="option_true" name="option_true"
+                                                                value="option_a" required>
+                                                            <label for="option_a">Jawaban A</label>
                                                         </div>
                                                         <div class="form-check">
-                                                            <input type="radio" id="html" name="fav_language"
-                                                                value="HTML">
-                                                            <label for="html">Jawaban B</label>
+                                                            <input type="radio" id="option_true" name="option_true"
+                                                                value="option_b" required>
+                                                            <label for="option_b">Jawaban B</label>
                                                         </div>
                                                         <div class="form-check">
-                                                            <input type="radio" id="html" name="fav_language"
-                                                                value="HTML">
-                                                            <label for="html">Jawaban C</label>
+                                                            <input type="radio" id="option_true" name="option_true"
+                                                                value="option_c" required>
+                                                            <label for="option_c">Jawaban C</label>
                                                         </div>
                                                         <div class="form-check">
-                                                            <input type="radio" id="html" name="fav_language"
-                                                                value="HTML">
-                                                            <label for="html">Jawaban D</label>
+                                                            <input type="radio" id="option_true" name="option_true"
+                                                                value="option_d" required>
+                                                            <label for="option_d">Jawaban D</label>
                                                         </div>
                                                     </div>
 
@@ -187,7 +188,7 @@
 
                                             <div class="d-flex flex-row-reverse">
                                                 <button type="submit" class="btn btn-primary ml-3">Simpan</button>
-                                                <a href="{{ url('/admin/kegiatan') }}" class="btn btn-danger">Batal</a>
+                                                <a href="{{ url('/admin/quiz') }}" class="btn btn-danger">Batal</a>
                                             </div>
                                         </div>
                                     </div>
@@ -216,6 +217,6 @@
     </main>
     <script src="https://cdn.ckeditor.com/4.13.1/standard/ckeditor.js"></script>
     <script>
-        CKEDITOR.replace('content');
+        CKEDITOR.replace('question');
     </script>
 @endsection
