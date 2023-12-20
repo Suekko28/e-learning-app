@@ -44,10 +44,10 @@ crossorigin="anonymous" referrerpolicy="no-referrer" />
       <div class="preloader flex-column justify-content-center align-items-center">
         <img class="animation__shake" src="/logo_tkj.jpg" alt="AdminLTELogo" height="60" width="60">
       </div>
-    
+
       <!-- Navbar -->
-     
-    
+
+
       <!-- Main Sidebar Container -->
       <aside class="main-sidebar sidebar-dark-primary elevation-4">
         <!-- Brand Logo -->
@@ -55,14 +55,14 @@ crossorigin="anonymous" referrerpolicy="no-referrer" />
           <img src="/logo_tkj.jpg" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
           <span class="brand-text font-weight-light">Server TJKT</span>
         </a>
-    
+
         <!-- Sidebar -->
         <div class="sidebar">
           <!-- Sidebar user panel (optional) -->
-          
-    
+
+
           <!-- SidebarSearch Form -->
-      
+
           <!-- Sidebar Menu -->
           <nav class="mt-2">
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
@@ -76,7 +76,7 @@ crossorigin="anonymous" referrerpolicy="no-referrer" />
                   </p>
                 </a>
               </li>
-    
+
               <li class="nav-item">
                 <a href="#" class="nav-link">
                   <i class="nav-icon fas fa-solid fa-folder-open"></i>
@@ -105,9 +105,9 @@ crossorigin="anonymous" referrerpolicy="no-referrer" />
                     </a>
                   </li>
                 </ul>
-                
+
                 <li class="nav-item">
-                  <a href="{{url('admin/dashboard')}}" class="nav-link">
+                  <a href="{{url('admin/quiz')}}" class="nav-link">
                     <i class="nav-icon fas fa-tachometer-alt"></i>
                     <p>
                       Quiz
@@ -116,16 +116,16 @@ crossorigin="anonymous" referrerpolicy="no-referrer" />
                 </li>
 
               </li>
-    
-             
-              
+
+
+
             </ul>
           </nav>
           <!-- /.sidebar-menu -->
         </div>
         <!-- /.sidebar -->
       </aside>
-    
+
       <!-- Content Wrapper. Contains page content -->
       <div class="content-wrapper">
         <!-- Content Header (Page header) -->
@@ -144,7 +144,7 @@ crossorigin="anonymous" referrerpolicy="no-referrer" />
           </div><!-- /.container-fluid -->
         </div>
         <!-- /.content-header -->
-    
+
         <!-- Main content -->
         <section class="content">
           <div class="container-fluid">
@@ -158,7 +158,7 @@ crossorigin="anonymous" referrerpolicy="no-referrer" />
                     <p>Materi</p>
                   </div>
                   <div class="icon">
-                    <i class="fa-solid fa-book"></i>                 
+                    <i class="fa-solid fa-book"></i>
                   </div>
                   <a href="{{url('admin/materi')}}" class="small-box-footer">Lihat Selengkapnya <i class="fas fa-arrow-circle-right"></i></a>
                 </div>
@@ -172,7 +172,7 @@ crossorigin="anonymous" referrerpolicy="no-referrer" />
                     <p>Kegiatan</p>
                   </div>
                   <div class="icon">
-                    <i class="fa-solid fa-image"></i>                 
+                    <i class="fa-solid fa-image"></i>
                   </div>
                   <a href="{{url('admin/kegiatan')}}" class="small-box-footer">Lihat Selengkapnya <i class="fas fa-arrow-circle-right"></i></a>
                 </div>
@@ -186,12 +186,12 @@ crossorigin="anonymous" referrerpolicy="no-referrer" />
                     <p>Berita</p>
                   </div>
                   <div class="icon">
-                    <i class="fa-solid fa-newspaper"></i>                  
+                    <i class="fa-solid fa-newspaper"></i>
                   </div>
                   <a href="{{url('admin/berita')}}" class="small-box-footer">Lihat Selengkapnya <i class="fas fa-arrow-circle-right"></i></a>
                 </div>
               </div>
-          
+
               <!-- ./col -->
             </div>
         </section>
@@ -204,7 +204,7 @@ crossorigin="anonymous" referrerpolicy="no-referrer" />
           <b>Version</b> 1.0.0
         </div>
       </footer>
-    
+
       <!-- Control Sidebar -->
       <aside class="control-sidebar control-sidebar-dark">
         <!-- Control sidebar content goes here -->

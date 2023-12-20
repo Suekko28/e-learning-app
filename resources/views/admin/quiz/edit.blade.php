@@ -117,45 +117,37 @@
                     <section class="content">
                         <div class="container-fluid">
                             <!-- Small boxes (Stat box) -->
-                            <form action="/admin/quiz" method="post" enctype="multipart/form-data">
+                            <form action="/admin/quiz/{{$quiz->id}}" method="post" enctype="multipart/form-data">
+                                @method('PUT')
                                 @csrf
                                 <div class="card-body container">
                                         <div class="form-group">
-                                            <label for="learning_id" class="col-form-label">Pilih Materi</label>
-                                            <select id="learning_id" name="learning_id" class="form-control" required>
-                                                <option value="" selected>--Pilih Salah Satu--</option>
-                                                @foreach ($learnings as $learning)
-                                                    <option value="{{$learning->id}}">{{ $learning->title }}</option>
-                                                @endforeach
-                                            </select>
-                                        </div>
-                                        <div class="form-group">
                                             <label for="Konten">Soal</label>
-                                            <textarea rows="20" class="form-control" id="question" name="question" placeholder="Masukkan Isi Materi" required></textarea>
+                                            <textarea rows="20" class="form-control" id="question" name="question" required>{!!$quiz->question !!}</textarea>
                                         </div>
                                         <div class="form-group">
                                             <div class="row">
                                                 <div class="col-sm-3">
                                                     <label for="option_a" class="col-form-label">Opsi 1</label>
                                                     <input type="text" class="form-control" id="option_a" name="option_a"
-                                                        placeholder="Jawaban A" required>
+                                                        value="{{$quiz->option_a}}" required>
                                                 </div>
                                                 <div class="col-sm-3">
                                                     <label for="name" class="col-form-label">Opsi 2</label>
                                                     <input type="text" class="form-control" id="option_b"
-                                                        name="option_b" placeholder="Jawaban B"  required>
+                                                        name="option_b" value="{{$quiz->option_b}}"  required>
                                                 </div>
 
                                                 <div class="col-sm-3">
                                                     <label for="option_c" class="col-form-label">Opsi 3</label>
                                                     <input type="text" class="form-control" id="option_c"
-                                                        name="option_c" placeholder="Jawaban C" required>
+                                                        name="option_c" value="{{$quiz->option_c}}" required>
                                                 </div>
 
                                                 <div class="col-sm-3">
                                                     <label for="option_d" class="col-form-label">Opsi 4</label>
                                                     <input type="text" class="form-control" id="option_d"
-                                                        name="option_d" placeholder="Jawaban D" required>
+                                                        name="option_d" value="{{$quiz->option_d}}" required>
                                                 </div>
 
                                                 <div class="col-sm-12 mt-3">
@@ -164,22 +156,22 @@
                                                     <div class=" card p-2">
                                                         <div class="form-check">
                                                             <input type="radio" id="option_true" name="option_true"
-                                                                value="option_a" required>
+                                                                value="option_a" @if ($quiz->option_true == 'option_a') {{'checked'}} @endif>
                                                             <label for="option_a">Jawaban A</label>
                                                         </div>
                                                         <div class="form-check">
                                                             <input type="radio" id="option_true" name="option_true"
-                                                                value="option_b" required>
+                                                                value="option_b" @if ($quiz->option_true == 'option_b') {{'checked'}} @endif>
                                                             <label for="option_b">Jawaban B</label>
                                                         </div>
                                                         <div class="form-check">
                                                             <input type="radio" id="option_true" name="option_true"
-                                                                value="option_c" required>
+                                                                value="option_c" @if ($quiz->option_true == 'option_c') {{'checked'}} @endif>
                                                             <label for="option_c">Jawaban C</label>
                                                         </div>
                                                         <div class="form-check">
                                                             <input type="radio" id="option_true" name="option_true"
-                                                                value="option_d" required>
+                                                                value="option_d" @if ($quiz->option_true == 'option_d') {{'checked'}} @endif>
                                                             <label for="option_d">Jawaban D</label>
                                                         </div>
                                                     </div>

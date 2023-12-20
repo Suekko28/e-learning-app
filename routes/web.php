@@ -19,20 +19,6 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
-    Route::get('dashboard', [DashboardController::class, 'index']);
-    Route::get('materi/search', [LearningController::class, 'search_admin_learning'])->name('search.admin.learning');
-    Route::resource('materi', LearningController::class);
-    Route::get('kegiatan/search', [ActController::class, 'search_admin_kegiatan'])->name('search.admin.kegiatan');
-    Route::resource('kegiatan', ActController::class);
-    Route::get('berita/search', [NewsController::class, 'search_admin_berita'])->name('search.admin.berita');
-    Route::resource('berita', NewsController::class);
-    Route::get('/quiz', function () {
-        return view('admin.quiz.index');
-    });
-
-    Route::resource('quiz', QuizController::class);
-});
 
 // User Routes
 Route::middleware(['auth', 'user'])->group(function () {
@@ -40,6 +26,7 @@ Route::middleware(['auth', 'user'])->group(function () {
     Route::resource('home', HomeController::class);
     Route::get('learning/all', [HomeController::class, 'learning_index'])->name('learning.index');
     Route::get('learning/all/{id}/show', [HomeController::class, 'learning_show'])->name('learning.show');
+    Route::get('learning/start-quiz', [QuizController::class, 'startQuiz']);
     Route::get('kegiatan/all', [HomeController::class, 'kegiatan_index'])->name('kegiatan.index');
     Route::get('kegiatan/all/{id}/show', [HomeController::class, 'kegiatan_show'])->name('kegiatan.show');
     Route::get('berita/all', [HomeController::class, 'berita_index'])->name('berita.index');
@@ -57,6 +44,19 @@ Route::middleware(['auth', 'user'])->group(function () {
     });
 });
 
+//admin routes
+Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
+    Route::get('dashboard', [DashboardController::class, 'index']);
+    Route::get('materi/search', [LearningController::class, 'search_admin_learning'])->name('search.admin.learning');
+    Route::resource('materi', LearningController::class);
+    Route::get('kegiatan/search', [ActController::class, 'search_admin_kegiatan'])->name('search.admin.kegiatan');
+    Route::resource('kegiatan', ActController::class);
+    Route::get('berita/search', [NewsController::class, 'search_admin_berita'])->name('search.admin.berita');
+    Route::resource('berita', NewsController::class);
+    Route::get('/quiz/show-quiz', [QuizController::class, 'show']);
+
+    Route::resource('quiz', QuizController::class);
+});
 
 // Guest Routes
 Route::middleware(['guest'])->group(function () {

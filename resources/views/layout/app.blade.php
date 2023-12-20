@@ -25,6 +25,10 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/7.1.2/esm/ionicons.min.js"
         integrity="sha512-2ySmquu6HK3CAvwLllh0R8K8buFPMZsUwWLZIlB7WW8c8ilUtoNyhsmEsQn2U0IV1USr2Oc/9DJzlr4cxAbuxA=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    @if (Request::path() === 'learning/start-quiz')
+        <link rel="stylesheet" href="{{ asset('just-quiz.css') }}">
+    @endif
 </head>
 
 <body>

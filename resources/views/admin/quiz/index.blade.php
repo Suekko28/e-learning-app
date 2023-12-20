@@ -150,7 +150,7 @@
                                                 <td>{{ count($learning->quiz) }}</td>
                                                 <td>{{ count($learning->participant) }}</td>
                                                 <td>
-                                                    <a href="/admin/quiz/{{ $learning->id }}" <i
+                                                    <a href="/admin/quiz/show-quiz?id={{ $learning->id }}" <i
                                                         class="fas fa-eye m-1"></i></a>
                                                 </td>
                                             </tr>

@@ -1,0 +1,200 @@
+::root {
+	counter-reset: question;
+}
+
+section#start {
+	text-align: center;
+	margin-top: 45vh;
+}
+.congrats {
+	font-weight: bold;
+	font-size: 110%;
+	color: orange;
+}
+
+
+
+fieldset {
+	width: 570px;
+	height: 550px;
+	color: white;
+	background-color: #001233;
+	background-repeat: no-repeat;
+	background-size: contain;
+	border: none;
+	border-radius: 10px;
+	position: relative;
+	padding: 20px;
+	margin-top: 20px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 85px;
+	counter-increment: question;
+}
+section#start a:after {
+	/* content: " " counter(question); */
+}
+fieldset legend {
+	position: absolute;
+	top: 10px;
+	font-size: 150%;
+}
+fieldset > div {
+	margin-top: 100px;
+}
+fieldset input:checked + label {
+	border-bottom: 2px solid #fddc9b;
+}
+fieldset label::after {
+    content: "\000A";
+    white-space: pre;
+	line-height: 2;
+}
+fieldset section {
+	position: absolute;
+	top: 365px;
+	width: calc(100% - 20px);
+}
+
+.message img {
+	float: right;
+	width: 150px;
+	margin: 0 10px;
+	border-radius: 5px;
+	margin-top: -45px;
+}
+.message a {
+	color: white;
+}
+.correct img {
+	margin-top: 0;
+}
+.correct p:first-of-type {
+	font-size: 110%;
+	color: greenyellow;
+	font-weight: bold;
+}
+.incorrect {
+	font-size: 110%;
+	color: orangered;
+	font-weight: bold;
+}
+
+fieldset .button-next {
+	position: absolute;
+	bottom: -70px;
+	left: 0;
+	right: 0;
+	text-align: center;
+}
+a.button {
+	color: white;
+	background-color: #001845;
+	border-radius: 10px;
+	padding: 15px 20px;
+	text-decoration: none;
+	font-weight: bold;
+}
+a.button:hover {
+	background-color: #002855;
+}
+
+.message,
+.button-next {
+	display: none;
+}
+input:checked ~ section .incorrect {
+	display: block;
+}
+
+
+fieldset {
+	display: none;
+}
+fieldset:target {
+	display: block;
+}
+fieldset:target ~ section#start {
+	display: none;
+}
+
+
+/* Question 1 correct/incorrect answer rules */
+#q1d:checked ~ section .incorrect {
+	display: none;
+}
+#q1a:checked ~ section .incorrect_a,
+#q1c:checked ~ section .incorrect_c,
+#q1d:checked ~ section .correct,
+#q1d:checked ~ .button-next {
+	display: block;
+}
+
+
+/* Question 2 styles */
+fieldset#q2 {
+	height: 500px;
+	color: #ffeb74;
+	background-color: #000000;
+}
+fieldset#q2 input:checked + label {
+	border-bottom: 2px solid #713d12;
+}
+/* Question 2 correct/incorrect answer rules */
+#q2b:checked ~ section .incorrect {
+	display: none;
+}
+#q2a:checked ~ section .incorrect_a,
+#q2c:checked ~ section .incorrect_c,
+#q2b:checked ~ section .correct,
+#q2b:checked ~ .button-next {
+	display: block;
+}
+
+/* Question 3 styles */
+fieldset#q3 {
+	height: 470px;
+	color: #6d85b4;
+	background-color: #040613;
+}
+fieldset#q3 section {
+	top: 333px;
+}
+fieldset#q3 input:checked + label {
+	border-bottom: 2px solid #ceeefc;
+}
+/* Question 3 correct/incorrect answer rules */
+#q3b:checked ~ section .incorrect {
+	display: none;
+}
+#q3a:checked ~ section .incorrect_a,
+#q3c:checked ~ section .incorrect_c,
+#q3d:checked ~ section .incorrect_d,
+#q3e:checked ~ section .incorrect_e,
+#q3b:checked ~ section .correct,
+#q3b:checked ~ .button-next {
+	display: block;
+}
+
+
+/* Question 4 styles */
+fieldset#q4 {
+	height: 470px;
+	color: #faf0b7;
+	background-color: #000;
+}
+fieldset#q4 input + label {
+	font-weight: bold;
+}
+fieldset#q4 .message.correct img {
+	width: 210px;
+}
+/* Question 4 correct/incorrect answer rules */
+#q4e:checked ~ section .incorrect {
+	display: none;
+}
+#q4a:checked ~ section .incorrect_a,
+#q4e:checked ~ section .correct,
+#q4e:checked ~ .button-next {
+	display: block;
+}
