@@ -22,7 +22,7 @@
             <div class="row justify-content-start">
                 @foreach ($learning as $item)
                     <div class="card mt-2 me-2 border border-0 shadow rounded mb-2" style="width: 20rem">
-                        <img src="{{ Storage::url('public/images/' . $item->image) }}" class="card-img-top img-fluid mt-2"
+                        <img src{{ Storage::url('public/news/' . $item->image) }}" class="card-img-top img-fluid mt-2"
                             style="height: 300px; object-fit:cover" alt="...">
                         <div class="card-body border-0">
                             <p class="card-text"><small class="text-body-secondary">

@@ -121,17 +121,17 @@
                                 <div class="text-left"><!--opening of div tag-->
                                     <!--Question-->
                                     @foreach ($allQuiz as $quiz)
-                                        <p class="body-font">
+                                        <div class="number-quiz">
                                             {{$loop->iteration.'. '}}
-                                            <a href="/admin/quiz/{{$quiz->id}}/edit" class="badge badge-warning badge-sm d-inline">edit</a>
+                                            <a href="/admin/quiz/{{$quiz->id}}/edit"><i class="ml-3 fas fa-pen text-warning"></i></a>
                                             <form action="/admin/quiz/{{$quiz->id}}" method="POST" class="d-inline">
                                                 @method('DELETE')
                                                 @csrf
-                                                <button class="border-0 bg-transparant" style="background-color: transparent;"
+                                                <button class="border-0 bg-transparant d-inline" style="background-color: transparent;"
                                                     onclick="return confirm(`Hapus quiz ini?`);"><i class="fas fa-trash text-danger"></i></button>
                                             </form>
+                                        </div>
                                             {!!$quiz->question!!}
-                                        </p>
                                             <input type="radio" name="q1" value="a" id="q1a"
                                                 class=""> {{$quiz->option_a}}
                                                 @if ($quiz->option_true == 'option_a')

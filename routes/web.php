@@ -27,6 +27,7 @@ Route::middleware(['auth', 'user'])->group(function () {
     Route::get('learning/all', [HomeController::class, 'learning_index'])->name('learning.index');
     Route::get('learning/all/{id}/show', [HomeController::class, 'learning_show'])->name('learning.show');
     Route::get('learning/start-quiz', [QuizController::class, 'startQuiz']);
+    Route::post('learning/submit-quiz', [QuizController::class, 'submitQuiz']);
     Route::get('kegiatan/all', [HomeController::class, 'kegiatan_index'])->name('kegiatan.index');
     Route::get('kegiatan/all/{id}/show', [HomeController::class, 'kegiatan_show'])->name('kegiatan.show');
     Route::get('berita/all', [HomeController::class, 'berita_index'])->name('berita.index');
@@ -53,6 +54,7 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
     Route::resource('kegiatan', ActController::class);
     Route::get('berita/search', [NewsController::class, 'search_admin_berita'])->name('search.admin.berita');
     Route::resource('berita', NewsController::class);
+    Route::get('quiz/search', [QuizController::class, 'search_admin_quiz'])->name('search.admin.quiz');
     Route::get('/quiz/show-quiz', [QuizController::class, 'show']);
 
     Route::resource('quiz', QuizController::class);

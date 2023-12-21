@@ -20,13 +20,13 @@
 @if ($kosong == true)
 <img src="/notfound.jpg" alt="" width="500px" height="500px" class="d-block mx-auto">
 
-@else    
+@else
 
 <div class="container mt-3">
     <div class="d-flex flex-row">
         @foreach ($learning as $item)
             <div class="card me-2 shadow-sm rounded" style="width: 20rem">
-                <img src="{{ Storage::url('public/images/' . $item->image) }}" class="card-img-top img-fluid"
+                <img src="{{ asset('storage/public/images/'.$item->image) }}" class="card-img-top img-fluid"
                     style="height: 300px; object-fit: cover;" alt="...">
                 <div class="card-body border-0">
                     <p class="card-text"><small class="text-body-secondary">

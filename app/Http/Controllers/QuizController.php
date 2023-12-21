@@ -15,9 +15,10 @@ class QuizController extends Controller
      */
     public function index()
     {
-        $learnings = Learning::with('quiz', 'participant')->get();
+        $learnings = Learning::with('quiz', 'participant')->paginate(8);
         return view('admin.quiz.index', [
-            'learnings' => $learnings
+            'learnings' => $learnings,
+            'kosong' => false
         ]);
     }
 
@@ -107,16 +108,74 @@ class QuizController extends Controller
         $learningId = $request->id;
         $userId = auth()->user()->id;
 
+        $allQuiz = Quiz::where('learning_id', $learningId)->get();
         $quizScore = QuizScore::where('learning_id', $learningId)->where('user_id', $userId)->first();
+        $userQuiz = UserQuiz::where('learning_id', $learningId)->where('user_id', $userId)->get();
 
-        if($quizScore) {
-
-        }else {
-            $allQuiz = Quiz::where('learning_id', $learningId)->get();
-
-            return view('quiz', [
-                'allQuiz' => $allQuiz
-            ]);
+        if(count($allQuiz) == 0){
+            return abort(403, 'Quiz tidak ditemukan / admin belum menambahkan quiz baru');
+        }else{
+            if($quizScore) {
+                return view('quiz', [
+                    'allQuiz' => $allQuiz,
+                    'quizScore' => $quizScore,
+                    'userQuiz' => $userQuiz
+                ]);
+            }else {
+                return view('quiz', [
+                    'allQuiz' => $allQuiz
+                ]);
+            }
         }
+    }
+
+    public function submitQuiz(Request $request) {
+        $allQuiz = Quiz::where('learning_id', $request->learning_id)->get();
+        $trueAnswer = 0;
+
+        for($i=0; $i<count($allQuiz); $i++){
+            if($allQuiz[$i]->option_true == $request->answer[$i]){
+                $status = 1; //bolean
+                $trueAnswer += 1;
+            } else {
+                $status = 0;
+            }
+
+            $userQuiz[$i] = [
+                'learning_id' => $request->learning_id,
+                'quiz_id' => $allQuiz[$i]->id,
+                'user_id'  => auth()->user()->id,
+                'answer' => $request->answer[$i],
+                'status' => $status,
+                'created_at' => date("Y-m-d H:i:s"),
+                'updated_at' => date("Y-m-d H:i:s"),
+            ];
+        }
+
+        $quizScore = [
+            'user_id'  => auth()->user()->id,
+            'learning_id' => $request->learning_id,
+            'true_answer' => $trueAnswer,
+            'score' => $trueAnswer/count($allQuiz) * 100
+        ];
+
+        QuizScore::create($quizScore);
+        UserQuiz::insert($userQuiz);
+
+
+        return redirect('/learning/start-quiz?id='.$request->learning_id)->with('success', 'Quiz berhasil disimpan !');
+
+    }
+
+    public function search_admin_quiz(Request $request)
+    {
+        $search = $request->search;
+        $learnings = Learning::where('title','like','%'. $search .'%')->with('quiz', 'participant')->paginate(8);
+
+        if($learnings->count()==0){
+            return view('admin.quiz.index', ['kosong'=>true]);
+        }
+
+        return view('admin.quiz.index', compact('learnings'),['kosong'=>false]);
     }
 }

@@ -120,50 +120,56 @@
                                             class="fa-solid fa-plus"></i> Quiz</a>
                                 </div>
                                 <div class="col d-flex justify-content-end">
-                                    <form action="{{ route('search.admin.berita') }}" class="d-flex form-inputs w-50"
+                                    <form action="{{ route('search.admin.quiz') }}" class="d-flex form-inputs w-50"
                                         method="GET">
-                                        <input value="{{ old('search.admin.berita') }}" class="form-control" type="text"
+                                        <input @isset($_GET['search']) value="{{ $_GET['search'] }}" @endisset class="form-control" type="text"
                                             name="search" placeholder="Masukan Judul Quiz" aria-label="Search">
                                         <i class="fas fa-search"></i>
                                     </form>
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="table-responsive">
-                                <table class="table table-bordered" width="100%">
-                                    <caption>List of Kegiatan</caption>
-                                    <thead>
-                                        <tr class="text-center">
-                                            <th scope="col">No</th>
-                                            <th scope="col">Materi</th>
-                                            <th scope="col">Total Soal</th>
-                                            <th scope="col">Total Participant</th>
-                                            <th scope="col">Aksi</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody class="text-center">
-                                        @foreach ($learnings as $learning)
-                                            <tr>
-                                                <th scope="row">{{ $loop->iteration }}</th>
-                                                <td>{{ $learning->title }}</td>
-                                                <td>{{ count($learning->quiz) }}</td>
-                                                <td>{{ count($learning->participant) }}</td>
-                                                <td>
-                                                    <a href="/admin/quiz/show-quiz?id={{ $learning->id }}" <i
-                                                        class="fas fa-eye m-1"></i></a>
-                                                </td>
+                        @if ($kosong == true)
+                                <img src="/notfound.jpg" alt="" width="500px" height="500px"
+                                    class="d-block mx-auto">
+
+                        @else
+                            <div class="row">
+                                <div class="table-responsive">
+                                    <table class="table table-bordered" width="100%">
+                                        <caption>List of Kegiatan</caption>
+                                        <thead>
+                                            <tr class="text-center">
+                                                <th scope="col">No</th>
+                                                <th scope="col">Materi</th>
+                                                <th scope="col">Total Soal</th>
+                                                <th scope="col">Total Participant</th>
+                                                <th scope="col">Aksi</th>
                                             </tr>
-                                        @endforeach
+                                        </thead>
+                                        <tbody class="text-center">
+                                            @foreach ($learnings as $learning)
+                                                <tr>
+                                                    <th scope="row">{{ $loop->iteration }}</th>
+                                                    <td>{{ $learning->title }}</td>
+                                                    <td>{{ count($learning->quiz) }}</td>
+                                                    <td>{{ count($learning->participant) }}</td>
+                                                    <td>
+                                                        <a href="/admin/quiz/show-quiz?id={{ $learning->id }}" <i
+                                                            class="fas fa-eye m-1"></i></a>
+                                                    </td>
+                                                </tr>
+                                            @endforeach
 
-                                    </tbody>
-                                </table>
-                            </div>
+                                        </tbody>
+                                    </table>
+                                </div>
 
 
 
-                            <!-- /.row (main row) -->
-                        </div><!-- /.container-fluid -->
+                                <!-- /.row (main row) -->
+                            </div><!-- /.container-fluid -->
+                        @endif
 
                     </section>
 
