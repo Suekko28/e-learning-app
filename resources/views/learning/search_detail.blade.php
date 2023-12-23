@@ -26,16 +26,16 @@
     <div class="d-flex flex-row">
         @foreach ($learning as $item)
             <div class="card me-2 shadow-sm rounded" style="width: 20rem">
-                <img src="{{ asset('storage/public/images/'.$item->image) }}" class="card-img-top img-fluid"
+                <img src="{{ asset('storage/images/'.$item->image) }}" class="card-img-top img-fluid"
                     style="height: 300px; object-fit: cover;" alt="...">
                 <div class="card-body border-0">
                     <p class="card-text"><small class="text-body-secondary">
                             {{ Carbon\Carbon::parse($item->created_at)->isoFormat('D MMMM Y') }}</small></p>
-                    <a href="{{ route('kegiatan.show', ['id' => $item->id]) }}" class="text-black">
+                    <a href="{{ route('learning.show', ['id' => $item->id]) }}" class="text-black">
                         <h5 class="card-title fw-semibold">{{ $item->title }}</h5>
                     </a>
                     <p class="card-text">{{ $item->thumbnail }}</p>
-                    <a href="{{ route('kegiatan.show', ['id' => $item->id]) }}" class="text-danger fw-medium">Baca
+                    <a href="{{ route('learning.show', ['id' => $item->id]) }}" class="text-danger fw-medium">Baca
                         Selengkapnya</a>
                 </div>
             </div>
