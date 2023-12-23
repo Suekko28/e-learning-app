@@ -43,7 +43,7 @@ body{
     text-align: left;
     font-size: 25px;
     line-height: 1.5;
-   
+
 }
 
 .explore {
@@ -69,11 +69,11 @@ hr {
 }
 
 .read {
-    transition: transform 0.3s ease; 
+    transition: transform 0.3s ease;
 }
 
 .read:hover {
-    transform: scale(5); 
+    transform: scale(5);
 }
 
 .form-inputs{
@@ -81,7 +81,7 @@ hr {
     justify-content: flex-end;
 }
 .form-inputs .form-control{
-    height:45px; 
+    height:45px;
 }
 
 .form-inputs .form-control:focus{
@@ -94,4 +94,104 @@ hr {
     right:10px;
     top:15px;
 }
+
+
+::root {
+	counter-reset: question;
+}
+
+section#start {
+	text-align: center;
+	margin-top: 45vh;
+}
+.congrats {
+	font-weight: bold;
+	font-size: 110%;
+	color: orange;
+}
+
+
+
+fieldset {
+	width: 570px;
+	height: auto;
+	color: #000000;
+	background-color: #ffffff;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	border: none;
+	border-radius: 10px;
+	position: relative;
+	padding: 20px;
+	margin-top: 20px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 85px;
+	counter-increment: question;
+}
+section#start a:after {
+	/* content: " " counter(question); */
+}
+fieldset legend {
+    padding-left: 50px;
+}
+fieldset > div {
+	margin-top: 10px;
+    padding-left: 70px;
+}
+fieldset input:checked + label {
+	border-bottom: 2px solid #fddc9b;
+}
+fieldset label::after {
+    content: "\000A";
+    white-space: pre;
+	line-height: 2;
+}
+fieldset section {
+    margin-top: 30px;
+	width: calc(100% - 20px);
+}
+.message a {
+	color: white;
+}
+.incorrect p:first-of-type {
+	font-size: 110%;
+	color: orangered;
+	font-weight: bold;
+}
+.correct {
+	font-size: 110%;
+	color: blue;
+	font-weight: bold;
+}
+
+fieldset .button-next {
+	position: absolute;
+	bottom: -70px;
+	left: 0;
+	right: 0;
+	text-align: center;
+}
+.button {
+	color: white;
+	background-color: #001845;
+	border-radius: 10px;
+	padding: 15px 20px;
+	text-decoration: none;
+	font-weight: bold;
+}
+.button:hover {
+	background-color: #002855;
+}
+
+
+fieldset {
+	display: none;
+}
+fieldset:target {
+	display: block;
+}
+fieldset:target ~ section#start {
+	display: none;
+}
+
 

@@ -71,7 +71,7 @@
                         </a>
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item text-muted disabled" href="#">Welcome ! </a></li>
-                            <li><a class="dropdown-item" href="/my-quiz">My Quiz</a></li>
+                            <li><a class="dropdown-item" href="/my-quiz?userId={{auth()->user()->id}}">My Quiz</a></li>
                             <li>
                                 <form action="{{ route('logout') }}" method="get">
                                     @csrf
