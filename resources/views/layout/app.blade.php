@@ -54,11 +54,11 @@
                     </li>
                     <li class="nav-item me-3">
                         <a class="nav-link {{ Request::segment(1) === 'kegiatan' ? 'active' : null }}"
-                            href="{{ route('act.index') }}">Kegiatan</a>
+                            href="{{ route('kegiatan.index') }}">Kegiatan</a>
                     </li>
                     <li class="nav-item me-3">
                         <a class="nav-link {{ Request::segment(1) === 'berita' ? 'active' : null }}"
-                            href="{{ route('news.index') }}">Berita</a>
+                            href="{{ route('berita.index') }}">Berita</a>
                     </li>
                     <li class="nav-item me-3">
                         <a class="nav-link {{ Request::segment(1) === 'about' ? 'active' : null }}"

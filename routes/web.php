@@ -22,18 +22,17 @@ use Illuminate\Support\Facades\Route;
 
 // User Routes
 Route::middleware(['auth', 'user'])->group(function () {
-    Route::resource('/', HomeController::class);
     Route::resource('home', HomeController::class);
     Route::get('learning/all', [HomeController::class, 'learning_index'])->name('learning.index');
     Route::get('learning/all/{id}/show', [HomeController::class, 'learning_show'])->name('learning.show');
     Route::get('learning/start-quiz', [QuizController::class, 'startQuiz']);
     Route::post('learning/submit-quiz', [QuizController::class, 'submitQuiz']);
 
-    Route::get('kegiatan/all', [HomeController::class, 'kegiatan_index'])->name('act.index');
-    Route::get('kegiatan/all/{id}/show', [HomeController::class, 'kegiatan_show'])->name('act.show');
+    Route::get('kegiatan/all', [HomeController::class, 'kegiatan_index'])->name('kegiatan.index');
+    Route::get('kegiatan/all/{id}/show', [HomeController::class, 'kegiatan_show'])->name('kegiatan.show');
     
-    Route::get('berita/all', [HomeController::class, 'berita_index'])->name('news.index');
-    Route::get('berita/all/{id}/show', [HomeController::class, 'berita_show'])->name('news.show');
+    Route::get('berita/all', [HomeController::class, 'berita_index'])->name('berita.index');
+    Route::get('berita/all/{id}/show', [HomeController::class, 'berita_show'])->name('berita.show');
     Route::get('/about', function () {
         return view('about.index');
     });
@@ -61,6 +60,7 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
 
 // Guest Routes
 Route::middleware(['guest'])->group(function () {
+    Route::get('/', [SessionController::class, 'index'])->name('login.form');
     Route::get('/login', [SessionController::class, 'index'])->name('login.form');
     Route::post('/login', [SessionController::class, 'login'])->name('login.submit');
     Route::get('/register', [SessionController::class, 'register'])->name('register.form');

@@ -66,14 +66,14 @@
                                             </a>
                                         </li>
                                         <li class="nav-item">
-                                            <a href="{{ url('/admin/berita') }}" class="nav-link active">
+                                            <a href="{{ url('/admin/berita') }}" class="nav-link">
                                                 <i class="far fa-circle nav-icon"></i>
                                                 <p>Berita</p>
                                             </a>
                                         </li>
                                     </ul>
                                 <li class="nav-item">
-                                    <a href="{{ url('admin/quiz') }}" class="nav-link">
+                                    <a href="{{ url('admin/quiz') }}" class="nav-link active">
                                         <i class="nav-icon fas fa-tachometer-alt"></i>
                                         <p>
                                             Quiz
