@@ -31,12 +31,12 @@ class SessionController extends Controller
             'email' => $request->email,
             'password' => $request->password,
         ];
-        
+
 
         if (auth()->attempt($credentials)) {
             session(["token" => auth()->user()->createToken($request->email)->plainTextToken]);
             if (auth()->user()->role == 2) {
-                return redirect()->route('/home');
+                return redirect()->route('home');
             } else {
                 return redirect('/admin/dashboard');
             }
@@ -80,7 +80,7 @@ class SessionController extends Controller
             'email' => $request->email,
             'password' => Hash::make($request->password),
             'role' => 2, // Set the role to 2 for regular users
-            
+
         ]);
 
         Auth::login($user);

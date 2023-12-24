@@ -90,7 +90,7 @@ class QuizController extends Controller
 
         Quiz::where('id', $quiz->id)->update($validQuiz);
 
-        return redirect('/admin/quiz/show-quiz?id='.$quiz->id)->with('success', 'Quiz berhasil diubah !');
+        return redirect('/admin/quiz/show-quiz?id='.$quiz->learning_id)->with('success', 'Quiz berhasil diubah !');
     }
 
     /**

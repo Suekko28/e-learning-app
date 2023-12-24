@@ -39,10 +39,7 @@ Route::middleware(['auth', 'user'])->group(function () {
     Route::get('learning/all/search', [HomeController::class, 'search_detail_learning'])->name('search.detail.learning');
     Route::get('kegiatan/all/search', [HomeController::class, 'search_detail_kegiatan'])->name('search.detail.kegiatan');
     Route::get('berita/all/search', [HomeController::class, 'search_detail_berita'])->name('search.detail.berita');
-    Route::get('/my-quiz', function () {
-        return view('quiz');
-
-    });
+    Route::get('/my-quiz', [HomeController::class, 'myQuiz']);
 });
 
 //admin routes
