@@ -62,7 +62,7 @@
                                     <h6 class="h5 mb-0 mt-3">Create your account</h6>
                                     <p class="text-muted mt-1 mb-4">Create a account for your account server</p>
 
-                                    <form action="{{ route('create') }}" method="post" class="authentication-form">
+                                    <form action="{{ route('register.submit') }}" method="post" class="authentication-form">
                                         @csrf
                                         <div class="mb-3">
                                             <label class="form-label">Name</label>
@@ -134,7 +134,7 @@
 
                     <div class="row mt-3">
                         <div class="col-12 text-center">
-                            <p class="text-muted">Already have account? <a href="{{ route('login') }}"
+                            <p class="text-muted">Already have account? <a href="{{ route('login.form') }}"
                                     class="text-primary fw-bold ms-1">Login</a></p>
                         </div> <!-- end col -->
                     </div>

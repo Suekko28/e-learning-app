@@ -28,10 +28,12 @@ Route::middleware(['auth', 'user'])->group(function () {
     Route::get('learning/all/{id}/show', [HomeController::class, 'learning_show'])->name('learning.show');
     Route::get('learning/start-quiz', [QuizController::class, 'startQuiz']);
     Route::post('learning/submit-quiz', [QuizController::class, 'submitQuiz']);
-    Route::get('kegiatan/all', [HomeController::class, 'kegiatan_index'])->name('kegiatan.index');
-    Route::get('kegiatan/all/{id}/show', [HomeController::class, 'kegiatan_show'])->name('kegiatan.show');
-    Route::get('berita/all', [HomeController::class, 'berita_index'])->name('berita.index');
-    Route::get('berita/all/{id}/show', [HomeController::class, 'berita_show'])->name('berita.show');
+
+    Route::get('kegiatan/all', [HomeController::class, 'kegiatan_index'])->name('act.index');
+    Route::get('kegiatan/all/{id}/show', [HomeController::class, 'kegiatan_show'])->name('act.show');
+    
+    Route::get('berita/all', [HomeController::class, 'berita_index'])->name('news.index');
+    Route::get('berita/all/{id}/show', [HomeController::class, 'berita_show'])->name('news.show');
     Route::get('/about', function () {
         return view('about.index');
     });
@@ -47,10 +49,10 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
     Route::get('dashboard', [DashboardController::class, 'index']);
     Route::get('materi/search', [LearningController::class, 'search_admin_learning'])->name('search.admin.learning');
     Route::resource('materi', LearningController::class);
-    Route::get('kegiatan/search', [ActController::class, 'search_admin_kegiatan'])->name('search.admin.kegiatan');
-    Route::resource('kegiatan', ActController::class);
-    Route::get('berita/search', [NewsController::class, 'search_admin_berita'])->name('search.admin.berita');
-    Route::resource('berita', NewsController::class);
+    Route::get('act/search', [ActController::class, 'search_admin_kegiatan'])->name('search.admin.kegiatan');
+    Route::resource('act', ActController::class);
+    Route::get('news/search', [NewsController::class, 'search_admin_berita'])->name('search.admin.berita');
+    Route::resource('news', NewsController::class);
     Route::get('quiz/search', [QuizController::class, 'search_admin_quiz'])->name('search.admin.quiz');
     Route::get('/quiz/show-quiz', [QuizController::class, 'show']);
 
@@ -59,11 +61,11 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
 
 // Guest Routes
 Route::middleware(['guest'])->group(function () {
-    Route::get('/login', [SessionController::class, 'index'])->name('index');
-    Route::post('/login', [SessionController::class, 'login'])->name('login');
-    Route::get('/register', [SessionController::class, 'register'])->name('register');
-    Route::post('/create', [SessionController::class, 'create'])->name('create');
-});
+    Route::get('/login', [SessionController::class, 'index'])->name('login.form');
+    Route::post('/login', [SessionController::class, 'login'])->name('login.submit');
+    Route::get('/register', [SessionController::class, 'register'])->name('register.form');
+    Route::post('/create', [SessionController::class, 'create'])->name('register.submit');
+    }); 
 Route::get('/logout', [SessionController::class, 'logout'])->name('logout');
 
 
