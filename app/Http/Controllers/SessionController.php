@@ -36,7 +36,7 @@ class SessionController extends Controller
         if (auth()->attempt($credentials)) {
             session(["token" => auth()->user()->createToken($request->email)->plainTextToken]);
             if (auth()->user()->role == 2) {
-                return redirect()->route('home');
+                return redirect('home');
             } else {
                 return redirect('/admin/dashboard');
             }

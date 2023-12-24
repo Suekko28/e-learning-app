@@ -35,7 +35,7 @@
                             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                                 data-accordion="false">
                                 <!-- Add icons to the links using the .nav-icon class
-                                   with font-awesome or any other icon font library -->
+                                       with font-awesome or any other icon font library -->
                                 <li class="nav-item">
                                     <a href="{{ url('admin/dashboard') }}" class="nav-link">
                                         <i class="nav-icon fas fa-tachometer-alt"></i>
@@ -75,15 +75,15 @@
 
                                     </ul>
 
-                                    <li class="nav-item">
-                                        <a href="{{url('admin/dashboard')}}" class="nav-link">
-                                          <i class="nav-icon fas fa-tachometer-alt"></i>
-                                          <p>
+                                <li class="nav-item">
+                                    <a href="{{ url('admin/dashboard') }}" class="nav-link">
+                                        <i class="nav-icon fas fa-tachometer-alt"></i>
+                                        <p>
                                             Quiz
-                                          </p>
-                                        </a>
-                                      </li>
-                    
+                                        </p>
+                                    </a>
+                                </li>
+
                                 </li>
                             </ul>
                         </nav>
@@ -103,7 +103,8 @@
                                 </div><!-- /.col -->
                                 <div class="col-sm-6">
                                     <ol class="breadcrumb float-sm-right">
-                                        <li class="breadcrumb-item"><a href="{{url('admin/dashboard')}}">Dashboard</a></li>
+                                        <li class="breadcrumb-item"><a href="{{ url('admin/dashboard') }}">Dashboard</a>
+                                        </li>
                                         <li class="breadcrumb-item active">Materi</li>
                                     </ol>
                                 </div><!-- /.col -->
@@ -122,36 +123,40 @@
                                             class="fa-solid fa-plus"></i> Materi</a>
                                 </div>
                                 <div class="col d-flex justify-content-end">
-                                    <form action="{{route('search.admin.learning')}}" class="d-flex form-inputs w-50" method="GET">
-                                        <input value="{{ old('search.admin.learning') }}" class="form-control" type="text" name="search" placeholder="Masukan Judul Materi" aria-label="Search">
+                                    <form action="{{ route('search.admin.learning') }}" class="d-flex form-inputs w-50"
+                                        method="GET">
+                                        <input value="{{ old('search.admin.learning') }}" class="form-control"
+                                            type="text" name="search" placeholder="Masukan Judul Materi"
+                                            aria-label="Search">
                                         <i class="fas fa-search"></i>
                                     </form>
                                 </div>
-                        </div>
                             </div>
-                            <div class="row">
-                                <div class="table-responsive">
-                                    <table class="table table-bordered vw-100 ">
-                                        <caption>List of Materi</caption>
-                                        <thead>
-                                            <tr class="text-center">
-                                                <th scope="col">No</th>
-                                                <th scope="col">Gambar</th>
-                                                <th scope="col">Judul</th>
-                                                <th scope="col">Konten</th>
-                                                <th scope="col">Thumbnail</th>
-                                                <th scope="col">Link Drive</th>
-                                                <th scope="col">Aksi</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <?php $i = $data->firstItem(); ?>
+                        </div>
+                        <div class="row">
+                            <div class="table-responsive">
+                                <table class="table table-bordered vw-100 ">
+                                    <caption>List of Materi</caption>
+                                    <thead>
+                                        <tr class="text-center">
+                                            <th scope="col">No</th>
+                                            <th scope="col">Gambar</th>
+                                            <th scope="col">Judul</th>
+                                            <th scope="col">Konten</th>
+                                            <th scope="col">Thumbnail</th>
+                                            <th scope="col">Link Drive</th>
+                                            <th scope="col">Aksi</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php $i = $data->firstItem(); ?>
                                         </tr>
                                         @foreach ($data as $item)
                                             <tr>
                                                 <th scope="row" class="text-center">{{ $i }}</th>
                                                 <td scope="row" class="text-center">
-                                                    
+
+                                                    <img src="{{ Storage::url('public/images/' . $item->image) }}"
                                                         class="rounded" style="width: 150px">
                                                 </td>
                                                 <td scope="row">{{ $item->title }}</td>
@@ -175,37 +180,36 @@
                                                 <?php $i++; ?>
                                             </tr>
 
-                                        </tbody>
-                                        @endforeach
-                                        {{-- @endforeach --}}
-                                    </table>
-                                </div>
-                                {{ $data->links() }}
-
+                                    </tbody>
+                                    @endforeach
+                                    {{-- @endforeach --}}
+                                </table>
                             </div>
-                            <!-- /.row (main row) -->
-                        </div><!-- /.container-fluid -->
-                        {{-- {{ $data->links() }} --}}
+                            {{ $data->links() }}
 
-                    </section>
-                    <!-- /.content -->
-                </div>
-                <!-- /.content-wrapper -->
-                <footer class="main-footer">
-                    <strong>&copy; 2023 Copyright <a href="#">Teknik Jaringan Komputer & Telekomunikasi</a>
-                        <div class="float-right d-none d-sm-inline-block">
-                            <b>Version</b> 1.0.0
                         </div>
-                </footer>
+                        <!-- /.row (main row) -->
+                </div><!-- /.container-fluid -->
+                {{-- {{ $data->links() }} --}}
 
-                <!-- Control Sidebar -->
-                <aside class="control-sidebar control-sidebar-dark">
-                    <!-- Control sidebar content goes here -->
-                </aside>
-                <!-- /.control-sidebar -->
+                </section>
+                <!-- /.content -->
+            </div>
+            <!-- /.content-wrapper -->
+            <footer class="main-footer">
+                <strong>&copy; 2023 Copyright <a href="#">Teknik Jaringan Komputer & Telekomunikasi</a>
+                    <div class="float-right d-none d-sm-inline-block">
+                        <b>Version</b> 1.0.0
+                    </div>
+            </footer>
+
+            <!-- Control Sidebar -->
+            <aside class="control-sidebar control-sidebar-dark">
+                <!-- Control sidebar content goes here -->
+            </aside>
+            <!-- /.control-sidebar -->
             </div>
     </main>
-    
 @endsection
 {{-- @push('scripts')
 <script type="text/javascript">
@@ -230,7 +234,3 @@ $(document).ready(function () {
  });
 </script>
 @endpush --}}
-
-
-
-
