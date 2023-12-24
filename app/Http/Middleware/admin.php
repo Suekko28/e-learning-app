@@ -15,6 +15,9 @@ class admin
      */
     public function handle(Request $request, Closure $next): Response
     {
+        if (auth()->guest() || auth()->user()->role !== 1) {
+            abort(403, 'anda tidak memiliki akses kehalaman ini');
+        }
         return $next($request);
     }
 }
