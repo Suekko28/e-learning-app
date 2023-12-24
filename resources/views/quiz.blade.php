@@ -2,12 +2,13 @@
 
 @section('navbar')
 
+
     <form action="/learning/submit-quiz" method="POST" enctype="multipart/form-data">
         @csrf
         <input type="hidden" name="learning_id" value="{{$_GET['id']}}">
         @foreach ($allQuiz as $quiz)
             @if (isset($quizScore))
-                <fieldset id="question-{{$loop->iteration}}" style="background-color: #00000;">
+                <fieldset id="question-{{$loop->iteration}}" style="background-color: #00000;" class="container">
                     <legend>{!!$quiz->question!!}</legend>
                     <input type="hidden" name="quiz_id[{{$loop->index}}]" id="quiz_id[{{$loop->index}}]" value="{{$quiz->id}}">
                     <div>
@@ -62,10 +63,9 @@
                                 <a class="button" href="#question-{{$loop->iteration+1}}">Next question</a>
                             @endif
                         </p>
-                    </div>
                 </fieldset>
             @else
-                <fieldset id="question-{{$loop->iteration}}" style="background-color: #00000;">
+                <fieldset id="question-{{$loop->iteration}}" style="background-color: #00000;" class="container">
                     <legend>{!!$quiz->question!!}</legend>
                     <input type="hidden" name="quiz_id[{{$loop->index}}]" id="quiz_id[{{$loop->index}}]" value="{{$quiz->id}}">
                     <div>
@@ -88,8 +88,11 @@
                         </p>
                     </div>
                 </fieldset>
+            </div>
+
 
             @endif
+            
         @endforeach
 
         @if (isset($quizScore))

@@ -59,13 +59,13 @@
                                             </a>
                                         </li>
                                         <li class="nav-item">
-                                            <a href="{{ url('/admin/kegiatan') }}" class="nav-link active">
+                                            <a href="{{ url('/admin/kegiatan') }}" class="nav-link">
                                                 <i class="far fa-circle nav-icon"></i>
                                                 <p>Kegiatan</p>
                                             </a>
                                         </li>
                                         <li class="nav-item">
-                                            <a href="{{ url('/admin/berita') }}" class="nav-link">
+                                            <a href="{{ url('/admin/berita') }}" class="nav-link active">
                                                 <i class="far fa-circle nav-icon"></i>
                                                 <p>Berita</p>
                                             </a>

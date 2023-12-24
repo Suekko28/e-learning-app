@@ -1,29 +1,49 @@
 @extends('layout.app')
 @section('navbar')
-        @foreach ($results as $result)
-            <section id="start" style="margin-top: 10px;">
-                <fieldset id="score" style="background-color: #00000; display: block; height: auto; width: 400px; margin-bottom: 0px;">
-                    <div class="row">
-                        <div class="col-lg-8">
-                            <h5>{{$result->learning->title}}</h5>
-                        </div>
-                        <div class="col-lg-3">
-                            <a class="btn btn-sm btn-outline-primary" href="/learning/start-quiz?id={{$result->learning_id}}#question-1" target="_blank">Review</a>
-                        </div>
-                    </div>
-                    <p class="text-left mt-3">
-                        Score : {{$result->score}} <br>
-                        Total jawaban benar : {{$result->true_answer}} <br>
-                    </p>
+    <div class="container mt-5">
+        <div class="row">
+                <div class="card p-5">
+                    <h3 class="">Hasil Quiz</h3>
+                    <div class="col text-body-secondary text-lighter mb-3">Quiz Yang Telah Kamu Selesaikan</div>
+                <div class="table-responsive table-quiz">
+                    <table class="table table-bordered vw-100 ">
+                        <caption>List of Materi Quiz</caption>
+                        <thead>
+                            <tr class="text-center">
+                                <th scope="col">No</th>
+                                <th scope="col">Judul Materi</th>
+                                <th scope="col">Score</th>
+                                <th scope="col">Jawaban Benar</th>
+                                <th scope="col">Tanggal</th>
+                                <th scope="col">Review</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php $i = $results->firstItem(); ?>
+                            </tr>
+                            @foreach ($results as $result)
+                                <tr>
+                                    <th scope="row" class="text-center">{{ $i }}</th>
+                                    <td scope="row" class="text-center">{{ $result->learning->title }}</td>
+                                    <td scope="row" class="text-center">{{ $result->score }}</td>
+                                    <td scope="row" class="text-center"> {{ $result->true_answer }}</td>
+                                    <td scope="row" class="text-center">{{ $result->created_at }}</td>
+                                    <td scope ="row" class="text-center"> <a class="btn btn-sm btn-primary"
+                                            href="/learning/start-quiz?id={{ $result->learning_id }}#question-1"
+                                            target="_blank">Review</a>
+                                    </td>
+                                    <?php $i++; ?>
+                                </tr>
 
-                    <p class="text-center">{{$result->created_at}} <br></p>
-                </fieldset>
-            </section>
-        @endforeach
-        <div class="row justify-content-center mt-5">
-            <div class="col-lg-3">
-                {{ $results->links() }}
+                        </tbody>
+                        @endforeach
+                    </table>
+
+                </div>
             </div>
+            {{ $results->links() }}
         </div>
+    </div>
+
     @include('layout.footer')
 @endsection
