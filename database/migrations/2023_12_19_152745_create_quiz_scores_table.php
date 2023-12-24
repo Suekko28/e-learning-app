@@ -16,6 +16,7 @@ return new class extends Migration
             $table->foreignId('user_id');
             $table->foreignId('learning_id');
             $table->float('score');
+            $table->integer('true_answer');
             $table->timestamps();
         });
     }
