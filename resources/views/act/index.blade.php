@@ -25,7 +25,7 @@
                             style="height: 300px; object-fit:cover" alt="...">
                         <div class="card-body border-0">
                             <p class="card-text"><small class="text-body-secondary">
-                                {{ Carbon\Carbon::parse($item->created_at)->isoFormat('D MMMM Y') }}</small></p>p
+                                {{ Carbon\Carbon::parse($item->created_at)->isoFormat('D MMMM Y') }}</small></p>
                             <a href="{{ route('kegiatan.show', ['id' => $item->id]) }}" class="text-black">
                                 <h5 class="card-title">{{ $item->title }}</h5>
                             </a>
