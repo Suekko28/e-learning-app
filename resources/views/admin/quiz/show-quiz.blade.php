@@ -33,7 +33,7 @@
                             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                                 data-accordion="false">
                                 <!-- Add icons to the links using the .nav-icon class
-                       with font-awesome or any other icon font library -->
+                                       with font-awesome or any other icon font library -->
                                 <li class="nav-item">
                                     <a href="{{ url('admin/dashboard') }}" class="nav-link">
                                         <i class="nav-icon fas fa-tachometer-alt"></i>
@@ -59,13 +59,13 @@
                                             </a>
                                         </li>
                                         <li class="nav-item">
-                                            <a href="{{ url('/admin/kegiatan') }}" class="nav-link active">
+                                            <a href="{{ url('/admin/kegiatan') }}" class="nav-link">
                                                 <i class="far fa-circle nav-icon"></i>
                                                 <p>Kegiatan</p>
                                             </a>
                                         </li>
                                         <li class="nav-item">
-                                            <a href="{{ url('/admin/berita') }}" class="nav-link">
+                                            <a href="{{ url('/admin/berita') }}" class="nav-link active">
                                                 <i class="far fa-circle nav-icon"></i>
                                                 <p>Berita</p>
                                             </a>
@@ -97,14 +97,14 @@
                         <div class="container-fluid">
                             <div class="row mb-2">
                                 <div class="col-sm-6">
-                                    <h1 class="m-0 fw-bold">Input Berita</h1>
+                                    <h1 class="m-0 fw-bold">All Quiz</h1>
                                 </div><!-- /.col -->
                                 <div class="col-sm-6">
                                     <ol class="breadcrumb float-sm-right">
                                         <li class="breadcrumb-item"><a href="{{ url('admin/dashboard') }}">Dashboard</a>
                                         </li>
-                                        <li class="breadcrumb-item"><a href="{{ url('admin/berita') }}">Berita</a></li>
-                                        <li class="breadcrumb-item active">Input Berita</li>
+                                        <li class="breadcrumb-item"><a href="{{ url('admin/quiz') }}">Quiz</a></li>
+                                        <li class="breadcrumb-item active">All Quiz</li>
                                     </ol>
                                 </div><!-- /.col -->
                             </div><!-- /.row -->
@@ -116,38 +116,52 @@
                     <!-- Main content -->
                     <section class="content">
                         <div class="container-fluid">
-                            <!-- Small boxes (Stat box) -->
-                            <form action="{{ url('/admin/berita') }}" method="post" enctype="multipart/form-data">
-                                @csrf
-                                <div class="card-body container">
-                                    <div class="form-group">
-                                        <label for="gambar">Gambar</label>
-                                        <input type="file" class="form-control" id="image" name="image"
-                                            placeholder="">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="judul">Judul</label>
-                                        <input type="text" class="form-control" id="title" name="title"
-                                            placeholder="Masukkan Judul">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="Konten">Konten</label>
-                                        <textarea rows="20" class="form-control" id="content" name="content" placeholder="Masukkan Isi Materi"></textarea>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="thumbnail">Thumbnail</label>
-                                        <input type="text" class="form-control" id="thumbnail" name="thumbnail"
-                                            placeholder="Masukkan Thumbnail">
-                                    </div>
-                                    <div class="d-flex flex-row-reverse">
-                                        <button type="submit" class="btn btn-primary ml-3">Simpan</button>
-                                        <a href="{{ url('/admin/berita') }}" class="btn btn-danger">Batal</a>
-                                    </div>
+                            <!--Question section using form element-->
+                            <form name="csQuizForm" onsubmit="return submitAnswers()" class="card p-4">
+                                <div class="text-left"><!--opening of div tag-->
+                                    <!--Question-->
+                                    @foreach ($allQuiz as $quiz)
+                                        <div class="number-quiz">
+                                            {{$loop->iteration.'. '}}
+                                            <a href="/admin/quiz/{{$quiz->id}}/edit"><i class="ml-3 fas fa-pen text-warning"></i></a>
+                                            <form action="/admin/quiz/{{$quiz->id}}" method="POST" class="d-inline">
+                                                @method('DELETE')
+                                                @csrf
+                                                <button class="border-0 bg-transparant d-inline" style="background-color: transparent;"
+                                                    onclick="return confirm(`Hapus quiz ini?`);"><i class="fas fa-trash text-danger"></i></button>
+                                            </form>
+                                        </div>
+                                            {!!$quiz->question!!}
+                                            <input type="radio" name="q1" value="a" id="q1a"
+                                                class=""> {{$quiz->option_a}}
+                                                @if ($quiz->option_true == 'option_a')
+                                                    <div class="badge badge-success">benar</div>
+                                                @endif
+                                        <br>
+                                            <input type="radio" name="q1" value="b" id="q1b"
+                                                class=""> {{$quiz->option_b}}
+                                                @if ($quiz->option_true == 'option_b')
+                                                    <div class="badge badge-success">benar</div>
+                                                @endif
+                                        <br>
+                                            <input type="radio" name="q1" value="c" id="q1c"
+                                                class=""> {{$quiz->option_c}}
+                                                @if ($quiz->option_true == 'option_c')
+                                                    <div class="badge badge-success">benar</div>
+                                                @endif
+                                        <br>
+                                            <input type="radio" name="q1" value="d" id="q1d"
+                                                class=""> {{$quiz->option_d}}
+                                                @if ($quiz->option_true == 'option_d')
+                                                    <div class="badge badge-success">benar</div>
+                                                @endif
+                                        <br><br>
+                                    @endforeach
+                                    <!--back button element-->
+                                    <a href="/admin/quiz" class="btn btn-sm btn-outline-info myLink">Back</a>
                                 </div>
-                                <!-- /.card-body -->
 
-                            </form>
-                            <!-- /.row (main row) -->
+                            </form><!--close of form element-->
                         </div><!-- /.container-fluid -->
                     </section>
                     <!-- /.content -->
@@ -167,8 +181,4 @@
                 <!-- /.control-sidebar -->
             </div>
     </main>
-    <script src="https://cdn.ckeditor.com/4.13.1/standard/ckeditor.js"></script>
-    <script>
-        CKEDITOR.replace('content');
-    </script>
 @endsection

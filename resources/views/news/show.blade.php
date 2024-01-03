@@ -9,8 +9,6 @@
             <div class="caption mt-3 mb-3">
                 {!! $news->content !!}
             </div>
-            <div class="col text-right"><a class="btn text-white fw-bold" href="{{ $news->drive }}"
-                    style="background-color: #1A205D" target="_blank">Download Materi</a></div>
 
             <h4>Kegiatan Terbaru</h4>
             <hr style="width: 100%">
@@ -22,11 +20,11 @@
                         <div class="card-body border-0">
                             <p class="card-text"><small class="text-body-secondary">
                                 {{ Carbon\Carbon::parse($item->created_at)->isoFormat('D MMMM Y') }}</small></p>
-                            <a href="{{ route('learning.show', ['id' => $item->id]) }}" class="text-black">
+                            <a href="{{ route('berita.show', ['id' => $item->id]) }}" class="text-black">
                                 <h5 class="card-title">{{ $item->title }}</h5>
                             </a>
                             <p class="card-text">{{ $item->thumbnail }}</p>
-                            <a href="{{ route('learning.show', ['id' => $item->id]) }}" class="text-danger fw-medium read">Baca
+                            <a href="{{ route('berita.show', ['id' => $item->id]) }}" class="text-danger fw-medium read">Baca
                                 Selengkapnya</a>
 
                         </div>

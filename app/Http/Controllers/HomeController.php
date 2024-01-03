@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Activity;
 use App\Models\Learning;
 use App\Models\News;
+use App\Models\QuizScore;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -55,7 +56,7 @@ class HomeController extends Controller
     {
         $news = News::latest()->paginate(8);
         return view('news.index', compact('news'));
-    }  
+    }
 
     public function berita_show($id)
     {
@@ -72,7 +73,7 @@ class HomeController extends Controller
         ->where('title','like','%'. $search .'%')
         ->paginate(8);
 
-        
+
         $act = DB::table('activities')
         ->where('title','like','%'. $search .'%')
         ->paginate(8);
@@ -134,4 +135,10 @@ class HomeController extends Controller
     }
 
 
+    public function myQuiz(Request $request) {
+        $results = QuizScore::where('user_id', $request->userId)->paginate(8)->withQueryString();
+        return view('my-quiz', [
+            'results' => $results
+        ]);
+    }
 }

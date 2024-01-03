@@ -15,88 +15,76 @@ class SessionController extends Controller
         return view('auth.login');
     }
 
-
     public function login(Request $request)
     {
-
         Session::flash('email', $request->email);
 
         $request->validate([
-            'email'=>'required',
-            'password'=>'required',
-
-        ],[
+            'email' => 'required',
+            'password' => 'required',
+        ], [
             'email.required' => 'Email wajib diisi',
-            'password.required'=> 'Password wajib diisi'
-
+            'password.required' => 'Password wajib diisi',
         ]);
-        
-        $infologin = [
+
+        $credentials = [
             'email' => $request->email,
             'password' => $request->password,
         ];
 
-        if(Auth::attempt($infologin)){
-            //kalau otentikasi sukses
-            return redirect('admin/dashboard')->with('success', Auth::user()->name . 'berhasil login');;
-        }else{
-            //kalo otentikasi gaal
-            return redirect('login')->withErrors('Username dan password yang dimasukkan tidak valid');
-        };
+
+        if (auth()->attempt($credentials)) {
+            session(["token" => auth()->user()->createToken($request->email)->plainTextToken]);
+            if (auth()->user()->role == 2) {
+                return redirect('home');
+            } else {
+                return redirect('/admin/dashboard');
+            }
+        } else {
+            return redirect()->back()->withErrors('Invalid Credentials');
+        }
     }
 
-    function logout()
+    public function logout()
     {
         Auth::logout();
         return redirect('login');
     }
 
-    function register()
+    public function register()
     {
         return view('auth.register');
     }
 
-    function create(Request $request)
+    public function create(Request $request)
     {
         Session::flash('name', $request->name);
         Session::flash('email', $request->email);
 
         $request->validate([
-            'name'=>'required|min:10',
-            'email'=>'required|email|unique:users',
-            'password'=>'required|min:6',
-
-        ],[
-            'name.required' => 'Email wajib diisi',
+            'name' => 'required|min:10',
+            'email' => 'required|email|unique:users',
+            'password' => 'required|min:6',
+        ], [
+            'name.required' => 'Nama wajib diisi',
             'name.min' => 'Minimal nama yang diizinkan adalah 10 karakter',
             'email.required' => 'Email wajib diisi',
             'email.email' => 'Silahkan masukkan email yang valid',
-            'email.unique'=> 'Email sudah pernah digunakan, silahkan pilih email yang lain',
-            'password.required'=> 'Password wajib diisi',
-            'password.min' => 'Minimal password yang diizinkan adalah 6 karakter'
+            'email.unique' => 'Email sudah pernah digunakan, silahkan pilih email yang lain',
+            'password.required' => 'Password wajib diisi',
+            'password.min' => 'Minimal password yang diizinkan adalah 6 karakter',
+        ]);
+
+        $user = User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+            'role' => 2, // Set the role to 2 for regular users
 
         ]);
 
-        $data = [
-            'name'=> $request->name,
-            'email'=>$request->email,
-            'password'=>Hash::make($request->password),
-        ];
+        Auth::login($user);
 
-        User::create($data);
-        
-        $infologin = [
-            'email' => $request->email,
-            'password' => $request->password,
-        ];
-
-        if(Auth::attempt($infologin)){
-            //kalau otentikasi sukses
-            return redirect('admin/dashboard')->with('success', Auth::user()->name . 'berhasil login');
-        }else{
-            //kalo otentikasi gaal
-            return redirect('login')->withErrors('Username dan password yang dimasukkan tidak valid');
-        };
-        
+        return redirect('home')->with('success', $user->name . ' berhasil login');
     }
 }

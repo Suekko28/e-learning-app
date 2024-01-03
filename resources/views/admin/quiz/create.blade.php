@@ -33,7 +33,7 @@
                             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                                 data-accordion="false">
                                 <!-- Add icons to the links using the .nav-icon class
-                       with font-awesome or any other icon font library -->
+                                   with font-awesome or any other icon font library -->
                                 <li class="nav-item">
                                     <a href="{{ url('admin/dashboard') }}" class="nav-link">
                                         <i class="nav-icon fas fa-tachometer-alt"></i>
@@ -59,7 +59,7 @@
                                             </a>
                                         </li>
                                         <li class="nav-item">
-                                            <a href="{{ url('/admin/kegiatan') }}" class="nav-link active">
+                                            <a href="{{ url('/admin/kegiatan') }}" class="nav-link">
                                                 <i class="far fa-circle nav-icon"></i>
                                                 <p>Kegiatan</p>
                                             </a>
@@ -74,7 +74,7 @@
                                     </ul>
 
                                 <li class="nav-item">
-                                    <a href="{{ url('admin/quiz') }}" class="nav-link">
+                                    <a href="{{ url('admin/quiz') }}" class="nav-link active">
                                         <i class="nav-icon fas fa-tachometer-alt"></i>
                                         <p>
                                             Quiz
@@ -97,14 +97,14 @@
                         <div class="container-fluid">
                             <div class="row mb-2">
                                 <div class="col-sm-6">
-                                    <h1 class="m-0 fw-bold">Input Berita</h1>
+                                    <h1 class="m-0 fw-bold">Input Quiz</h1>
                                 </div><!-- /.col -->
                                 <div class="col-sm-6">
                                     <ol class="breadcrumb float-sm-right">
                                         <li class="breadcrumb-item"><a href="{{ url('admin/dashboard') }}">Dashboard</a>
                                         </li>
-                                        <li class="breadcrumb-item"><a href="{{ url('admin/berita') }}">Berita</a></li>
-                                        <li class="breadcrumb-item active">Input Berita</li>
+                                        <li class="breadcrumb-item"><a href="{{ url('admin/quiz') }}">Quiz</a></li>
+                                        <li class="breadcrumb-item active">Input Quiz</li>
                                     </ol>
                                 </div><!-- /.col -->
                             </div><!-- /.row -->
@@ -117,34 +117,82 @@
                     <section class="content">
                         <div class="container-fluid">
                             <!-- Small boxes (Stat box) -->
-                            <form action="{{ url('/admin/berita') }}" method="post" enctype="multipart/form-data">
+                            <form action="/admin/quiz" method="post" enctype="multipart/form-data">
                                 @csrf
                                 <div class="card-body container">
-                                    <div class="form-group">
-                                        <label for="gambar">Gambar</label>
-                                        <input type="file" class="form-control" id="image" name="image"
-                                            placeholder="">
+                                        <div class="form-group">
+                                            <label for="learning_id" class="col-form-label">Pilih Materi</label>
+                                            <select id="learning_id" name="learning_id" class="form-control" required>
+                                                <option value="" selected>--Pilih Salah Satu--</option>
+                                                @foreach ($learnings as $learning)
+                                                    <option value="{{$learning->id}}">{{ $learning->title }}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="Konten">Soal</label>
+                                            <textarea rows="20" class="form-control" id="question" name="question" placeholder="Masukkan Isi Materi" required></textarea>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <div class="col-sm-3">
+                                                    <label for="option_a" class="col-form-label">Opsi 1</label>
+                                                    <input type="text" class="form-control" id="option_a" name="option_a"
+                                                        placeholder="Jawaban A" required>
+                                                </div>
+                                                <div class="col-sm-3">
+                                                    <label for="name" class="col-form-label">Opsi 2</label>
+                                                    <input type="text" class="form-control" id="option_b"
+                                                        name="option_b" placeholder="Jawaban B"  required>
+                                                </div>
+
+                                                <div class="col-sm-3">
+                                                    <label for="option_c" class="col-form-label">Opsi 3</label>
+                                                    <input type="text" class="form-control" id="option_c"
+                                                        name="option_c" placeholder="Jawaban C" required>
+                                                </div>
+
+                                                <div class="col-sm-3">
+                                                    <label for="option_d" class="col-form-label">Opsi 4</label>
+                                                    <input type="text" class="form-control" id="option_d"
+                                                        name="option_d" placeholder="Jawaban D" required>
+                                                </div>
+
+                                                <div class="col-sm-12 mt-3">
+                                                    <label for="option_true" class="col-form-label">Jawaban Benar</label>
+                                                    <br>
+                                                    <div class=" card p-2">
+                                                        <div class="form-check">
+                                                            <input type="radio" id="option_true" name="option_true"
+                                                                value="option_a" required>
+                                                            <label for="option_a">Jawaban A</label>
+                                                        </div>
+                                                        <div class="form-check">
+                                                            <input type="radio" id="option_true" name="option_true"
+                                                                value="option_b" required>
+                                                            <label for="option_b">Jawaban B</label>
+                                                        </div>
+                                                        <div class="form-check">
+                                                            <input type="radio" id="option_true" name="option_true"
+                                                                value="option_c" required>
+                                                            <label for="option_c">Jawaban C</label>
+                                                        </div>
+                                                        <div class="form-check">
+                                                            <input type="radio" id="option_true" name="option_true"
+                                                                value="option_d" required>
+                                                            <label for="option_d">Jawaban D</label>
+                                                        </div>
+                                                    </div>
+
+                                            </div>
+
+                                            <div class="d-flex flex-row-reverse">
+                                                <button type="submit" class="btn btn-primary ml-3">Simpan</button>
+                                                <a href="{{ url('/admin/quiz') }}" class="btn btn-danger">Batal</a>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="form-group">
-                                        <label for="judul">Judul</label>
-                                        <input type="text" class="form-control" id="title" name="title"
-                                            placeholder="Masukkan Judul">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="Konten">Konten</label>
-                                        <textarea rows="20" class="form-control" id="content" name="content" placeholder="Masukkan Isi Materi"></textarea>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="thumbnail">Thumbnail</label>
-                                        <input type="text" class="form-control" id="thumbnail" name="thumbnail"
-                                            placeholder="Masukkan Thumbnail">
-                                    </div>
-                                    <div class="d-flex flex-row-reverse">
-                                        <button type="submit" class="btn btn-primary ml-3">Simpan</button>
-                                        <a href="{{ url('/admin/berita') }}" class="btn btn-danger">Batal</a>
-                                    </div>
-                                </div>
-                                <!-- /.card-body -->
+                                    <!-- /.card-body -->
 
                             </form>
                             <!-- /.row (main row) -->
@@ -169,6 +217,6 @@
     </main>
     <script src="https://cdn.ckeditor.com/4.13.1/standard/ckeditor.js"></script>
     <script>
-        CKEDITOR.replace('content');
+        CKEDITOR.replace('question');
     </script>
 @endsection

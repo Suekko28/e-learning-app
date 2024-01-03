@@ -59,7 +59,7 @@
                                             Invalid Credentials
                                         </div>
                                         @endif
-                                        <form action="{{ route('login') }}" method="post" class="authentication-form">                             
+                                        <form action="{{ route('login.submit') }}" method="post" class="authentication-form">                             
                                             @csrf
                                             <div class="mb-3">
                                                 <label class="form-label">Email Address</label>
@@ -93,7 +93,7 @@
                                             </div>
                                             <h6 class="text-danger">Silahkan membuat akun terlebih dahulu jika tidak memiliki akun</h6>
                                             <div class="mb-3 text-center d-grid">
-                                                <a href="{{route('register')}}" class="btn btn-success">Register</a>
+                                                <a href="{{route('register.submit')}}" class="btn btn-success">Register</a>
                                             </div>
 
                                         </form>

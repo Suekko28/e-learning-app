@@ -27,7 +27,6 @@
                     <div class="sidebar">
                         <!-- Sidebar user panel (optional) -->
 
-
                         <!-- SidebarSearch Form -->
 
                         <!-- Sidebar Menu -->
@@ -35,7 +34,7 @@
                             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                                 data-accordion="false">
                                 <!-- Add icons to the links using the .nav-icon class
-                                       with font-awesome or any other icon font library -->
+                       with font-awesome or any other icon font library -->
                                 <li class="nav-item">
                                     <a href="{{ url('admin/dashboard') }}" class="nav-link">
                                         <i class="nav-icon fas fa-tachometer-alt"></i>
@@ -55,7 +54,7 @@
                                     </a>
                                     <ul class="nav nav-treeview">
                                         <li class="nav-item">
-                                            <a href="{{ url('/admin/materi') }}" class="nav-link active">
+                                            <a href="{{ url('/admin/materi') }}" class="nav-link">
                                                 <i class="far fa-circle nav-icon"></i>
                                                 <p>Materi</p>
                                             </a>
@@ -72,11 +71,9 @@
                                                 <p>Berita</p>
                                             </a>
                                         </li>
-
                                     </ul>
-
                                 <li class="nav-item">
-                                    <a href="{{ url('admin/quiz') }}" class="nav-link">
+                                    <a href="{{ url('admin/quiz') }}" class="nav-link active">
                                         <i class="nav-icon fas fa-tachometer-alt"></i>
                                         <p>
                                             Quiz
@@ -99,13 +96,13 @@
                         <div class="container-fluid">
                             <div class="row mb-2">
                                 <div class="col-sm-6">
-                                    <h1 class="m-0 fw-bold">Materi</h1>
+                                    <h1 class="m-0">Quiz</h1>
                                 </div><!-- /.col -->
                                 <div class="col-sm-6">
                                     <ol class="breadcrumb float-sm-right">
                                         <li class="breadcrumb-item"><a href="{{ url('admin/dashboard') }}">Dashboard</a>
                                         </li>
-                                        <li class="breadcrumb-item active">Materi</li>
+                                        <li class="breadcrumb-item active">Quiz</li>
                                     </ol>
                                 </div><!-- /.col -->
                             </div><!-- /.row -->
@@ -119,118 +116,78 @@
                             @include('layout.message')
                             <div class="row">
                                 <div class="col text-body-secondary text-lighter">
-                                    <a href="{{ url('/admin/materi/create') }}" class="btn btn-success  mb-3 text-white"><i
-                                            class="fa-solid fa-plus"></i> Materi</a>
+                                    <a href="{{ url('/admin/quiz/create') }}" class="btn btn-success  mb-3 text-white"><i
+                                            class="fa-solid fa-plus"></i> Quiz</a>
                                 </div>
                                 <div class="col d-flex justify-content-end">
-                                    <form action="{{ route('search.admin.learning') }}" class="d-flex form-inputs w-50"
+                                    <form action="{{ route('search.admin.quiz') }}" class="d-flex form-inputs w-50"
                                         method="GET">
-                                        <input value="{{ old('search.admin.learning') }}" class="form-control"
-                                            type="text" name="search" placeholder="Masukan Judul Materi"
-                                            aria-label="Search">
+                                        <input @isset($_GET['search']) value="{{ $_GET['search'] }}" @endisset class="form-control" type="text"
+                                            name="search" placeholder="Masukan Judul Quiz" aria-label="Search">
                                         <i class="fas fa-search"></i>
                                     </form>
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="table-responsive">
-                                <table class="table table-bordered vw-100 ">
-                                    <caption>List of Materi</caption>
-                                    <thead>
-                                        <tr class="text-center">
-                                            <th scope="col">No</th>
-                                            <th scope="col">Gambar</th>
-                                            <th scope="col">Judul</th>
-                                            <th scope="col">Konten</th>
-                                            <th scope="col">Thumbnail</th>
-                                            <th scope="col">Link Drive</th>
-                                            <th scope="col">Aksi</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <?php $i = $data->firstItem(); ?>
-                                        </tr>
-                                        @foreach ($data as $item)
-                                            <tr>
-                                                <th scope="row" class="text-center">{{ $i }}</th>
-                                                <td scope="row" class="text-center">
+                        @if ($kosong == true)
+                                <img src="/notfound.jpg" alt="" width="500px" height="500px"
+                                    class="d-block mx-auto">
 
-                                                    <img src="{{ Storage::url('public/images/' . $item->image) }}"
-                                                        class="rounded" style="width: 150px">
-                                                </td>
-                                                <td scope="row">{{ $item->title }}</td>
-                                                <td scope="row">{!! $item->content !!}</td>
-                                                <td scope="row">{{ $item->thumbnail }}</td>
-                                                <td scope="row"><a href="{{ $item->drive }}"
-                                                        target="_blank">{{ $item->drive }}</a></td>
-                                                <td scope="row" class="text-center">
-                                                    <a href="{{ url('/admin/materi/' . $item->id) . '/edit' }}"
-                                                        class="btn btn-warning mb-2"><i
-                                                            class=" fa fa-solid fa-pen-to-square"
-                                                            style="color:white;"></i></a>
-                                                    <form action="{{ url('/admin/materi/' . $item->id) }}"
-                                                        method="POST">
-                                                        @csrf
-                                                        @method('DELETE')
-                                                        <button class="btn btn-danger mb-2"><i
-                                                                class="fa fa-solid fa-trash"></i></button>
-                                                    </form>
-                                                </td>
-                                                <?php $i++; ?>
+                        @else
+                            <div class="row">
+                                <div class="table-responsive">
+                                    <table class="table table-bordered" width="100%">
+                                        <caption>List of Kegiatan</caption>
+                                        <thead>
+                                            <tr class="text-center">
+                                                <th scope="col">No</th>
+                                                <th scope="col">Materi</th>
+                                                <th scope="col">Total Soal</th>
+                                                <th scope="col">Total Participant</th>
+                                                <th scope="col">Aksi</th>
                                             </tr>
+                                        </thead>
+                                        <tbody class="text-center">
+                                            @foreach ($learnings as $learning)
+                                                <tr>
+                                                    <th scope="row">{{ $loop->iteration }}</th>
+                                                    <td>{{ $learning->title }}</td>
+                                                    <td>{{ count($learning->quiz) }}</td>
+                                                    <td>{{ count($learning->participant) }}</td>
+                                                    <td>
+                                                        <a href="/admin/quiz/show-quiz?id={{ $learning->id }}" <i
+                                                            class="fas fa-eye m-1"></i></a>
+                                                    </td>
+                                                </tr>
+                                            @endforeach
 
-                                    </tbody>
-                                    @endforeach
-                                    {{-- @endforeach --}}
-                                </table>
-                            </div>
-                            {{ $data->links() }}
+                                        </tbody>
+                                    </table>
+                                </div>
 
+
+
+                                <!-- /.row (main row) -->
+                            </div><!-- /.container-fluid -->
+                        @endif
+
+                    </section>
+
+                    <!-- /.content -->
+                </div>
+                <!-- /.content-wrapper -->
+                <footer class="main-footer">
+                    <strong>&copy; 2023 Copyright <a href="#">Teknik Jaringan Komputer & Telekomunikasi</a>
+                        <div class="float-right d-none d-sm-inline-block">
+                            <b>Version</b> 1.0.0
                         </div>
-                        <!-- /.row (main row) -->
-                </div><!-- /.container-fluid -->
-                {{-- {{ $data->links() }} --}}
+                </footer>
 
-                </section>
-                <!-- /.content -->
-            </div>
-            <!-- /.content-wrapper -->
-            <footer class="main-footer">
-                <strong>&copy; 2023 Copyright <a href="#">Teknik Jaringan Komputer & Telekomunikasi</a>
-                    <div class="float-right d-none d-sm-inline-block">
-                        <b>Version</b> 1.0.0
-                    </div>
-            </footer>
-
-            <!-- Control Sidebar -->
-            <aside class="control-sidebar control-sidebar-dark">
-                <!-- Control sidebar content goes here -->
-            </aside>
-            <!-- /.control-sidebar -->
+                <!-- Control Sidebar -->
+                <aside class="control-sidebar control-sidebar-dark">
+                    <!-- Control sidebar content goes here -->
+                </aside>
+                <!-- /.control-sidebar -->
             </div>
     </main>
 @endsection
-{{-- @push('scripts')
-<script type="text/javascript">
-$(document).ready(function () {
-   $('#tbl_list').DataTable({
-        processing: true,
-        serverSide: true,
-        ajax: '{{ url()->current() }}',
-        columns: [
-            { data: 'id', name: 'id' },
-            { data: 'image', image: 'image' },
-            { data: 'title', title: 'title' },
-            { data: 'content', content: 'content' },
-            { data: 'thumbnail', thumbnail: 'thumbnail' },
-            { data: 'drive', drive: 'drive' },
-
-
-
-
-        ]
-    });
- });
-</script>
-@endpush --}}
