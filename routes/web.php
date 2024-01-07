@@ -54,7 +54,7 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
     Route::resource('news', NewsController::class);
     Route::get('quiz/search', [QuizController::class, 'search_admin_quiz'])->name('search.admin.quiz');
     Route::get('/quiz/show-quiz', [QuizController::class, 'show']);
-
+    Route::get('/quiz/user-quiz', [QuizController::class, 'userQuiz']);
     Route::resource('quiz'  , QuizController::class);
 });
 
@@ -64,9 +64,10 @@ Route::middleware(['guest'])->group(function () {
     Route::get('/login', [SessionController::class, 'index'])->name('login.form');
     Route::post('/login', [SessionController::class, 'login'])->name('login.submit');
     Route::get('/register', [SessionController::class, 'register'])->name('register.form');
-    Route::post('/create', [SessionController::class, 'create'])->name('register.submit');
+    Route::post('/register', [SessionController::class, 'create'])->name('register.submit');
     }); 
 Route::get('/logout', [SessionController::class, 'logout'])->name('logout');
+
 
 
 

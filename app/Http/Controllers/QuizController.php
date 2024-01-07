@@ -178,4 +178,14 @@ class QuizController extends Controller
 
         return view('admin.quiz.index', compact('learnings'),['kosong'=>false]);
     }
+
+    public function userQuiz() 
+    {
+        $data = UserQuiz::all();
+        $score = QuizScore::all();
+
+        return view('admin.quiz.user-quiz', compact([
+            'data', 'score'
+        ]));
+    }
 }

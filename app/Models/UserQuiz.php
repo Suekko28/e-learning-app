@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Yajra\DataTables\Html\Editor\Fields\BelongsTo;
 
 class UserQuiz extends Model
 {
@@ -17,5 +18,7 @@ class UserQuiz extends Model
         'answer',
         'status',
     ];
+
+  
 
 }
