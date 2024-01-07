@@ -55,7 +55,7 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
     Route::get('quiz/search', [QuizController::class, 'search_admin_quiz'])->name('search.admin.quiz');
     Route::get('/quiz/show-quiz', [QuizController::class, 'show']);
 
-    Route::resource('quiz', QuizController::class);
+    Route::resource('quiz'  , QuizController::class);
 });
 
 // Guest Routes
