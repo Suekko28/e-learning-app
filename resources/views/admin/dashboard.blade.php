@@ -93,13 +93,13 @@ crossorigin="anonymous" referrerpolicy="no-referrer" />
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="{{url('/admin/kegiatan')}}" class="nav-link">
+                    <a href="{{url('/admin/act')}}" class="nav-link">
                       <i class="far fa-circle nav-icon"></i>
                       <p>Kegiatan</p>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="{{url('/admin/berita')}}" class="nav-link">
+                    <a href="{{url('/admin/news')}}" class="nav-link">
                       <i class="far fa-circle nav-icon"></i>
                       <p>Berita</p>
                     </a>
@@ -108,7 +108,7 @@ crossorigin="anonymous" referrerpolicy="no-referrer" />
 
                 <li class="nav-item">
                   <a href="{{url('admin/quiz')}}" class="nav-link">
-                    <i class="nav-icon fas fa-tachometer-alt"></i>
+                    <i class="nav-icon fas fa-solid fa-graduation-cap"></i>
                     <p>
                       Quiz
                     </p>

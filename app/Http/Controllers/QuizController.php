@@ -39,13 +39,13 @@ class QuizController extends Controller
     public function store(Request $request)
     {
         $validQuiz = $request->validate([
-            'learning_id'     => 'required',
-            'question'    => 'required|min:8',
-            'option_a'     => 'required|min:5',
-            'option_b'     => 'required|min:5',
-            'option_c'     => 'required|min:5',
-            'option_d'     => 'required|min:5',
-            'option_true'     => 'required|min:5',
+            'learning_id' => 'required',
+            'question' => 'required|min:8',
+            'option_a' => 'required|min:5',
+            'option_b' => 'required|min:5',
+            'option_c' => 'required|min:5',
+            'option_d' => 'required|min:5',
+            'option_true' => 'required|min:5',
         ]);
 
         Quiz::create($validQuiz);
@@ -80,17 +80,17 @@ class QuizController extends Controller
     public function update(Request $request, Quiz $quiz)
     {
         $validQuiz = $request->validate([
-            'question'    => 'required|min:8',
-            'option_a'     => 'required|min:5',
-            'option_b'     => 'required|min:5',
-            'option_c'     => 'required|min:5',
-            'option_d'     => 'required|min:5',
-            'option_true'     => 'required|min:5',
+            'question' => 'required|min:8',
+            'option_a' => 'required|min:5',
+            'option_b' => 'required|min:5',
+            'option_c' => 'required|min:5',
+            'option_d' => 'required|min:5',
+            'option_true' => 'required|min:5',
         ]);
 
         Quiz::where('id', $quiz->id)->update($validQuiz);
 
-        return redirect('/admin/quiz/show-quiz?id='.$quiz->learning_id)->with('success', 'Quiz berhasil diubah !');
+        return redirect('/admin/quiz/show-quiz?id=' . $quiz->learning_id)->with('success', 'Quiz berhasil diubah !');
     }
 
     /**
@@ -101,10 +101,11 @@ class QuizController extends Controller
         Quiz::where('id', $quiz->id)->delete();
         UserQuiz::where('quiz_id', $quiz->id)->delete();
 
-        return redirect('/admin/quiz/show-quiz?id='.$quiz->id)->with('success', 'Quiz berhasil dihapus !');
+        return redirect('/admin/quiz/show-quiz?id=' . $quiz->id)->with('success', 'Quiz berhasil dihapus !');
     }
 
-    public function startQuiz(Request $request){
+    public function startQuiz(Request $request)
+    {
         $learningId = $request->id;
         $userId = auth()->user()->id;
 
@@ -112,16 +113,16 @@ class QuizController extends Controller
         $quizScore = QuizScore::where('learning_id', $learningId)->where('user_id', $userId)->first();
         $userQuiz = UserQuiz::where('learning_id', $learningId)->where('user_id', $userId)->get();
 
-        if(count($allQuiz) == 0){
+        if (count($allQuiz) == 0) {
             return abort(403, 'Quiz tidak ditemukan / admin belum menambahkan quiz baru');
-        }else{
-            if($quizScore) {
+        } else {
+            if ($quizScore) {
                 return view('quiz', [
                     'allQuiz' => $allQuiz,
                     'quizScore' => $quizScore,
                     'userQuiz' => $userQuiz
                 ]);
-            }else {
+            } else {
                 return view('quiz', [
                     'allQuiz' => $allQuiz
                 ]);
@@ -129,12 +130,13 @@ class QuizController extends Controller
         }
     }
 
-    public function submitQuiz(Request $request) {
+    public function submitQuiz(Request $request)
+    {
         $allQuiz = Quiz::where('learning_id', $request->learning_id)->get();
         $trueAnswer = 0;
 
-        for($i=0; $i<count($allQuiz); $i++){
-            if($allQuiz[$i]->option_true == $request->answer[$i]){
+        for ($i = 0; $i < count($allQuiz); $i++) {
+            if ($allQuiz[$i]->option_true == $request->answer[$i]) {
                 $status = 1; //bolean
                 $trueAnswer += 1;
             } else {
@@ -144,7 +146,7 @@ class QuizController extends Controller
             $userQuiz[$i] = [
                 'learning_id' => $request->learning_id,
                 'quiz_id' => $allQuiz[$i]->id,
-                'user_id'  => auth()->user()->id,
+                'user_id' => auth()->user()->id,
                 'answer' => $request->answer[$i],
                 'status' => $status,
                 'created_at' => date("Y-m-d H:i:s"),
@@ -153,29 +155,38 @@ class QuizController extends Controller
         }
 
         $quizScore = [
-            'user_id'  => auth()->user()->id,
+            'user_id' => auth()->user()->id,
             'learning_id' => $request->learning_id,
             'true_answer' => $trueAnswer,
-            'score' => $trueAnswer/count($allQuiz) * 100
+            'score' => $trueAnswer / count($allQuiz) * 100
         ];
 
         QuizScore::create($quizScore);
         UserQuiz::insert($userQuiz);
 
 
-        return redirect('/learning/start-quiz?id='.$request->learning_id)->with('success', 'Quiz berhasil disimpan !');
+        return redirect('/learning/start-quiz?id=' . $request->learning_id)->with('success', 'Quiz berhasil disimpan !');
 
     }
 
     public function search_admin_quiz(Request $request)
     {
         $search = $request->search;
-        $learnings = Learning::where('title','like','%'. $search .'%')->with('quiz', 'participant')->paginate(8);
+        $learnings = Learning::where('title', 'like', '%' . $search . '%')->with('quiz', 'participant')->paginate(8);
 
-        if($learnings->count()==0){
-            return view('admin.quiz.index', ['kosong'=>true]);
+        if ($learnings->count() == 0) {
+            return view('admin.quiz.index', ['kosong' => true]);
         }
 
-        return view('admin.quiz.index', compact('learnings'),['kosong'=>false]);
+        return view('admin.quiz.index', compact('learnings'), ['kosong' => false]);
     }
+
+    public function userQuiz($quizId)
+    {
+        $quiz = Quiz::findOrFail($quizId);
+        $participants = $quiz->participants()->get();
+    
+        return view('admin.quiz.user-quiz', compact('participants', 'quiz'));
+    }
+        
 }

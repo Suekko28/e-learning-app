@@ -24,4 +24,9 @@ class Learning extends Model
     public function participant(): HasMany {
         return $this->hasMany(QuizScore::class, 'learning_id', 'id');
     }
+
+    public function userQuiz() : HasMany
+    {
+        return $this->hasMany(UserQuiz::class, 'quiz_id', 'id');
+    }
 }

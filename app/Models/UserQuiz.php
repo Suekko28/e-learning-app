@@ -18,4 +18,15 @@ class UserQuiz extends Model
         'status',
     ];
 
+    public function user() : \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
+        return $this->belongsTo(User::class, 'id' ,'id');
+    }
+
+    public function quizScore() : \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
+        return $this->belongsTo(QuizScore::class, 'id' ,'id');
+    }
+  
+
 }
