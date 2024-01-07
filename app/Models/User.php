@@ -46,10 +46,12 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
-    public function user(): BelongsTo
+    public function userQuiz() : HasMany
     {
-        return $this->belongsTo(User::class, 'user_id', 'id');
+        return $this->hasMany(UserQuiz::class, 'user_id', 'id');
     }
 
+    
+   
 
 }

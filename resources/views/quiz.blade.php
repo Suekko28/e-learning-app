@@ -55,7 +55,7 @@
                                 @if ($loop->iteration != 1)
                                     <a class="button" href="#question-{{$loop->iteration-1}}">Previous question</a>
                                 @endif
-                                    <a class="button" href="/learning/start-quiz?id={{$quiz->learning_id}}">Back to home</a>
+                                    <a class="button" href="{{url('home')}}">Back to home</a>
                             @else
                                 @if ($loop->iteration != 1)
                                     <a class="button" href="#question-{{$loop->iteration-1}}">Previous question</a>

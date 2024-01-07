@@ -45,44 +45,44 @@
 
                                 <li class="nav-item">
                                     <a href="#" class="nav-link">
-                                        <i class="nav-icon fas fa-solid fa-folder-open"></i>
-                                        <p>
-                                            Posts
-                                            <i class="right fas fa-angle-left"></i>
-                                        </p>
+                                      <i class="nav-icon fas fa-solid fa-folder-open"></i>
+                                      <p>
+                                        Posts
+                                        <i class="right fas fa-angle-left"></i>
+                                      </p>
                                     </a>
                                     <ul class="nav nav-treeview">
-                                        <li class="nav-item">
-                                            <a href="{{ url('/admin/materi') }}" class="nav-link">
-                                                <i class="far fa-circle nav-icon"></i>
-                                                <p>Materi</p>
-                                            </a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a href="{{ url('/admin/kegiatan') }}" class="nav-link active">
-                                                <i class="far fa-circle nav-icon"></i>
-                                                <p>Kegiatan</p>
-                                            </a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a href="{{ url('/admin/berita') }}" class="nav-link">
-                                                <i class="far fa-circle nav-icon"></i>
-                                                <p>Berita</p>
-                                            </a>
-                                        </li>
-
+                                      <li class="nav-item">
+                                        <a href="{{url('/admin/materi')}}" class="nav-link">
+                                          <i class="far fa-circle nav-icon"></i>
+                                          <p>Materi</p>
+                                        </a>
+                                      </li>
+                                      <li class="nav-item">
+                                        <a href="{{url('/admin/act')}}" class="nav-link">
+                                          <i class="far fa-circle nav-icon"></i>
+                                          <p>Kegiatan</p>
+                                        </a>
+                                      </li>
+                                      <li class="nav-item">
+                                        <a href="{{url('/admin/news')}}" class="nav-link">
+                                          <i class="far fa-circle nav-icon"></i>
+                                          <p>Berita</p>
+                                        </a>
+                                      </li>
                                     </ul>
-
-                                <li class="nav-item">
-                                    <a href="{{ url('admin/quiz') }}" class="nav-link">
-                                        <i class="nav-icon fas fa-tachometer-alt"></i>
+                    
+                                    <li class="nav-item">
+                                      <a href="{{url('admin/quiz')}}" class="nav-link">
+                                        <i class="nav-icon fas fa-solid fa-graduation-cap"></i>
                                         <p>
-                                            Quiz
+                                          Quiz
                                         </p>
-                                    </a>
-                                </li>
-
-                                </li>
+                                      </a>
+                                    </li>
+                    
+                                  </li>
+                               
                             </ul>
                         </nav>
                         <!-- /.sidebar-menu -->

@@ -34,7 +34,7 @@
                             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                                 data-accordion="false">
                                 <!-- Add icons to the links using the .nav-icon class
-                       with font-awesome or any other icon font library -->
+                               with font-awesome or any other icon font library -->
                                 <li class="nav-item">
                                     <a href="{{ url('admin/dashboard') }}" class="nav-link">
                                         <i class="nav-icon fas fa-tachometer-alt"></i>
@@ -46,42 +46,43 @@
 
                                 <li class="nav-item">
                                     <a href="#" class="nav-link">
-                                        <i class="nav-icon fas fa-solid fa-folder-open"></i>
-                                        <p>
-                                            Posts
-                                            <i class="right fas fa-angle-left"></i>
-                                        </p>
+                                      <i class="nav-icon fas fa-solid fa-folder-open"></i>
+                                      <p>
+                                        Posts
+                                        <i class="right fas fa-angle-left"></i>
+                                      </p>
                                     </a>
                                     <ul class="nav nav-treeview">
-                                        <li class="nav-item">
-                                            <a href="{{ url('/admin/materi') }}" class="nav-link">
-                                                <i class="far fa-circle nav-icon"></i>
-                                                <p>Materi</p>
-                                            </a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a href="{{ url('/admin/kegiatan') }}" class="nav-link">
-                                                <i class="far fa-circle nav-icon"></i>
-                                                <p>Kegiatan</p>
-                                            </a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a href="{{ url('/admin/berita') }}" class="nav-link">
-                                                <i class="far fa-circle nav-icon"></i>
-                                                <p>Berita</p>
-                                            </a>
-                                        </li>
+                                      <li class="nav-item">
+                                        <a href="{{url('/admin/materi')}}" class="nav-link">
+                                          <i class="far fa-circle nav-icon"></i>
+                                          <p>Materi</p>
+                                        </a>
+                                      </li>
+                                      <li class="nav-item">
+                                        <a href="{{url('/admin/act')}}" class="nav-link">
+                                          <i class="far fa-circle nav-icon"></i>
+                                          <p>Kegiatan</p>
+                                        </a>
+                                      </li>
+                                      <li class="nav-item">
+                                        <a href="{{url('/admin/news')}}" class="nav-link">
+                                          <i class="far fa-circle nav-icon"></i>
+                                          <p>Berita</p>
+                                        </a>
+                                      </li>
                                     </ul>
-                                <li class="nav-item">
-                                    <a href="{{ url('admin/quiz') }}" class="nav-link active">
-                                        <i class="nav-icon fas fa-tachometer-alt"></i>
+                    
+                                    <li class="nav-item">
+                                      <a href="{{url('admin/quiz')}}" class="nav-link">
+                                        <i class="nav-icon fas fa-solid fa-graduation-cap"></i>
                                         <p>
-                                            Quiz
+                                          Quiz
                                         </p>
-                                    </a>
-                                </li>
-
-                                </li>
+                                      </a>
+                                    </li>
+                    
+                                  </li>
                             </ul>
                         </nav>
                         <!-- /.sidebar-menu -->
@@ -122,47 +123,47 @@
                                 <div class="col d-flex justify-content-end">
                                     <form action="{{ route('search.admin.quiz') }}" class="d-flex form-inputs w-50"
                                         method="GET">
-                                        <input @isset($_GET['search']) value="{{ $_GET['search'] }}" @endisset class="form-control" type="text"
-                                            name="search" placeholder="Masukan Judul Quiz" aria-label="Search">
+                                        <input @isset($_GET['search']) value="{{ $_GET['search'] }}" @endisset
+                                            class="form-control" type="text" name="search"
+                                            placeholder="Masukan Judul Quiz" aria-label="Search">
                                         <i class="fas fa-search"></i>
                                     </form>
                                 </div>
                             </div>
                         </div>
                         {{-- @if ($kosong == true) --}}
-                                {{-- <img src="/notfound.jpg" alt="" width="500px" height="500px"
+                        {{-- <img src="/notfound.jpg" alt="" width="500px" height="500px"
                                     class="d-block mx-auto"> --}}
 
                         {{-- @else --}}
-                            <div class="row">
-                                <div class="table-responsive">
-                                    <table class="table table-bordered" width="100%">
-                                        <caption>List of Kegiatan</caption>
-                                        <thead>
-                                            <tr class="text-center">
-                                                <th scope="col">No</th>
-                                                <th scope="col">User</th>
-                                                <th scope="col">Total Quiz</th>
-                                                <th scope="col">Nilai</th>
-                                                <th scope="col">Aksi</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody class="text-center">
-                                            @foreach ($data as $learning)
-                                                <tr>
-                                                    <td scope="row">{{ $loop->iteration }}</td>
-                                                    <td scope="row">{{ $learning->user->name }}</td>
-                                                </tr>
-                                            @endforeach
+                        <div class="row">
+                            <div class="table-responsive">
+                                <table class="table table-bordered" width="100%">
+                                    <caption>List of Participants for {{ $quiz->title }}</caption>
+                                    <thead>
+                                        <tr class="text-center">
+                                            <th scope="col">No</th>
+                                            <th scope="col">User</th>
+                                            <th scope="col">Nilai</th>
 
-                                        </tbody>
-                                    </table>
-                                </div>
-
+                                            <!-- Add more columns as needed -->
+                                        </tr>
+                                    </thead>
+                                    <tbody class="text-center">
+                                        @foreach ($participants as $participant)
+                                            <tr>
+                                                <td scope="row">{{ $loop->iteration }}</td>
+                                                <td scope="row">{{ $participant->user->name }}</td>
+                                                <td scope="row">{{ $participant->quizScore->score }}</td>                                            </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
 
 
-                                <!-- /.row (main row) -->
-                            </div><!-- /.container-fluid -->
+
+                            <!-- /.row (main row) -->
+                        </div><!-- /.container-fluid -->
                         {{-- @endif --}}
 
                     </section>

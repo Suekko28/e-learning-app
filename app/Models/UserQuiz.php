@@ -4,7 +4,6 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Yajra\DataTables\Html\Editor\Fields\BelongsTo;
 
 class UserQuiz extends Model
 {
@@ -19,6 +18,15 @@ class UserQuiz extends Model
         'status',
     ];
 
+    public function user() : \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
+        return $this->belongsTo(User::class, 'id' ,'id');
+    }
+
+    public function quizScore() : \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
+        return $this->belongsTo(QuizScore::class, 'id' ,'id');
+    }
   
 
 }
