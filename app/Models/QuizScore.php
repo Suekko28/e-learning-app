@@ -21,7 +21,5 @@ class QuizScore extends Model
     public function learning(): BelongsTo {
         return $this->belongsTo(Learning::class, 'learning_id', 'id');
     }
-    public function user(): BelongsTo {
-        return $this->belongsTo(User::class, 'user_id', 'id');
-    }
+  
 }
