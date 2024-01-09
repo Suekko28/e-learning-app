@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Learning;
 use App\Models\Quiz;
 use App\Models\QuizScore;
+use App\Models\User;
 use App\Models\UserQuiz;
 use Illuminate\Http\Request;
 
@@ -184,9 +185,19 @@ class QuizController extends Controller
     public function userQuiz($quizId)
     {
         $quiz = Quiz::findOrFail($quizId);
-        $participants = $quiz->participants()->get();
+    
+        // Mengambil semua pengguna dengan peran (role) 2 beserta relasi userQuiz dan quizScore
+        $participants = User::where('role', 2)
+            ->with(['userQuiz' => function ($query) use ($quizId) {
+                $query->where('quiz_id', $quizId)->with('quizScore');
+            }])
+            ->get();
     
         return view('admin.quiz.user-quiz', compact('participants', 'quiz'));
     }
-        
+    
+
+
+
+
 }

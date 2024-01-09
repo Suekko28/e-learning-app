@@ -156,7 +156,6 @@
                                                     <td>
                                                         <a class="btn btn-primary" href="{{ route('userQuiz', ['quizId' => $learning->id]) }}">View</a>
                                                     </td>
-                                                    <td>{{ count($learning->participant) }}</td>
                                                     <td>
                                                         <a href="/admin/quiz/show-quiz?id={{ $learning->id }}" <i
                                                             class="fas fa-eye m-1"></i></a>
