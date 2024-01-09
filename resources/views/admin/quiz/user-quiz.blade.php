@@ -154,7 +154,6 @@
                                             <tr>
                                                 <td scope="row">{{ $loop->iteration }}</td>
                                                 <td scope="row">{{ $participant->user->name }}</td>
-                                                <td scope="row">{{ $participant->quizScore->score }}</td>                                            </tr>
                                         @endforeach
                                     </tbody>
                                 </table>
