@@ -58,7 +58,7 @@ class ActController extends Controller
         ];
 
         Activity::create($data);
-        return redirect()->to('admin/kegiatan')->with('success', 'Berhasil Menambahkan Kegiatan');
+        return redirect()->to('admin/act')->with('success', 'Berhasil Menambahkan Kegiatan');
     }
 
     /**
@@ -122,7 +122,7 @@ class ActController extends Controller
             ]);
         }
 
-        return redirect()->to('admin/kegiatan')->with('success', 'Berhasil Mengupdate Kegiatan');
+        return redirect()->to('admin/act')->with('success', 'Berhasil Mengupdate Kegiatan');
     }
 
     /**
@@ -136,7 +136,7 @@ class ActController extends Controller
 
         $data->delete();
 
-        return redirect()->to('admin/kegiatan')->with('delete', 'Berhasil Menghapus Kegiatan');
+        return redirect()->to('admin/act')->with('delete', 'Berhasil Menghapus Kegiatan');
     }
 
     public function search_admin_kegiatan(Request $request)

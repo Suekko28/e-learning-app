@@ -174,7 +174,7 @@ crossorigin="anonymous" referrerpolicy="no-referrer" />
                   <div class="icon">
                     <i class="fa-solid fa-image"></i>
                   </div>
-                  <a href="{{url('admin/kegiatan')}}" class="small-box-footer">Lihat Selengkapnya <i class="fas fa-arrow-circle-right"></i></a>
+                  <a href="{{url('admin/act')}}" class="small-box-footer">Lihat Selengkapnya <i class="fas fa-arrow-circle-right"></i></a>
                 </div>
               </div>
 
@@ -188,7 +188,7 @@ crossorigin="anonymous" referrerpolicy="no-referrer" />
                   <div class="icon">
                     <i class="fa-solid fa-newspaper"></i>
                   </div>
-                  <a href="{{url('admin/berita')}}" class="small-box-footer">Lihat Selengkapnya <i class="fas fa-arrow-circle-right"></i></a>
+                  <a href="{{url('admin/news')}}" class="small-box-footer">Lihat Selengkapnya <i class="fas fa-arrow-circle-right"></i></a>
                 </div>
               </div>
 
